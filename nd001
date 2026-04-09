@@ -1,1 +1,127 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>上報 UP MEDIA — Nake Design</title>
+  <meta property="og:type"        content="article"/>
+  <meta property="og:url"         content="https://nakesign.com/nd001/"/>
+  <meta property="og:title"       content="上報 UP MEDIA — Nake Design"/>
+  <meta property="og:description" content="News Platform Branding &amp; UI Design · 2016"/>
+  <meta property="og:image"       content="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/nd001_cover.jpg"/>
+  <meta name="twitter:card"       content="summary_large_image"/>
+  <link rel="stylesheet" href="../style.css"/>
+</head>
+<body>
 
+<nav>
+  <a class="logo" href="/">NAKE DESIGN</a>
+  <div class="nav-links">
+    <a href="/about/">About</a>
+    <a href="/contact/">Contact</a>
+  </div>
+</nav>
+
+<div class="project-wrap page-enter">
+
+  <a class="back-link" href="/">All Works</a>
+
+  <header class="project-header">
+    <h1>上報 UP MEDIA</h1>
+    <div class="year">2016</div>
+  </header>
+
+  <div class="project-body">
+
+    <div class="block-text">
+      <p>Up Media was established in July 2016. The platform brings together a powerhouse of elite journalists, editors, marketing specialists, and social media experts. Up Media is dedicated to producing diverse original content and delivering insightful, engaging perspectives. Following its successful launch, the official mobile app was introduced in September of the same year.</p>
+    </div>
+
+    <div class="block-img">
+      <img loading="lazy"
+           src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/nd001_01.jpg"
+           alt="UP MEDIA 01"/>
+    </div>
+
+    <div class="block-img">
+      <img loading="lazy"
+           src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/nd001_02.jpg"
+           alt="UP MEDIA 02"/>
+    </div>
+
+    <div class="block-img">
+      <img loading="lazy"
+           src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/nd001_03.jpg"
+           alt="UP MEDIA 03"/>
+    </div>
+
+    <div class="block-img">
+      <img loading="lazy"
+           src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/nd001_04.jpg"
+           alt="UP MEDIA 04"/>
+    </div>
+
+    <div class="block-img">
+      <img loading="lazy"
+           src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/nd001_05.jpg"
+           alt="UP MEDIA 05"/>
+    </div>
+
+    <div class="block-img">
+      <img loading="lazy"
+           src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/nd001_06.jpg"
+           alt="UP MEDIA 06"/>
+    </div>
+
+    <div class="block-img">
+      <img loading="lazy"
+           src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/nd001_07.jpg"
+           alt="UP MEDIA 07"/>
+    </div>
+
+    <div class="block-img">
+      <img loading="lazy"
+           src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/nd001_08.jpg"
+           alt="UP MEDIA 08"/>
+    </div>
+
+    <div class="block-img">
+      <img loading="lazy"
+           src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/nd001_09.jpg"
+           alt="UP MEDIA 09"/>
+    </div>
+
+    <div class="block-img">
+      <img loading="lazy"
+           src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/nd001_10.jpg"
+           alt="UP MEDIA 10"/>
+    </div>
+
+    <div class="block-img">
+      <img loading="lazy"
+           src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/nd001_11.jpg"
+           alt="UP MEDIA 11"/>
+    </div>
+
+    <div class="project-credits">
+      <table>
+        <tr><td>Project</td>        <td>News Platform Branding &amp; UI Design</td></tr>
+        <tr><td>Art Director</td>   <td>Wei-Xun Weng</td></tr>
+        <tr><td>UI Designer</td>    <td>Ling-Zhi Xu</td></tr>
+        <tr><td>Client</td>         <td>上報 Up Media</td></tr>
+        <tr><td>Year</td>           <td>2016</td></tr>
+      </table>
+    </div>
+
+  </div>
+</div>
+
+<script>
+document.querySelectorAll('img[loading="lazy"]').forEach(img => {
+  if (img.complete) { img.classList.add('loaded'); }
+  else { img.addEventListener('load', () => img.classList.add('loaded')); }
+});
+</script>
+
+</body>
+</html>
