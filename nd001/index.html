@@ -1,126 +1,292 @@
-<!DOCTYPE html>
-<html lang="zh-Hant">
-<head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>上報 UP MEDIA — Nake Design</title>
-  <meta property="og:type"        content="article"/>
-  <meta property="og:url"         content="https://nakesign.com/nd001/"/>
-  <meta property="og:title"       content="上報 UP MEDIA — Nake Design"/>
-  <meta property="og:description" content="News Platform Branding &amp; UI Design · 2016"/>
-  <meta property="og:image"       content="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ND001/nd001_cover.png"/>
-  <meta name="twitter:card"       content="summary_large_image"/>
-  <link rel="stylesheet" href="/style.css"/>
-</head>
-<body>
+/* ============================================
+   NAKE DESIGN — Global Stylesheet
+   ============================================ */
 
-<nav>
-  <a class="logo" href="/">NAKE DESIGN</a>
-  <div class="nav-links">
-    <a href="/about/">About</a>
-    <a href="/contact/">Contact</a>
-  </div>
-</nav>
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-<div class="project-wrap page-enter">
+h1, h2, h3, h4, h5, h6 {
+  font-size: inherit;
+  font-weight: inherit;
+}
 
-  <a class="back-link" href="/">All Works</a>
+:root {
+  --bg: #f5f5f3;
+  --text: #111111;
+  --text-muted: rgba(0,0,0,0.35);
+  --border: rgba(0,0,0,0.08);
+  --nav-bg: rgba(245,245,243,0.82);
+  --font: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
 
-  <header class="project-header">
-    <h1>上報 UP MEDIA</h1>
-  </header>
+html { scroll-behavior: smooth; }
 
-  <div class="project-body">
+body {
+  font-family: var(--font);
+  background: var(--bg);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
 
-    <div class="block-text">
-      <p>Up Media was established in July 2016. The platform brings together a powerhouse of elite journalists, editors, marketing specialists, and social media experts. Up Media is dedicated to producing diverse original content and delivering insightful, engaging perspectives. Following its successful launch, the official mobile app was introduced in September of the same year.</p>
-    </div>
+/* ── NAV ── */
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.25rem 2rem;
+  background: var(--nav-bg);
+  backdrop-filter: blur(28px) saturate(180%);
+  -webkit-backdrop-filter: blur(28px) saturate(180%);
+  border-bottom: 0.5px solid var(--border);
+}
 
-    <div class="block-img">
-      <img loading="lazy"
-           src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ND001/nd001_01.jpg"
-           alt="UP MEDIA 01"/>
-    </div>
+.logo {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.24em;
+  color: var(--text);
+  text-decoration: none;
+  text-transform: uppercase;
+}
 
-    <div class="block-img">
-      <img loading="lazy"
-           src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ND001/nd001_02.jpg"
-           alt="UP MEDIA 02"/>
-    </div>
+.nav-links {
+  display: flex;
+  gap: 2.5rem;
+}
 
-    <div class="block-img">
-      <img loading="lazy"
-           src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ND001/nd001_03.jpg"
-           alt="UP MEDIA 03"/>
-    </div>
+.nav-links a {
+  font-size: 10px;
+  color: var(--text-muted);
+  text-decoration: none;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  transition: color 0.2s;
+}
 
-    <div class="block-img">
-      <img loading="lazy"
-           src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ND001/nd001_04.jpg"
-           alt="UP MEDIA 04"/>
-    </div>
+.nav-links a:hover { color: var(--text); }
 
-    <div class="block-img">
-      <img loading="lazy"
-           src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ND001/nd001_05.jpg"
-           alt="UP MEDIA 05"/>
-    </div>
+/* ── PAGE FADE IN ── */
+.page-enter {
+  opacity: 0;
+  animation: fadeIn 0.6s ease forwards;
+}
 
-    <div class="block-img">
-      <img loading="lazy"
-           src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ND001/nd001_06.jpg"
-           alt="UP MEDIA 06"/>
-    </div>
+@keyframes fadeIn {
+  to { opacity: 1; }
+}
 
-    <div class="block-img">
-      <img loading="lazy"
-           src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ND001/nd001_07.jpg"
-           alt="UP MEDIA 07"/>
-    </div>
+/* ── HOMEPAGE GRID ── */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+}
 
-    <div class="block-img">
-      <img loading="lazy"
-           src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ND001/nd001_08.jpg"
-           alt="UP MEDIA 08"/>
-    </div>
+.card {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  aspect-ratio: 1 / 1;
+  display: block;
+  text-decoration: none;
+}
 
-    <div class="block-img">
-      <img loading="lazy"
-           src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ND001/nd001_09.jpg"
-           alt="UP MEDIA 09"/>
-    </div>
+.cover {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.9s cubic-bezier(.16,1,.3,1);
+}
 
-    <div class="block-img">
-      <img loading="lazy"
-           src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ND001/nd001_10.jpg"
-           alt="UP MEDIA 10"/>
-    </div>
+/* lazy loading fade */
+.cover[loading="lazy"] { opacity: 0; transition: opacity 0.4s ease, transform 0.9s cubic-bezier(.16,1,.3,1); }
+.cover.loaded { opacity: 1; }
 
-    <div class="block-img">
-      <img loading="lazy"
-           src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ND001/nd001_11.jpg"
-           alt="UP MEDIA 11"/>
-    </div>
+.card:hover .cover { transform: scale(1.06); }
 
-    <div class="project-credits">
-      <table>
-        <tr><td>Project</td>        <td>News Platform Branding &amp; UI Design</td></tr>
-        <tr><td>Art Director</td>   <td>Wei-Xun Weng</td></tr>
-        <tr><td>UI Designer</td>    <td>Ling-Zhi Xu</td></tr>
-        <tr><td>Client</td>         <td>上報 Up Media</td></tr>
-        <tr><td>Year</td>           <td>2016</td></tr>
-      </table>
-    </div>
+.hover-mask {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background: rgba(245,245,243,0);
+  transition: background 0.45s ease;
+}
 
-  </div>
-</div>
+.card:hover .hover-mask { background: rgba(245,245,243,0.86); }
 
-<script>
-document.querySelectorAll('img[loading="lazy"]').forEach(img => {
-  if (img.complete) { img.classList.add('loaded'); }
-  else { img.addEventListener('load', () => img.classList.add('loaded')); }
-});
-</script>
+.hover-title {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 7px;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.38s ease, transform 0.48s cubic-bezier(.16,1,.3,1);
+  pointer-events: none;
+  padding: 1.2rem;
+}
 
-</body>
-</html>
+.card:hover .hover-title { opacity: 1; transform: translateY(0); }
+
+.ht {
+  font-size: 10.5px;
+  font-weight: 500;
+  color: var(--text);
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  text-align: center;
+  line-height: 1.75;
+}
+
+.hl {
+  width: 18px;
+  height: 0.5px;
+  background: rgba(0,0,0,0.2);
+}
+
+/* ── STAGGERED GRID ENTRY ── */
+.card:nth-child(1)  { animation: cardIn 0.5s ease 0.05s both; }
+.card:nth-child(2)  { animation: cardIn 0.5s ease 0.10s both; }
+.card:nth-child(3)  { animation: cardIn 0.5s ease 0.15s both; }
+.card:nth-child(4)  { animation: cardIn 0.5s ease 0.20s both; }
+.card:nth-child(5)  { animation: cardIn 0.5s ease 0.25s both; }
+.card:nth-child(6)  { animation: cardIn 0.5s ease 0.30s both; }
+.card:nth-child(7)  { animation: cardIn 0.5s ease 0.35s both; }
+.card:nth-child(8)  { animation: cardIn 0.5s ease 0.40s both; }
+.card:nth-child(9)  { animation: cardIn 0.5s ease 0.45s both; }
+.card:nth-child(n+10) { animation: cardIn 0.5s ease 0.50s both; }
+
+@keyframes cardIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── PROJECT PAGE ── */
+.project-wrap {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 4rem 2rem 7rem;
+}
+
+.project-header {
+  margin-bottom: 3rem;
+  padding-bottom: 2rem;
+  border-bottom: 0.5px solid var(--border);
+  text-align: center;
+}
+
+.project-header h1 {
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  line-height: 1.7;
+  color: var(--text);
+}
+
+.project-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+/* text block */
+.block-text {
+  padding: 2.5rem 0;
+  font-size: 14px;
+  line-height: 1.9;
+  color: rgba(0,0,0,0.7);
+  text-align: center;
+  max-width: 580px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.block-text p { margin-bottom: 1rem; }
+.block-text p:last-child { margin-bottom: 0; }
+.block-text strong { font-weight: 500; color: var(--text); }
+
+/* single image */
+.block-img {
+  width: 100%;
+  line-height: 0;
+  margin-bottom: 2px;
+}
+
+.block-img:last-of-type { margin-bottom: 0; }
+
+.block-img img {
+  width: 100%;
+  height: auto;
+  display: block;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.block-img img.loaded { opacity: 1; }
+
+/* image row (2-up) */
+.block-img-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2px;
+  margin-bottom: 2px;
+}
+
+/* credits / colophon */
+.project-credits {
+  margin-top: 4rem;
+  padding-top: 2rem;
+  border-top: 0.5px solid var(--border);
+  display: flex;
+  justify-content: center;
+}
+
+.project-credits table {
+  border-collapse: collapse;
+  width: auto;
+}
+
+.project-credits td {
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  padding: 0.4rem 0;
+  vertical-align: top;
+  line-height: 1.6;
+}
+
+.project-credits td:first-child {
+  color: var(--text-muted);
+  text-transform: uppercase;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  padding-right: 2rem;
+  white-space: nowrap;
+}
+
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  .grid { grid-template-columns: repeat(2, 1fr); }
+  .project-wrap { padding: 3rem 1.5rem 5rem; }
+}
+
+@media (max-width: 540px) {
+  .grid { grid-template-columns: 1fr; }
+  nav { padding: 1rem 1.25rem; }
+  .project-wrap { padding: 2rem 1.25rem 4rem; }
+  .block-img-row { grid-template-columns: 1fr; }
+  .project-credits td:first-child { width: 120px; }
+}
