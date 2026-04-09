@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Nake Design</title>
+  <meta property="og:type"        content="website"/>
+  <meta property="og:url"         content="https://nakesign.com/"/>
+  <meta property="og:title"       content="Nake Design · 納序策略設計"/>
+  <meta property="og:description" content="Defining the Order of Design. 唯序，立設計"/>
+  <meta property="og:image"       content="https://nakesign.com/og.jpg"/>
+  <meta name="twitter:card"       content="summary_large_image"/>
+  <meta name="description"        content="Defining the Order of Design. 唯序，立設計"/>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+<nav>
+  <a class="logo" href="/">NAKE DESIGN</a>
+  <div class="nav-links">
+    <a href="/about/">About</a>
+    <a href="/contact/">Contact</a>
+  </div>
+</nav>
+
+<main class="grid page-enter">
+
+  <a class="card" href="/nd001/">
+    <img class="cover" loading="lazy"
+         src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/nd001_cover.jpg"
+         alt="上報 UP MEDIA"/>
+    <div class="hover-mask"></div>
+    <div class="hover-title">
+      <div class="ht">上報 UP MEDIA</div>
+      <div class="hl"></div>
+    </div>
+  </a>
+
+</main>
+
+<script>
+document.querySelectorAll('img[loading="lazy"]').forEach(img => {
+  if (img.complete) { img.classList.add('loaded'); }
+  else { img.addEventListener('load', () => img.classList.add('loaded')); }
+});
+</script>
+
+</body>
+</html>

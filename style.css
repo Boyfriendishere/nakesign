@@ -1,0 +1,301 @@
+/* ============================================
+   NAKE DESIGN — Global Stylesheet
+   ============================================ */
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --bg: #f5f5f3;
+  --text: #111111;
+  --text-muted: rgba(0,0,0,0.35);
+  --border: rgba(0,0,0,0.08);
+  --nav-bg: rgba(245,245,243,0.82);
+  --font: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font);
+  background: var(--bg);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ── NAV ── */
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.25rem 2rem;
+  background: var(--nav-bg);
+  backdrop-filter: blur(28px) saturate(180%);
+  -webkit-backdrop-filter: blur(28px) saturate(180%);
+  border-bottom: 0.5px solid var(--border);
+}
+
+.logo {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.24em;
+  color: var(--text);
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2.5rem;
+}
+
+.nav-links a {
+  font-size: 10px;
+  color: var(--text-muted);
+  text-decoration: none;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  transition: color 0.2s;
+}
+
+.nav-links a:hover { color: var(--text); }
+
+/* ── PAGE FADE IN ── */
+.page-enter {
+  opacity: 0;
+  animation: fadeIn 0.6s ease forwards;
+}
+
+@keyframes fadeIn {
+  to { opacity: 1; }
+}
+
+/* ── HOMEPAGE GRID ── */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+}
+
+.card {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  aspect-ratio: 1 / 1;
+  display: block;
+  text-decoration: none;
+}
+
+.cover {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.9s cubic-bezier(.16,1,.3,1);
+}
+
+/* lazy loading fade */
+.cover[loading="lazy"] { opacity: 0; transition: opacity 0.4s ease, transform 0.9s cubic-bezier(.16,1,.3,1); }
+.cover.loaded { opacity: 1; }
+
+.card:hover .cover { transform: scale(1.06); }
+
+.hover-mask {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background: rgba(245,245,243,0);
+  transition: background 0.45s ease;
+}
+
+.card:hover .hover-mask { background: rgba(245,245,243,0.86); }
+
+.hover-title {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 7px;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.38s ease, transform 0.48s cubic-bezier(.16,1,.3,1);
+  pointer-events: none;
+  padding: 1.2rem;
+}
+
+.card:hover .hover-title { opacity: 1; transform: translateY(0); }
+
+.ht {
+  font-size: 10.5px;
+  font-weight: 500;
+  color: var(--text);
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  text-align: center;
+  line-height: 1.75;
+}
+
+.hl {
+  width: 18px;
+  height: 0.5px;
+  background: rgba(0,0,0,0.2);
+}
+
+/* ── STAGGERED GRID ENTRY ── */
+.card:nth-child(1)  { animation: cardIn 0.5s ease 0.05s both; }
+.card:nth-child(2)  { animation: cardIn 0.5s ease 0.10s both; }
+.card:nth-child(3)  { animation: cardIn 0.5s ease 0.15s both; }
+.card:nth-child(4)  { animation: cardIn 0.5s ease 0.20s both; }
+.card:nth-child(5)  { animation: cardIn 0.5s ease 0.25s both; }
+.card:nth-child(6)  { animation: cardIn 0.5s ease 0.30s both; }
+.card:nth-child(7)  { animation: cardIn 0.5s ease 0.35s both; }
+.card:nth-child(8)  { animation: cardIn 0.5s ease 0.40s both; }
+.card:nth-child(9)  { animation: cardIn 0.5s ease 0.45s both; }
+.card:nth-child(n+10) { animation: cardIn 0.5s ease 0.50s both; }
+
+@keyframes cardIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── PROJECT PAGE ── */
+.project-wrap {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 4rem 2rem 6rem;
+}
+
+.project-header {
+  margin-bottom: 3.5rem;
+  padding-bottom: 2rem;
+  border-bottom: 0.5px solid var(--border);
+}
+
+.project-header h1 {
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  line-height: 1.7;
+  margin-bottom: 0.5rem;
+}
+
+.project-header .year {
+  font-size: 10px;
+  color: var(--text-muted);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.project-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+/* text block */
+.block-text {
+  padding: 2.5rem 0;
+  font-size: 14px;
+  line-height: 1.85;
+  color: rgba(0,0,0,0.75);
+  max-width: 640px;
+}
+
+.block-text p { margin-bottom: 1rem; }
+.block-text p:last-child { margin-bottom: 0; }
+.block-text strong { font-weight: 500; color: var(--text); }
+
+/* single image */
+.block-img {
+  width: 100%;
+  line-height: 0;
+}
+
+.block-img img {
+  width: 100%;
+  height: auto;
+  display: block;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.block-img img.loaded { opacity: 1; }
+
+/* image row (2-up) */
+.block-img-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+}
+
+/* credits / colophon */
+.project-credits {
+  margin-top: 4rem;
+  padding-top: 2rem;
+  border-top: 0.5px solid var(--border);
+}
+
+.project-credits table {
+  border-collapse: collapse;
+  width: 100%;
+  max-width: 520px;
+}
+
+.project-credits td {
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  padding: 0.45rem 0;
+  vertical-align: top;
+  line-height: 1.6;
+}
+
+.project-credits td:first-child {
+  color: var(--text-muted);
+  width: 160px;
+  text-transform: uppercase;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  padding-right: 1.5rem;
+}
+
+/* back link */
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  text-decoration: none;
+  margin-bottom: 3rem;
+  transition: color 0.2s;
+}
+
+.back-link:hover { color: var(--text); }
+.back-link::before { content: '←'; font-size: 12px; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  .grid { grid-template-columns: repeat(2, 1fr); }
+  .project-wrap { padding: 3rem 1.5rem 5rem; }
+}
+
+@media (max-width: 540px) {
+  .grid { grid-template-columns: 1fr; }
+  nav { padding: 1rem 1.25rem; }
+  .project-wrap { padding: 2rem 1.25rem 4rem; }
+  .block-img-row { grid-template-columns: 1fr; }
+  .project-credits td:first-child { width: 120px; }
+}
