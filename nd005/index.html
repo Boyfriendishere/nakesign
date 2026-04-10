@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>一大塑膠 I.TA PLASTICS — Nake Design</title>
+  <meta property="og:type" content="article"/>
+  <meta property="og:url" content="https://nakesign.com/nd005/"/>
+  <meta property="og:title" content="一大塑膠 I.TA PLASTICS — Nake Design"/>
+  <meta property="og:description" content="Stationery Design · 2017"/>
+  <meta property="og:image" content="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ND005/nd005_cover.png"/>
+  <meta name="twitter:card" content="summary_large_image"/>
+  <link rel="stylesheet" href="/style.css"/>
+  <style>
+    .block-gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;margin-bottom:2px;cursor:pointer;}
+    .block-gallery.g3{grid-template-columns:repeat(3,1fr);}
+    .gallery-thumb{aspect-ratio:1/1;overflow:hidden;position:relative;}
+    .gallery-thumb img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.5s cubic-bezier(.16,1,.3,1),filter 0.3s;opacity:0;}
+    .gallery-thumb img.loaded{opacity:1;}
+    .gallery-thumb:hover img{transform:scale(1.05);filter:brightness(0.85);}
+    #lightbox{display:none;position:fixed;inset:0;z-index:1000;background:rgba(0,0,0,0.94);align-items:center;justify-content:center;flex-direction:column;}
+    #lightbox.active{display:flex;}
+    #lightbox img{max-width:90vw;max-height:82vh;object-fit:contain;display:block;transition:opacity 0.2s;}
+    #lightbox img.fading{opacity:0;}
+    .lb-controls{display:flex;align-items:center;gap:2.5rem;margin-top:1.5rem;}
+    .lb-btn{background:none;border:0.5px solid rgba(255,255,255,0.25);color:rgba(255,255,255,0.7);width:40px;height:40px;border-radius:50%;font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:border-color 0.2s,color 0.2s;}
+    .lb-btn:hover{border-color:rgba(255,255,255,0.7);color:#fff;}
+    .lb-count{font-size:10px;letter-spacing:0.14em;color:rgba(255,255,255,0.35);}
+    .lb-close{position:absolute;top:1.5rem;right:2rem;background:none;border:none;color:rgba(255,255,255,0.45);font-size:22px;cursor:pointer;transition:color 0.2s;}
+    .lb-close:hover{color:#fff;}
+    @media(max-width:540px){.block-gallery{grid-template-columns:repeat(2,1fr);}.block-gallery.g3{grid-template-columns:repeat(2,1fr);}}
+  </style>
+</head>
+<body>
+<nav>
+  <a class="logo" href="/">NAKE DESIGN</a>
+  <div class="nav-links">
+    <a href="/about/">About</a>
+    <a href="/contact/">Contact</a>
+  </div>
+</nav>
+
+<div class="project-wrap page-enter">
+  <header class="project-header">
+    <h1>一大塑膠 I.TA PLASTICS</h1>
+  </header>
+  <div class="project-body">
+
+    <div class="block-text">
+      <p><strong>Business Card Design</strong></p>
+      <p>The core challenge of this project was to transition a traditional industrial manufacturer into a visually sophisticated brand tailored for the cosmetic industry. The design strategy utilizes sharp color contrasts and minimalist identity systems to elevate the brand's international presence.</p>
+      <p><strong>Refined Professionalism (Style A)</strong> — A centered identity on a clean, all-white field, utilizing Rounded Corner Die-cutting to echo the brand's logo. Printed on Pearlescent Paper, the subtle shimmer creates a tactile resonance with premium skincare packaging.</p>
+      <p><strong>Tactile Detailing (Style B)</strong> — A split-block layout for high information legibility. The use of Localized UV Gloss on the product silhouettes and typography creates a sophisticated contrast against the Matte Finish, highlighting the brand's manufacturing precision.</p>
+      <p><strong>Structural Durability (Style C)</strong> — High-impact brand blue with reversed typography for maximum visual authority. Finished with Double-sided Matte Lamination on premium cardstock to ensure professional durability and a solid hand-feel.</p>
+      <p><strong>Functional Narrative (Style D)</strong> — A Gate-fold design that expands the canvas to showcase a comprehensive product catalog. Using White Ivory Paper, it preserves the raw, organic texture of the material, projecting a balanced sense of honesty and expertise.</p>
+    </div>
+
+    <div class="block-gallery" id="gallery-a" data-set="a">
+      <div class="gallery-thumb" data-index="0"><img loading="lazy" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ND005/nd005_01.jpg" alt="I.TA 01"/></div>
+      <div class="gallery-thumb" data-index="1"><img loading="lazy" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ND005/nd005_02.jpg" alt="I.TA 02"/></div>
+      <div class="gallery-thumb" data-index="2"><img loading="lazy" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ND005/nd005_03.jpg" alt="I.TA 03"/></div>
+      <div class="gallery-thumb" data-index="3"><img loading="lazy" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ND005/nd005_04.jpg" alt="I.TA 04"/></div>
+      <div class="gallery-thumb" data-index="4"><img loading="lazy" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ND005/nd005_05.jpg" alt="I.TA 05"/></div>
+      <div class="gallery-thumb" data-index="5"><img loading="lazy" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ND005/nd005_06.jpg" alt="I.TA 06"/></div>
+      <div class="gallery-thumb" data-index="6"><img loading="lazy" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ND005/nd005_07.jpg" alt="I.TA 07"/></div>
+      <div class="gallery-thumb" data-index="7"><img loading="lazy" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ND005/nd005_08.jpg" alt="I.TA 08"/></div>
+    </div>
+
+    <div class="block-text">
+      <p><strong>Invitation &amp; Exhibition Design</strong></p>
+      <p><strong>Information-Centric Layout</strong> — Features bold placement of dates and booth numbers to strengthen the recipient's memory of the exhibition. Printed on White Ivory paper with a solid-colored envelope to maintain a clean and crisp tone.</p>
+      <p><strong>Dynamic Slash Design</strong> — Uses sharp, diagonal color blocks to convey the vibrant atmosphere of the event, with background patterns outlining the product line. Designed in an A5 spread, we recommend a matte finish combined with localized gloss on key messages to add visual depth.</p>
+      <p><strong>Elegant Brand Extension</strong> — Echoes the design language of the business cards, utilizing spaciousness to present a refined and ethereal brand quality. We recommend using Pearlescent Paper, which delivers a brilliant and elegant visual effect without the need for complex post-processing.</p>
+    </div>
+
+    <div class="block-gallery g3" id="gallery-b" data-set="b">
+      <div class="gallery-thumb" data-index="0"><img loading="lazy" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ND005/nd005_09.jpg" alt="I.TA 09"/></div>
+      <div class="gallery-thumb" data-index="1"><img loading="lazy" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ND005/nd005_10.jpg" alt="I.TA 10"/></div>
+      <div class="gallery-thumb" data-index="2"><img loading="lazy" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ND005/nd005_11.jpg" alt="I.TA 11"/></div>
+      <div class="gallery-thumb" data-index="3"><img loading="lazy" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ND005/nd005_12.jpg" alt="I.TA 12"/></div>
+      <div class="gallery-thumb" data-index="4"><img loading="lazy" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ND005/nd005_13.jpg" alt="I.TA 13"/></div>
+      <div class="gallery-thumb" data-index="5"><img loading="lazy" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ND005/nd005_14.jpg" alt="I.TA 14"/></div>
+    </div>
+
+    <div class="block-text">
+      <p>My deepest gratitude goes to the Chairman of <strong>I.TA Plastics Tube Co., Ltd.</strong> for his visionary support, allowing me to lead students into the heart of industrial production to experience the manufacturing of plastic tubes firsthand. This was an exceptional industry-academia collaboration where students were encouraged to unleash their creative potential and see their designs come to life through professional tube printing processes. This hands-on experience has been immensely rewarding, providing students with invaluable insights into the synergy between design and manufacturing.</p>
+    </div>
+
+    <div class="block-gallery g3" id="gallery-c" data-set="c">
+      <div class="gallery-thumb" data-index="0"><img loading="lazy" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ND005/nd005_15.jpg" alt="I.TA 15"/></div>
+      <div class="gallery-thumb" data-index="1"><img loading="lazy" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ND005/nd005_16.jpg" alt="I.TA 16"/></div>
+      <div class="gallery-thumb" data-index="2"><img loading="lazy" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ND005/nd005_17.jpg" alt="I.TA 17"/></div>
+      <div class="gallery-thumb" data-index="3"><img loading="lazy" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ND005/nd005_18.jpg" alt="I.TA 18"/></div>
+      <div class="gallery-thumb" data-index="4"><img loading="lazy" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ND005/nd005_19.jpg" alt="I.TA 19"/></div>
+      <div class="gallery-thumb" data-index="5"><img loading="lazy" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ND005/nd005_20.jpg" alt="I.TA 20"/></div>
+      <div class="gallery-thumb" data-index="6"><img loading="lazy" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ND005/nd005_21.jpg" alt="I.TA 21"/></div>
+      <div class="gallery-thumb" data-index="7"><img loading="lazy" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ND005/nd005_22.jpg" alt="I.TA 22"/></div>
+      <div class="gallery-thumb" data-index="8"><img loading="lazy" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ND005/nd005_23.jpg" alt="I.TA 23"/></div>
+      <div class="gallery-thumb" data-index="9"><img loading="lazy" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ND005/nd005_24.jpg" alt="I.TA 24"/></div>
+      <div class="gallery-thumb" data-index="10"><img loading="lazy" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ND005/nd005_25.jpg" alt="I.TA 25"/></div>
+      <div class="gallery-thumb" data-index="11"><img loading="lazy" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ND005/nd005_26.jpg" alt="I.TA 26"/></div>
+    </div>
+
+    <div class="project-credits">
+      <table>
+        <tr><td>Project</td><td>Stationery Design</td></tr>
+        <tr><td>Visual Designer</td><td>Wei-Xun Weng</td></tr>
+        <tr><td>Assistant Students</td><td>Yue-Ying Zeng, Yi-Wen Peng, Bing-Fang Cai, Chia-Yu Fan</td></tr>
+        <tr><td>Client</td><td>I.TA Plastics Tube Co., Ltd. (一大塑膠軟管股份有限公司)</td></tr>
+        <tr><td>Year</td><td>2017</td></tr>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div id="lightbox">
+  <button class="lb-close" id="lb-close">✕</button>
+  <img id="lb-img" src="" alt=""/>
+  <div class="lb-controls">
+    <button class="lb-btn" id="lb-prev">←</button>
+    <span class="lb-count" id="lb-count">1 / 8</span>
+    <button class="lb-btn" id="lb-next">→</button>
+  </div>
+</div>
+
+<script>
+document.querySelectorAll('img[loading="lazy"]').forEach(img => {
+  if (img.complete) { img.classList.add('loaded'); }
+  else { img.addEventListener('load', () => img.classList.add('loaded')); }
+});
+
+const sets = {
+  a: Array.from({length:8},(_,i)=>`https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ND005/nd005_0${i+1}.jpg`),
+  b: Array.from({length:6},(_,i)=>`https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ND005/nd005_${String(i+9).padStart(2,'0')}.jpg`),
+  c: Array.from({length:12},(_,i)=>`https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ND005/nd005_${String(i+15).padStart(2,'0')}.jpg`),
+};
+
+const lb=document.getElementById('lightbox');
+const lbImg=document.getElementById('lb-img');
+const lbCount=document.getElementById('lb-count');
+let cur=0, activeSet=[];
+
+function openLb(set,i){
+  activeSet=sets[set]; cur=i;
+  lbImg.src=activeSet[i];
+  lbCount.textContent=(i+1)+' / '+activeSet.length;
+  lb.classList.add('active');
+  document.body.style.overflow='hidden';
+}
+function closeLb(){lb.classList.remove('active');document.body.style.overflow='';}
+function goTo(i){
+  cur=(i+activeSet.length)%activeSet.length;
+  lbImg.classList.add('fading');
+  setTimeout(()=>{lbImg.src=activeSet[cur];lbCount.textContent=(cur+1)+' / '+activeSet.length;lbImg.classList.remove('fading');},200);
+}
+
+document.querySelectorAll('.block-gallery').forEach(gal=>{
+  const set=gal.dataset.set;
+  gal.querySelectorAll('.gallery-thumb').forEach(el=>{
+    el.addEventListener('click',()=>openLb(set,+el.dataset.index));
+  });
+});
+document.getElementById('lb-close').addEventListener('click',closeLb);
+document.getElementById('lb-prev').addEventListener('click',()=>goTo(cur-1));
+document.getElementById('lb-next').addEventListener('click',()=>goTo(cur+1));
+lb.addEventListener('click',e=>{if(e.target===lb)closeLb();});
+document.addEventListener('keydown',e=>{
+  if(!lb.classList.contains('active'))return;
+  if(e.key==='Escape')closeLb();
+  if(e.key==='ArrowLeft')goTo(cur-1);
+  if(e.key==='ArrowRight')goTo(cur+1);
+});
+</script>
+</body>
+</html>
