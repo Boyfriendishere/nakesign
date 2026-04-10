@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>寶哥麻花捲 BAOGE TWIST ROLLS — Nake Design</title>
+  <meta property="og:type" content="article"/>
+  <meta property="og:url" content="https://nakesign.com/nd006/"/>
+  <meta property="og:title" content="寶哥麻花捲 BAOGE TWIST ROLLS — Nake Design"/>
+  <meta property="og:description" content="Brand Strategy & Trend-Setting Packaging · 2018"/>
+  <meta property="og:image" content="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ND006/nd006_cover.png"/>
+  <meta name="twitter:card" content="summary_large_image"/>
+  <link rel="stylesheet" href="/style.css"/>
+  <style>
+    /* compare slider */
+    .compare-wrap{position:relative;width:100%;overflow:hidden;cursor:col-resize;user-select:none;margin-bottom:2px;}
+    .compare-wrap img{width:100%;height:auto;display:block;}
+    .compare-after{position:absolute;top:0;left:0;width:50%;height:100%;overflow:hidden;}
+    .compare-after img{width:200%;max-width:none;}
+    .compare-handle{position:absolute;top:0;left:50%;width:2px;height:100%;background:#fff;transform:translateX(-50%);pointer-events:none;}
+    .compare-handle::before,.compare-handle::after{content:'';position:absolute;left:50%;transform:translateX(-50%);width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,0.9);backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;}
+    .compare-handle::before{top:50%;margin-top:-18px;}
+    .compare-knob{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,0.9);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;pointer-events:none;font-size:13px;color:#111;letter-spacing:-1px;}
+
+    /* divider */
+    .divider{width:100%;padding:3rem 0;display:flex;align-items:center;justify-content:center;}
+    .divider::before{content:'';display:block;width:20px;height:0.5px;background:rgba(0,0,0,0.2);}
+
+    /* gallery */
+    .block-gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-bottom:2px;cursor:pointer;}
+    .gallery-thumb{aspect-ratio:1/1;overflow:hidden;}
+    .gallery-thumb img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.5s cubic-bezier(.16,1,.3,1),filter 0.3s;opacity:0;}
+    .gallery-thumb img.loaded{opacity:1;}
+    .gallery-thumb:hover img{transform:scale(1.05);filter:brightness(0.85);}
+
+    /* lightbox */
+    #lightbox{display:none;position:fixed;inset:0;z-index:1000;background:rgba(0,0,0,0.94);align-items:center;justify-content:center;flex-direction:column;}
+    #lightbox.active{display:flex;}
+    #lightbox img{max-width:90vw;max-height:82vh;object-fit:contain;display:block;transition:opacity 0.2s;}
+    #lightbox img.fading{opacity:0;}
+    .lb-controls{display:flex;align-items:center;gap:2.5rem;margin-top:1.5rem;}
+    .lb-btn{background:none;border:0.5px solid rgba(255,255,255,0.25);color:rgba(255,255,255,0.7);width:40px;height:40px;border-radius:50%;font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:border-color 0.2s,color 0.2s;}
+    .lb-btn:hover{border-color:rgba(255,255,255,0.7);color:#fff;}
+    .lb-count{font-size:10px;letter-spacing:0.14em;color:rgba(255,255,255,0.35);}
+    .lb-close{position:absolute;top:1.5rem;right:2rem;background:none;border:none;color:rgba(255,255,255,0.45);font-size:22px;cursor:pointer;transition:color 0.2s;}
+    .lb-close:hover{color:#fff;}
+
+    @media(max-width:540px){.block-gallery{grid-template-columns:repeat(2,1fr);}}
+  </style>
+</head>
+<body>
+<nav>
+  <a class="logo" href="/">NAKE DESIGN</a>
+  <div class="nav-links">
+    <a href="/about/">About</a>
+    <a href="/contact/">Contact</a>
+  </div>
+</nav>
+
+<div class="project-wrap page-enter">
+  <header class="project-header">
+    <h1>寶哥麻花捲 BAOGE TWIST ROLLS</h1>
+  </header>
+  <div class="project-body">
+
+    <div class="block-text">
+      <p>Baoge, a renowned specialty brand from Liuqiu (小琉球), Pingtung, aimed to expand its footprint to mainland Taiwan. Facing fierce competition from local rivals already established in FamilyMart, we strategically pivoted toward <strong>7-Eleven</strong>, Taiwan's leading convenience store chain.</p>
+      <p>Recognizing the potential risks in production capacity and inventory management for a nationwide launch, we implemented a <strong>precision-targeted pilot program</strong>. Instead of an immediate full-scale rollout, we focused on high-traffic tourist hubs such as Ximen (西門町), Dongmen (東門), and Sun Moon Lake (日月潭). By targeting locations with high international and domestic tourist activity, we successfully validated the market demand while maintaining operational stability.</p>
+    </div>
+
+    <div class="block-img">
+      <img loading="lazy" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ND006/nd006_01.jpg" alt="Baoge 01"/>
+    </div>
+
+    <div class="block-text">
+      <p>This represents the inaugural edition of the brand's evolution. The project was initiated to harmonize a complete visual overhaul with the adoption of innovative new packaging technology.</p>
+    </div>
+
+    <!-- compare 02 vs 03 -->
+    <div class="compare-wrap" id="cmp1">
+      <img src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ND006/nd006_02.jpg" alt="Baoge 02 Before"/>
+      <div class="compare-after" id="cmp1-after">
+        <img src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ND006/nd006_03.jpg" alt="Baoge 03 After"/>
+      </div>
+      <div class="compare-handle" id="cmp1-handle">
+        <div class="compare-knob">⇔</div>
+      </div>
+    </div>
+
+    <div class="block-text">
+      <p>The inaugural 7-Eleven edition featuring the brand's signature <strong>Original Flavor</strong>.</p>
+    </div>
+
+    <!-- compare 04 vs 05 -->
+    <div class="compare-wrap" id="cmp2">
+      <img src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ND006/nd006_04.jpg" alt="Baoge 04 Before"/>
+      <div class="compare-after" id="cmp2-after">
+        <img src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ND006/nd006_05.jpg" alt="Baoge 05 After"/>
+      </div>
+      <div class="compare-handle" id="cmp2-handle">
+        <div class="compare-knob">⇔</div>
+      </div>
+    </div>
+
+    <div class="block-text">
+      <p>The second 7-Eleven edition, introducing the rich and traditional <strong>Brown Sugar</strong> flavor.</p>
+      <p>Once the new packaging was finalized, we executed a precision-targeted rollout. We limited the launch to only four select 7-Eleven locations across mainland Taiwan. By leveraging travel bloggers and international gift-recommendation channels, we positioned Baoge as a <strong>"Hidden Souvenir"</strong> among Japanese and South Korean tourists.</p>
+      <p>As word-of-mouth grew, we pivoted the narrative for the local Taiwanese market, rebranding the product as the <strong>"Top Must-Buy Souvenir for International Travelers."</strong> This reverse-marketing strategy successfully generated immense curiosity and high demand, leading to frequent stockouts and a strong "must-try" appeal among local consumers.</p>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="block-text">
+      <p><strong>The Architect of Brand Consistency</strong></p>
+      <p>Upon the mass production of the new design, the founder expressed immense satisfaction with the results. He revealed that he had previously commissioned another design agency for the brand's local edition in Liuqiu, but the outcome had failed to meet his expectations.</p>
+      <p>Impressed by the market success and the elevated aesthetic of our work, the founder requested to extend the design language of the mainland edition to the entire product line. Consequently, I was appointed to lead the comprehensive design planning and brand overhaul for the complete Baoge series.</p>
+    </div>
+
+    <div class="block-img">
+      <img loading="lazy" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ND006/nd006_06.jpg" alt="Baoge 06"/>
+    </div>
+
+    <div class="block-text">
+      <p>Following the success of the pilot launch, the complete visual system was rolled out across all nine signature flavors for the Liuqiu flagship edition, entering full-scale mass production.</p>
+    </div>
+
+    <div class="block-img">
+      <img loading="lazy" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ND006/nd006_07.jpg" alt="Baoge 07"/>
+    </div>
+
+    <div class="block-text">
+      <p>During the planning phase, strategic emphasis was placed on logotype and brand recognition. We deliberately preserved and highlighted the term "Fried &amp; Baked" (a homonym for "Bombard" in Mandarin), a unique technique pioneered by the founder. By integrating this core asset into the new design, we reinforced Baoge's position as the authentic, original creator of the category.</p>
+      <p>As the "Hidden Gem" trend naturally matured, we transitioned the marketing strategy to the next phase: a full-scale launch in Carrefour. Recognizing a shift in shopping habits among Japanese and South Korean tourists toward hypermarkets—exemplified by their famous preference for specific Taiwanese toothpaste brands for their refreshing minty cleanse—we deployed the complete nine-flavor Liuqiu collection to Carrefour nationwide. This move successfully captured the bulk-purchase demand of international travelers.</p>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="block-text">
+      <p>About six months into the brand's successful transformation, the founder made the pivotal decision to pass the brand's legacy to the next generation. This transition marked the beginning of a new product development phase. The first flavor developed under this new leadership was <strong>"Seaweed"</strong>—a strategic addition designed to appeal to modern palates while honoring the brand's revitalized visual identity.</p>
+    </div>
+
+    <div class="block-img">
+      <img loading="lazy" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ND006/nd006_08.jpg" alt="Baoge 08"/>
+    </div>
+
+    <!-- compare 09 vs 10 -->
+    <div class="compare-wrap" id="cmp3">
+      <img src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ND006/nd006_09.jpg" alt="Baoge 09"/>
+      <div class="compare-after" id="cmp3-after">
+        <img src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ND006/nd006_10.jpg" alt="Baoge 10"/>
+      </div>
+      <div class="compare-handle" id="cmp3-handle"><div class="compare-knob">⇔</div></div>
+    </div>
+
+    <!-- compare 11 vs 12 -->
+    <div class="compare-wrap" id="cmp4">
+      <img src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ND006/nd006_11.jpg" alt="Baoge 11"/>
+      <div class="compare-after" id="cmp4-after">
+        <img src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ND006/nd006_12.jpg" alt="Baoge 12"/>
+      </div>
+      <div class="compare-handle" id="cmp4-handle"><div class="compare-knob">⇔</div></div>
+    </div>
+
+    <div class="block-text">
+      <p>Following the Seaweed launch, the <strong>"Trehalose"</strong> edition was introduced as a specialty flavor within the fourth wave of the new packaging series. To maximize brand consistency and production efficiency, this edition fully inherited the visual framework of the Seaweed packaging, with the flavor name serving as the key differentiator.</p>
+      <p>Alongside Trehalose in this fourth release was the <strong>"Strawberry"</strong> flavor—a strategic addition designed to cultivate new word-of-mouth momentum. By introducing a fruit-based profile, we aimed to refresh the brand's appeal and engage a broader consumer segment, further solidifying the brand's market presence under its new leadership.</p>
+      <p>The Strawberry flavor carried a vital strategic mission in this fourth release. Instead of shying away from contemporary slang like "Strawberry Generation" (a term often used to imply fragility), we leaned into it with a bold, unapologetic stance: <strong>"I Am Strawberry."</strong> This "Pro-Strawberry" identity was designed to resonate with younger audiences and social media aesthetics. The result was a viral success; it became the most featured version among bloggers and YouTubers. Beyond its exceptional taste, the product's bold attitude and "Instagrammable" appeal transformed it into a new-generation bestseller, sparking a fresh wave of online conversation and influencer engagement.</p>
+    </div>
+
+    <div class="block-gallery" id="gallery-final">
+      <div class="gallery-thumb" data-index="0"><img loading="lazy" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ND006/nd006_13.jpg" alt="Baoge 13"/></div>
+      <div class="gallery-thumb" data-index="1"><img loading="lazy" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ND006/nd006_14.jpg" alt="Baoge 14"/></div>
+      <div class="gallery-thumb" data-index="2"><img loading="lazy" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ND006/nd006_15.jpg" alt="Baoge 15"/></div>
+      <div class="gallery-thumb" data-index="3"><img loading="lazy" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ND006/nd006_16.jpg" alt="Baoge 16"/></div>
+      <div class="gallery-thumb" data-index="4"><img loading="lazy" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ND006/nd006_17.jpg" alt="Baoge 17"/></div>
+      <div class="gallery-thumb" data-index="5"><img loading="lazy" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ND006/nd006_18.jpg" alt="Baoge 18"/></div>
+    </div>
+
+    <div class="block-img">
+      <img loading="lazy" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ND006/nd006_19.jpg" alt="Baoge 19"/>
+    </div>
+
+    <div class="project-credits">
+      <table>
+        <tr><td>Project</td><td>Brand Strategy &amp; Trend-Setting Packaging</td></tr>
+        <tr><td>Art Director</td><td>Wei-Xun Weng</td></tr>
+        <tr><td>Packaging Designer</td><td>Wan-Ching Kao</td></tr>
+        <tr><td>Design &amp; Marketing Strategy</td><td>Wei-Xun Weng</td></tr>
+        <tr><td>Client</td><td>Baoge (寶哥麻花捲)</td></tr>
+        <tr><td>Year</td><td>2018</td></tr>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div id="lightbox">
+  <button class="lb-close" id="lb-close">✕</button>
+  <img id="lb-img" src="" alt=""/>
+  <div class="lb-controls">
+    <button class="lb-btn" id="lb-prev">←</button>
+    <span class="lb-count" id="lb-count">1 / 6</span>
+    <button class="lb-btn" id="lb-next">→</button>
+  </div>
+</div>
+
+<script>
+document.querySelectorAll('img[loading="lazy"]').forEach(img=>{
+  if(img.complete){img.classList.add('loaded');}
+  else{img.addEventListener('load',()=>img.classList.add('loaded'));}
+});
+
+/* compare sliders */
+function initCompare(wrapId, afterId){
+  const wrap=document.getElementById(wrapId);
+  const after=document.getElementById(afterId);
+  const handle=wrap.querySelector('.compare-handle');
+  let dragging=false;
+  function setPos(x){
+    const rect=wrap.getBoundingClientRect();
+    let pct=Math.max(0,Math.min(1,(x-rect.left)/rect.width));
+    after.style.width=(pct*100)+'%';
+    handle.style.left=(pct*100)+'%';
+  }
+  wrap.addEventListener('mousedown',e=>{dragging=true;setPos(e.clientX);});
+  window.addEventListener('mousemove',e=>{if(dragging)setPos(e.clientX);});
+  window.addEventListener('mouseup',()=>dragging=false);
+  wrap.addEventListener('touchstart',e=>{dragging=true;setPos(e.touches[0].clientX);},{passive:true});
+  window.addEventListener('touchmove',e=>{if(dragging)setPos(e.touches[0].clientX);},{passive:true});
+  window.addEventListener('touchend',()=>dragging=false);
+}
+initCompare('cmp1','cmp1-after');
+initCompare('cmp2','cmp2-after');
+initCompare('cmp3','cmp3-after');
+initCompare('cmp4','cmp4-after');
+
+/* lightbox for final gallery */
+const galleryImgs=[
+  'https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ND006/nd006_13.jpg',
+  'https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ND006/nd006_14.jpg',
+  'https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ND006/nd006_15.jpg',
+  'https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ND006/nd006_16.jpg',
+  'https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ND006/nd006_17.jpg',
+  'https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ND006/nd006_18.jpg',
+];
+const lb=document.getElementById('lightbox');
+const lbImg=document.getElementById('lb-img');
+const lbCount=document.getElementById('lb-count');
+let cur=0;
+function openLb(i){cur=i;lbImg.src=galleryImgs[i];lbCount.textContent=(i+1)+' / '+galleryImgs.length;lb.classList.add('active');document.body.style.overflow='hidden';}
+function closeLb(){lb.classList.remove('active');document.body.style.overflow='';}
+function goTo(i){cur=(i+galleryImgs.length)%galleryImgs.length;lbImg.classList.add('fading');setTimeout(()=>{lbImg.src=galleryImgs[cur];lbCount.textContent=(cur+1)+' / '+galleryImgs.length;lbImg.classList.remove('fading');},200);}
+document.querySelectorAll('#gallery-final .gallery-thumb').forEach(el=>{
+  el.addEventListener('click',()=>openLb(+el.dataset.index));
+});
+document.getElementById('lb-close').addEventListener('click',closeLb);
+document.getElementById('lb-prev').addEventListener('click',()=>goTo(cur-1));
+document.getElementById('lb-next').addEventListener('click',()=>goTo(cur+1));
+lb.addEventListener('click',e=>{if(e.target===lb)closeLb();});
+document.addEventListener('keydown',e=>{
+  if(!lb.classList.contains('active'))return;
+  if(e.key==='Escape')closeLb();
+  if(e.key==='ArrowLeft')goTo(cur-1);
+  if(e.key==='ArrowRight')goTo(cur+1);
+});
+</script>
+</body>
+</html>
