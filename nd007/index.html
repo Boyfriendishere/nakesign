@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>新北市立美術館 NEW TAIPEI CITY ART MUSEUM — Nake Design</title>
+  <meta property="og:type" content="article"/>
+  <meta property="og:url" content="https://nakesign.com/nd007/"/>
+  <meta property="og:title" content="新北市立美術館 NEW TAIPEI CITY ART MUSEUM — Nake Design"/>
+  <meta property="og:description" content="Digital Marketing & Interaction Consulting · 2016"/>
+  <meta property="og:image" content="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ND007/nd007_cover.png"/>
+  <meta name="twitter:card" content="summary_large_image"/>
+  <link rel="icon" type="image/png" href="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ABOUT/img_3369.png"/>
+  <link rel="stylesheet" href="/style.css"/>
+  <style>
+    .block-video{width:100%;margin-bottom:2px;line-height:0;}
+    .block-video iframe{width:100%;aspect-ratio:16/9;display:block;border:none;}
+    .block-gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-bottom:2px;cursor:pointer;}
+    .gallery-thumb{aspect-ratio:1/1;overflow:hidden;}
+    .gallery-thumb img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.5s cubic-bezier(.16,1,.3,1),filter 0.3s;opacity:0;}
+    .gallery-thumb img.loaded{opacity:1;}
+    .gallery-thumb:hover img{transform:scale(1.05);filter:brightness(0.85);}
+    #lightbox{display:none;position:fixed;inset:0;z-index:1000;background:rgba(0,0,0,0.94);align-items:center;justify-content:center;flex-direction:column;}
+    #lightbox.active{display:flex;}
+    #lightbox img{max-width:90vw;max-height:82vh;object-fit:contain;display:block;transition:opacity 0.2s;}
+    #lightbox img.fading{opacity:0;}
+    .lb-controls{display:flex;align-items:center;gap:2.5rem;margin-top:1.5rem;}
+    .lb-btn{background:none;border:0.5px solid rgba(255,255,255,0.25);color:rgba(255,255,255,0.7);width:40px;height:40px;border-radius:50%;font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:border-color 0.2s,color 0.2s;}
+    .lb-btn:hover{border-color:rgba(255,255,255,0.7);color:#fff;}
+    .lb-count{font-size:10px;letter-spacing:0.14em;color:rgba(255,255,255,0.35);}
+    .lb-close{position:absolute;top:1.5rem;right:2rem;background:none;border:none;color:rgba(255,255,255,0.45);font-size:22px;cursor:pointer;transition:color 0.2s;}
+    .lb-close:hover{color:#fff;}
+    @media(max-width:540px){.block-gallery{grid-template-columns:repeat(2,1fr);}}
+  </style>
+</head>
+<body>
+<nav>
+  <a class="logo" href="/">NAKE DESIGN</a>
+  <div class="nav-links">
+    <a href="/about/">About</a>
+    <a href="/contact/">Contact</a>
+  </div>
+</nav>
+
+<div class="project-wrap page-enter">
+  <header class="project-header">
+    <h1>新北市立美術館<br>NEW TAIPEI CITY ART MUSEUM</h1>
+  </header>
+  <div class="project-body">
+
+    <div class="block-video">
+      <iframe src="https://player.vimeo.com/video/1158396818?autoplay=0&title=0&byline=0&portrait=0"
+              allow="fullscreen; picture-in-picture" allowfullscreen></iframe>
+    </div>
+
+    <div class="block-text">
+      <p>This project was a strategic digital marketing and aesthetic education initiative developed during the pre-launch phase of the <strong>New Taipei City Art Museum.</strong> Serving as the Interaction Logic Consultant, I assisted the Cultural Affairs Bureau of the New Taipei City Government in breaking away from traditional web frameworks, transforming the museum's educational philosophy into a digital experience defined by interactive depth and emotional resonance.</p>
+    </div>
+
+    <div class="block-text">
+      <p><strong>Consulting Focus &amp; Strategic Framework</strong></p>
+      <p><strong>Dual-Target UX Strategy</strong> — In the horizontal scrolling narrative, I designed a "gate-fold" information hierarchy. This allows children to engage with the illustrated story while parents can access professional art education methods and steps via hidden folds, creating a digital space for parent-child co-learning.</p>
+      <p><strong>Developmental Psychology in Design</strong> — Specifically addressing the "Schematic Stage" (ages 7–9) in early childhood art development, I advised the integration of concepts such as "base lines" and "subjective spatial perspective" into the visual presentation. This approach is not merely a design choice but a profound tribute to how children perceive the world.</p>
+      <p><strong>Parallax Storytelling &amp; One-Page Architecture</strong> — To resolve UX pain points on mobile devices, I architected a One-Page Website utilizing Parallax Scrolling to allow museum collections to emerge naturally within a narrative. The protagonist navigates through various "portals" in the city and nature, symbolizing that art originates from an individual's subjective interpretation of their environment.</p>
+      <p><strong>Technical Logic &amp; Cinematic Transitions</strong> — I provided guidance on the logic of interactive transitions, using fluid animations to subtly contrast the different ways children and adults view the world. Furthermore, I provided structural recommendations for the VR experience pages on the general version of the site, ensuring that technological application directly served the core mission of art promotion.</p>
+    </div>
+
+    <div class="block-img">
+      <img loading="lazy" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ND007/nd007_01.jpg" alt="NTCAM 01"/>
+    </div>
+
+    <div class="block-gallery" id="gallery">
+      <div class="gallery-thumb" data-index="0"><img loading="lazy" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ND007/nd007_02.jpg" alt="NTCAM 02"/></div>
+      <div class="gallery-thumb" data-index="1"><img loading="lazy" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ND007/nd007_03.jpg" alt="NTCAM 03"/></div>
+      <div class="gallery-thumb" data-index="2"><img loading="lazy" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ND007/nd007_04.jpg" alt="NTCAM 04"/></div>
+      <div class="gallery-thumb" data-index="3"><img loading="lazy" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ND007/nd007_05.jpg" alt="NTCAM 05"/></div>
+      <div class="gallery-thumb" data-index="4"><img loading="lazy" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ND007/nd007_06.jpg" alt="NTCAM 06"/></div>
+      <div class="gallery-thumb" data-index="5"><img loading="lazy" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ND007/nd007_07.jpg" alt="NTCAM 07"/></div>
+      <div class="gallery-thumb" data-index="6"><img loading="lazy" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ND007/nd007_08.jpg" alt="NTCAM 08"/></div>
+      <div class="gallery-thumb" data-index="7"><img loading="lazy" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ND007/nd007_09.jpg" alt="NTCAM 09"/></div>
+      <div class="gallery-thumb" data-index="8"><img loading="lazy" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ND007/nd007_10.jpg" alt="NTCAM 10"/></div>
+      <div class="gallery-thumb" data-index="9"><img loading="lazy" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ND007/nd007_11.jpg" alt="NTCAM 11"/></div>
+      <div class="gallery-thumb" data-index="10"><img loading="lazy" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ND007/nd007_12.jpg" alt="NTCAM 12"/></div>
+      <div class="gallery-thumb" data-index="11"><img loading="lazy" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ND007/nd007_13.jpg" alt="NTCAM 13"/></div>
+      <div class="gallery-thumb" data-index="12"><img loading="lazy" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ND007/nd007_14.jpg" alt="NTCAM 14"/></div>
+      <div class="gallery-thumb" data-index="13"><img loading="lazy" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ND007/nd007_15.jpg" alt="NTCAM 15"/></div>
+      <div class="gallery-thumb" data-index="14"><img loading="lazy" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ND007/nd007_16.jpg" alt="NTCAM 16"/></div>
+      <div class="gallery-thumb" data-index="15"><img loading="lazy" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ND007/nd007_17.jpg" alt="NTCAM 17"/></div>
+      <div class="gallery-thumb" data-index="16"><img loading="lazy" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ND007/nd007_18.jpg" alt="NTCAM 18"/></div>
+    </div>
+
+    <div class="project-credits">
+      <table>
+        <tr><td>Interaction Logic Consultant</td><td>Wei-Xun Weng</td></tr>
+        <tr><td>Client</td><td>Cultural Affairs Bureau, New Taipei City Government</td></tr>
+        <tr><td>Year</td><td>2016</td></tr>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div id="lightbox">
+  <button class="lb-close" id="lb-close">✕</button>
+  <img id="lb-img" src="" alt=""/>
+  <div class="lb-controls">
+    <button class="lb-btn" id="lb-prev">←</button>
+    <span class="lb-count" id="lb-count">1 / 17</span>
+    <button class="lb-btn" id="lb-next">→</button>
+  </div>
+</div>
+
+<script>
+const R='https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ND007/';
+const imgs=Array.from({length:17},(_,i)=>R+'nd007_'+String(i+2).padStart(2,'0')+'.jpg');
+const lb=document.getElementById('lightbox'),lbImg=document.getElementById('lb-img'),lbCount=document.getElementById('lb-count');
+let cur=0;
+function openLb(i){cur=i;lbImg.src=imgs[i];lbCount.textContent=(i+1)+' / '+imgs.length;lb.classList.add('active');document.body.style.overflow='hidden';}
+function closeLb(){lb.classList.remove('active');document.body.style.overflow='';}
+function goTo(i){cur=(i+imgs.length)%imgs.length;lbImg.classList.add('fading');setTimeout(()=>{lbImg.src=imgs[cur];lbCount.textContent=(cur+1)+' / '+imgs.length;lbImg.classList.remove('fading');},200);}
+document.querySelectorAll('.gallery-thumb').forEach(el=>el.addEventListener('click',()=>openLb(+el.dataset.index)));
+document.getElementById('lb-close').addEventListener('click',closeLb);
+document.getElementById('lb-prev').addEventListener('click',()=>goTo(cur-1));
+document.getElementById('lb-next').addEventListener('click',()=>goTo(cur+1));
+lb.addEventListener('click',e=>{if(e.target===lb)closeLb();});
+document.addEventListener('keydown',e=>{if(!lb.classList.contains('active'))return;if(e.key==='Escape')closeLb();if(e.key==='ArrowLeft')goTo(cur-1);if(e.key==='ArrowRight')goTo(cur+1);});
+document.querySelectorAll('img[loading="lazy"]').forEach(img=>{if(img.complete)img.classList.add('loaded');else img.addEventListener('load',()=>img.classList.add('loaded'));});
+</script>
+</body>
+</html>
