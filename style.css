@@ -2,7 +2,7 @@
    NAKE DESIGN — Global Stylesheet
    ============================================ */
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Noto+Sans+TC:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&family=Noto+Sans+TC:wght@400;500&display=swap');
 
 *, *::before, *::after {
   margin: 0;
@@ -146,8 +146,8 @@ nav {
 .card:hover .hover-title { opacity: 1; transform: translateY(0); }
 
 .ht {
-  font-size: 17px;
-  font-weight: 700;
+  font-size: 23px;
+  font-weight: 300;
   color: #2a2a2a;
   letter-spacing: 0.1em;
   text-transform: uppercase;
