@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact — Nake Design</title>
+  <meta property="og:type"        content="website"/>
+  <meta property="og:url"         content="https://nakesign.com/contact/"/>
+  <meta property="og:title"       content="Contact — Nake Design"/>
+  <meta property="og:description" content="Defining the Order of Design. 唯序，立設計"/>
+  <meta name="twitter:card"       content="summary_large_image"/>
+  <link rel="stylesheet" href="/style.css"/>
+  <style>
+    .contact-wrap {
+      max-width: 560px;
+      margin: 0 auto;
+      padding: 5rem 2rem 8rem;
+    }
+
+    .contact-header {
+      text-align: center;
+      margin-bottom: 3.5rem;
+      padding-bottom: 2.5rem;
+      border-bottom: 0.5px solid var(--border);
+    }
+
+    .contact-header h1 {
+      font-size: 15px;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text);
+      margin-bottom: 1rem;
+    }
+
+    .contact-header p {
+      font-size: 11px;
+      color: var(--text-muted);
+      letter-spacing: 0.08em;
+      line-height: 1.8;
+    }
+
+    /* form */
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .form-group label {
+      font-size: 10px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      background: transparent;
+      border: none;
+      border-bottom: 0.5px solid rgba(0,0,0,0.18);
+      padding: 0.65rem 0;
+      font-family: var(--font);
+      font-size: 13px;
+      color: var(--text);
+      letter-spacing: 0.04em;
+      outline: none;
+      border-radius: 0;
+      transition: border-color 0.2s;
+      -webkit-appearance: none;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      border-bottom-color: rgba(0,0,0,0.6);
+    }
+
+    .form-group textarea {
+      resize: none;
+      height: 120px;
+      line-height: 1.7;
+    }
+
+    .form-submit {
+      margin-top: 0.75rem;
+      display: flex;
+      justify-content: center;
+    }
+
+    .submit-btn {
+      background: var(--text);
+      color: #fff;
+      border: none;
+      padding: 0.85rem 3rem;
+      font-family: var(--font);
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: opacity 0.2s;
+    }
+
+    .submit-btn:hover { opacity: 0.75; }
+    .submit-btn:disabled { opacity: 0.4; cursor: default; }
+
+    /* success state */
+    .contact-success {
+      display: none;
+      text-align: center;
+      padding: 3rem 0;
+    }
+
+    .contact-success.visible { display: block; }
+
+    .contact-success p {
+      font-size: 13px;
+      line-height: 2;
+      color: rgba(0,0,0,0.65);
+      margin-bottom: 0.5rem;
+    }
+
+    /* footer tagline */
+    .contact-footer {
+      margin-top: 5rem;
+      padding-top: 2rem;
+      border-top: 0.5px solid var(--border);
+      text-align: center;
+    }
+
+    .contact-footer .brand {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text);
+      margin-bottom: 0.4rem;
+    }
+
+    .contact-footer .tagline {
+      font-size: 10px;
+      color: var(--text-muted);
+      letter-spacing: 0.1em;
+    }
+
+    @media (max-width: 540px) {
+      .contact-wrap { padding: 3rem 1.25rem 6rem; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="logo" href="/">NAKE DESIGN</a>
+  <div class="nav-links">
+    <a href="/about/">About</a>
+    <a href="/contact/">Contact</a>
+  </div>
+</nav>
+
+<div class="contact-wrap page-enter">
+
+  <div class="contact-header">
+    <h1>Contact</h1>
+    <p>Nake Design · 納序策略設計</p>
+  </div>
+
+  <form class="contact-form" id="contact-form">
+    <div class="form-group">
+      <label for="name">Name *</label>
+      <input type="text" id="name" name="name" required autocomplete="name"/>
+    </div>
+
+    <div class="form-group">
+      <label for="email">Mail *</label>
+      <input type="email" id="email" name="email" required autocomplete="email"/>
+    </div>
+
+    <div class="form-group">
+      <label for="message">Message</label>
+      <textarea id="message" name="message"></textarea>
+    </div>
+
+    <div class="form-submit">
+      <button type="submit" class="submit-btn" id="submit-btn">Send</button>
+    </div>
+  </form>
+
+  <div class="contact-success" id="success-msg">
+    <p>感謝您的來信。這份聯繫對我們而言非常重要，<br>團隊將會盡快審閱您的需求並與您聯繫，<br>期待與您共同架構品牌的世界觀。</p>
+    <p style="margin-top:1.5rem;font-size:12px;color:rgba(0,0,0,0.4);letter-spacing:0.06em;">Thank you for your inquiry. Your connection is of great importance to us.<br>Our team will review your requirements as soon as possible and get in touch with you shortly.<br>We look forward to architecting a unique brand vision together.</p>
+  </div>
+
+  <div class="contact-footer">
+    <div class="brand">Nake Design · 納序策略設計</div>
+    <div class="tagline">Defining the Order of Design. 唯序，立設計.</div>
+  </div>
+
+</div>
+
+<script>
+document.getElementById('contact-form').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  const btn = document.getElementById('submit-btn');
+  btn.disabled = true;
+  btn.textContent = '...';
+
+  const data = {
+    name:    document.getElementById('name').value,
+    email:   document.getElementById('email').value,
+    message: document.getElementById('message').value,
+  };
+
+  try {
+    const res = await fetch('https://formspree.io/f/YOUR_FORM_ID', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify(data),
+    });
+
+    if (res.ok) {
+      document.getElementById('contact-form').style.display = 'none';
+      document.getElementById('success-msg').classList.add('visible');
+    } else {
+      btn.disabled = false;
+      btn.textContent = 'Send';
+      alert('Something went wrong. Please try again.');
+    }
+  } catch {
+    btn.disabled = false;
+    btn.textContent = 'Send';
+    alert('Something went wrong. Please try again.');
+  }
+});
+</script>
+
+</body>
+</html>
