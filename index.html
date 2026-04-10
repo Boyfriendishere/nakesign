@@ -14,7 +14,6 @@
   <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
-
 <nav>
   <a class="logo" href="/">NAKE DESIGN</a>
   <div class="nav-links">
@@ -22,7 +21,6 @@
     <a href="/contact/">Contact</a>
   </div>
 </nav>
-
 <main class="grid page-enter">
 
   <a class="card" href="/nd001/">
@@ -36,14 +34,23 @@
     </div>
   </a>
 
-</main>
+  <a class="card" href="/nd002/">
+    <img class="cover" loading="lazy"
+         src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ND002/nd002_cover.png"
+         alt="維娜斯 VENUS"/>
+    <div class="hover-mask"></div>
+    <div class="hover-title">
+      <div class="ht">維娜斯 VENUS</div>
+      <div class="hl"></div>
+    </div>
+  </a>
 
+</main>
 <script>
 document.querySelectorAll('img[loading="lazy"]').forEach(img => {
   if (img.complete) { img.classList.add('loaded'); }
   else { img.addEventListener('load', () => img.classList.add('loaded')); }
 });
 </script>
-
 </body>
 </html>
