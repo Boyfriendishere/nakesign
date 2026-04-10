@@ -143,19 +143,20 @@ nav {
 .card:hover .hover-title { opacity: 1; transform: translateY(0); }
 
 .ht {
-  font-size: 10.5px;
+  font-size: 13px;
   font-weight: 500;
-  color: var(--text);
+  color: #fff;
   letter-spacing: 0.13em;
   text-transform: uppercase;
   text-align: center;
   line-height: 1.75;
+  text-shadow: 0 1px 12px rgba(0,0,0,0.3);
 }
 
 .hl {
   width: 18px;
   height: 0.5px;
-  background: rgba(0,0,0,0.2);
+  background: rgba(255,255,255,0.5);
 }
 
 /* ── STAGGERED GRID ENTRY ── */
@@ -208,12 +209,13 @@ nav {
 .block-text {
   padding: 2.5rem 0;
   font-size: 14px;
-  line-height: 1.9;
-  color: rgba(0,0,0,0.7);
-  text-align: center;
-  max-width: 580px;
+  line-height: 2;
+  color: rgba(0,0,0,0.68);
+  text-align: left;
+  max-width: 620px;
   margin: 0 auto;
   width: 100%;
+  font-weight: 300;
 }
 
 .block-text p { margin-bottom: 1rem; }
