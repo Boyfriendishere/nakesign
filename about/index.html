@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About — Nake Design</title>
+  <meta property="og:type"        content="website"/>
+  <meta property="og:url"         content="https://nakesign.com/about/"/>
+  <meta property="og:title"       content="About — Nake Design"/>
+  <meta property="og:description" content="Wei-Xun Weng · Creative Lead & Visual Strategist · Taipei, Taiwan"/>
+  <meta name="twitter:card"       content="summary_large_image"/>
+  <link rel="stylesheet" href="/style.css"/>
+  <style>
+    .about-wrap {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 4rem 2rem 7rem;
+    }
+
+    .about-hero {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 3rem;
+      align-items: start;
+      margin-bottom: 4rem;
+      padding-bottom: 3rem;
+      border-bottom: 0.5px solid var(--border);
+    }
+
+    .about-photo {
+      width: 100%;
+      aspect-ratio: 3/4;
+      object-fit: cover;
+      display: block;
+      opacity: 0;
+      transition: opacity 0.5s ease;
+    }
+
+    .about-photo.loaded { opacity: 1; }
+
+    .about-intro {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 0.6rem;
+      padding-top: 0.5rem;
+    }
+
+    .about-name {
+      font-size: 15px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text);
+    }
+
+    .about-location {
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      color: var(--text-muted);
+      text-transform: uppercase;
+    }
+
+    .about-quote {
+      margin-top: 1.5rem;
+      font-size: 13px;
+      line-height: 1.8;
+      color: rgba(0,0,0,0.6);
+      font-style: italic;
+      letter-spacing: 0.02em;
+    }
+
+    /* sections */
+    .about-sections {
+      display: flex;
+      flex-direction: column;
+      gap: 3rem;
+    }
+
+    .about-section h2 {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 1.25rem;
+    }
+
+    .about-table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+
+    .about-table td {
+      font-size: 12px;
+      letter-spacing: 0.04em;
+      padding: 0.35rem 0;
+      vertical-align: top;
+      line-height: 1.7;
+      color: rgba(0,0,0,0.75);
+    }
+
+    .about-table td:first-child {
+      color: var(--text-muted);
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      padding-right: 2rem;
+      white-space: nowrap;
+      width: 160px;
+    }
+
+    /* skills list */
+    .skill-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem 1.5rem;
+    }
+
+    .skill-list span {
+      font-size: 12px;
+      color: rgba(0,0,0,0.7);
+      letter-spacing: 0.04em;
+      line-height: 1.8;
+    }
+
+    /* experience blocks */
+    .exp-block {
+      margin-bottom: 1.75rem;
+      padding-bottom: 1.75rem;
+      border-bottom: 0.5px solid var(--border);
+    }
+
+    .exp-block:last-child {
+      margin-bottom: 0;
+      padding-bottom: 0;
+      border-bottom: none;
+    }
+
+    .exp-org {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--text);
+      letter-spacing: 0.06em;
+      margin-bottom: 2px;
+    }
+
+    .exp-period {
+      font-size: 10px;
+      color: var(--text-muted);
+      letter-spacing: 0.1em;
+      margin-bottom: 4px;
+    }
+
+    .exp-role {
+      font-size: 11px;
+      color: rgba(0,0,0,0.55);
+      letter-spacing: 0.06em;
+      font-style: italic;
+      margin-bottom: 6px;
+    }
+
+    .exp-desc {
+      font-size: 11px;
+      color: rgba(0,0,0,0.5);
+      letter-spacing: 0.04em;
+      line-height: 1.7;
+    }
+
+    @media (max-width: 640px) {
+      .about-hero {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+      .about-photo { max-width: 160px; }
+      .about-table td:first-child { width: 120px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="logo" href="/">NAKE DESIGN</a>
+  <div class="nav-links">
+    <a href="/about/">About</a>
+    <a href="/contact/">Contact</a>
+  </div>
+</nav>
+
+<div class="about-wrap page-enter">
+
+  <div class="about-hero">
+    <img class="about-photo" loading="lazy"
+         src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ABOUT/img_5569.jpeg"
+         alt="Wei-Xun Weng"/>
+    <div class="about-intro">
+      <div class="about-name">Wei-Xun Weng</div>
+      <div class="about-location">Taipei, Taiwan</div>
+      <div class="about-quote">Don't be afraid to fail.<br>Be afraid not to try.</div>
+    </div>
+  </div>
+
+  <div class="about-sections">
+
+    <div class="about-section">
+      <h2>Education</h2>
+      <table class="about-table">
+        <tr>
+          <td>'12</td>
+          <td>Hungkuo Delin University of Technology<br>B.S. Computer Science &amp; Information Engineering</td>
+        </tr>
+        <tr>
+          <td>'18</td>
+          <td>Outstanding Alumnus</td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="about-section">
+      <h2>Skills</h2>
+      <div class="skill-list">
+        <span>Illustrator</span>
+        <span>Photoshop</span>
+        <span>Keynote</span>
+        <span>Figma</span>
+        <span>Sublime</span>
+        <span>After Effects</span>
+        <span>Final Cut Pro</span>
+        <span>C4D</span>
+        <span>Blender</span>
+        <span>Unreal Engine</span>
+        <span>Audition</span>
+        <span>Logic Pro</span>
+        <span>Vocal Production</span>
+        <span>Google Analytics 4</span>
+        <span>Google Ads</span>
+        <span>SEO</span>
+      </div>
+    </div>
+
+    <div class="about-section">
+      <h2>Awards</h2>
+      <table class="about-table">
+        <tr><td>'18</td><td>Golden Design Award — Finalist</td></tr>
+        <tr><td>'18</td><td>Golden Melody Awards (GMA) — Project Visual</td></tr>
+        <tr><td>'21</td><td>A' Design Award — Iron / Runner-up</td></tr>
+        <tr><td>'22</td><td>Creative Communication Award (C2A) — Finalist</td></tr>
+        <tr><td>'23</td><td>Muse Design Awards — Silver</td></tr>
+        <tr><td>'25</td><td>Red Dot Design Award — Winner</td></tr>
+      </table>
+    </div>
+
+    <div class="about-section">
+      <h2>Experience</h2>
+
+      <div class="exp-block">
+        <div class="exp-org">Nake Design Pentagram</div>
+        <div class="exp-period">'20 – Now</div>
+        <div class="exp-role">Creative Lead &amp; Visual Strategist</div>
+        <div class="exp-desc">Strategy &amp; Identity · Marketing Planning · Interactive Web Design · Motion Design · Insight · Photography · Post-Production · Sound Design</div>
+      </div>
+
+      <div class="exp-block">
+        <div class="exp-org">Unite Design Ltd.</div>
+        <div class="exp-period">'16 – '20</div>
+        <div class="exp-role">Design Director</div>
+        <div class="exp-desc">Brand Design · Marketing Planning · Motion Design · Account Executive · Web Design</div>
+      </div>
+
+      <div class="exp-block">
+        <div class="exp-org">Appedu Design Institute</div>
+        <div class="exp-period">'13 – '16</div>
+        <div class="exp-role">Project Manager</div>
+        <div class="exp-desc">Curriculum Planning · Educational Training · Crisis Management · Project Development</div>
+      </div>
+
+      <div class="exp-block">
+        <div class="exp-org">Samsung Electronics Taiwan</div>
+        <div class="exp-period">'09 – '11</div>
+        <div class="exp-role">Sales Consultant</div>
+        <div class="exp-desc">Consumer Electronics · Home Appliances · User Experience · Customer Service Strategy</div>
+      </div>
+
+      <div class="exp-block">
+        <div class="exp-org">External Lecturer</div>
+        <div class="exp-period">'17 – Now</div>
+        <div class="exp-desc">Graphic Design · Video Editing</div>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+<script>
+document.querySelectorAll('img[loading="lazy"]').forEach(img => {
+  if (img.complete) { img.classList.add('loaded'); }
+  else { img.addEventListener('load', () => img.classList.add('loaded')); }
+});
+</script>
+
+</body>
+</html>
