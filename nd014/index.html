@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>本菓綱目 BENGO JUICE — Nake Design</title>
+  <meta property="og:type" content="article"/>
+  <meta property="og:url" content="https://nakesign.com/nd014/"/>
+  <meta property="og:title" content="本菓綱目 BENGO JUICE — Nake Design"/>
+  <meta property="og:description" content="VIS · 2018"/>
+  <meta property="og:image" content="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ND014/nd014_cover.png"/>
+  <meta name="twitter:card" content="summary_large_image"/>
+  <link rel="icon" type="image/png" href="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ABOUT/img_3369.png"/>
+  <link rel="stylesheet" href="/style.css"/>
+  <style>
+    .block-gallery{display:grid;gap:2px;margin-bottom:2px;cursor:pointer;}
+    .block-gallery.g3{grid-template-columns:repeat(3,1fr);}
+    .block-gallery.g4{grid-template-columns:repeat(4,1fr);}
+    .gallery-thumb{aspect-ratio:1/1;overflow:hidden;}
+    .gallery-thumb img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.5s cubic-bezier(.16,1,.3,1),filter 0.3s;opacity:0;}
+    .gallery-thumb img.loaded{opacity:1;}
+    .gallery-thumb:hover img{transform:scale(1.05);filter:brightness(0.85);}
+    #lightbox{display:none;position:fixed;inset:0;z-index:1000;background:rgba(0,0,0,0.94);align-items:center;justify-content:center;flex-direction:column;}
+    #lightbox.active{display:flex;}
+    #lightbox img{max-width:90vw;max-height:82vh;object-fit:contain;display:block;transition:opacity 0.2s;}
+    #lightbox img.fading{opacity:0;}
+    .lb-controls{display:flex;align-items:center;gap:2.5rem;margin-top:1.5rem;}
+    .lb-btn{background:none;border:0.5px solid rgba(255,255,255,0.25);color:rgba(255,255,255,0.7);width:40px;height:40px;border-radius:50%;font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:border-color 0.2s,color 0.2s;}
+    .lb-btn:hover{border-color:rgba(255,255,255,0.7);color:#fff;}
+    .lb-count{font-size:10px;letter-spacing:0.14em;color:rgba(255,255,255,0.35);}
+    .lb-close{position:absolute;top:1.5rem;right:2rem;background:none;border:none;color:rgba(255,255,255,0.45);font-size:22px;cursor:pointer;transition:color 0.2s;}
+    .lb-close:hover{color:#fff;}
+    @media(max-width:540px){.block-gallery.g3{grid-template-columns:repeat(2,1fr);}.block-gallery.g4{grid-template-columns:repeat(2,1fr);}}
+  </style>
+</head>
+<body>
+<nav>
+  <a class="logo" href="/">NAKE DESIGN</a>
+  <div class="nav-links">
+    <a href="/about/">About</a>
+    <a href="/contact/">Contact</a>
+  </div>
+</nav>
+
+<div class="project-wrap page-enter">
+  <header class="project-header">
+    <h1>本菓綱目 BENGO JUICE</h1>
+  </header>
+  <div class="project-body">
+
+    <div class="block-text">
+      <p>Speaking with the founder about the origin of this brand remains one of my favorite memories. Originally a franchisee for a major tea chain, the founder decided to break away and start an independent venture. His decision was so well-supported that several other franchisees followed suit. The founder's core competitive edge was his commitment to using 100% fresh-squeezed fruit juices—a strategy with immense potential in the Taiwanese hand-shaken beverage market at the time. After hearing his vision for technology and expansion, I quietly asked: "So, have you thought of a name yet?"</p>
+      <p>It turned out that while the expansion strategy was clear, the brand was still nameless. Thus, the project began at the most fundamental starting point: <strong>Naming.</strong></p>
+      <p>My team and I spent days and nights brainstorming, initially narrowing it down to two distinct directions. The name <strong>"本菓綱目" (Běn Guǒ Gāng Mù)</strong> wasn't even in the original plan until a team member happened to play Jay Chou's song "Ben Cao Gang Mu" (Compendium of Materia Medica). We began dissecting the lyrics and the profound cultural symbolism behind them. Internally, we reached a consensus to pivot toward this concept: transforming the traditional act of "prescribing Chinese herbal medicine" into "freshly blending fruit as immediate nutritional supplements."</p>
+      <p>Just as a traditional Chinese physician prescribes specific herbs based on a patient's constitution, our concept treats fruit as the modern replacement for herbs to restore health and vitality. The name bridges "wellness" (養生) and "Bing-go" (a play on the term for ice-fruit parlors), completing the brand's core identity. In the Taiwanese market, while a typical watermelon juice vendor simply lists volume and price, <strong>Běn Guǒ Gāng Mù</strong> offers more than just a drink—it targets specific needs like reducing "internal heat," replenishing vitamins, or quenching thirst. Every staff member acts like a dedicated physician, delivering health to the consumer through a custom "fruit prescription."</p>
+    </div>
+
+    <!-- 01–05 獨立 -->
+    <div class="block-img"><img loading="lazy" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ND014/nd014_01.png" alt="Bengo 01"/></div>
+    <div class="block-img"><img loading="lazy" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ND014/nd014_02.png" alt="Bengo 02"/></div>
+    <div class="block-img"><img loading="lazy" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ND014/nd014_03.png" alt="Bengo 03"/></div>
+    <div class="block-img"><img loading="lazy" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ND014/nd014_04.png" alt="Bengo 04"/></div>
+    <div class="block-img"><img loading="lazy" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ND014/nd014_05.png" alt="Bengo 05"/></div>
+
+    <!-- 06–16 相簿 -->
+    <div class="block-gallery g4" id="gallery-a">
+      <div class="gallery-thumb" data-set="a" data-index="0"><img loading="lazy" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ND014/nd014_06.png" alt="Bengo 06"/></div>
+      <div class="gallery-thumb" data-set="a" data-index="1"><img loading="lazy" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ND014/nd014_07.png" alt="Bengo 07"/></div>
+      <div class="gallery-thumb" data-set="a" data-index="2"><img loading="lazy" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ND014/nd014_08.png" alt="Bengo 08"/></div>
+      <div class="gallery-thumb" data-set="a" data-index="3"><img loading="lazy" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ND014/nd014_09.png" alt="Bengo 09"/></div>
+      <div class="gallery-thumb" data-set="a" data-index="4"><img loading="lazy" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ND014/nd014_10.png" alt="Bengo 10"/></div>
+      <div class="gallery-thumb" data-set="a" data-index="5"><img loading="lazy" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ND014/nd014_11.png" alt="Bengo 11"/></div>
+      <div class="gallery-thumb" data-set="a" data-index="6"><img loading="lazy" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ND014/nd014_12.png" alt="Bengo 12"/></div>
+      <div class="gallery-thumb" data-set="a" data-index="7"><img loading="lazy" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ND014/nd014_13.png" alt="Bengo 13"/></div>
+      <div class="gallery-thumb" data-set="a" data-index="8"><img loading="lazy" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ND014/nd014_14.png" alt="Bengo 14"/></div>
+      <div class="gallery-thumb" data-set="a" data-index="9"><img loading="lazy" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ND014/nd014_15.png" alt="Bengo 15"/></div>
+      <div class="gallery-thumb" data-set="a" data-index="10"><img loading="lazy" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ND014/nd014_16.png" alt="Bengo 16"/></div>
+    </div>
+
+    <!-- 17 獨立 -->
+    <div class="block-img"><img loading="lazy" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ND014/nd014_17.jpg" alt="Bengo 17"/></div>
+
+    <!-- 18–35 相簿 -->
+    <div class="block-gallery g3" id="gallery-b">
+      <div class="gallery-thumb" data-set="b" data-index="0"><img loading="lazy" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ND014/nd014_18.jpg" alt="Bengo 18"/></div>
+      <div class="gallery-thumb" data-set="b" data-index="1"><img loading="lazy" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ND014/nd014_19.jpg" alt="Bengo 19"/></div>
+      <div class="gallery-thumb" data-set="b" data-index="2"><img loading="lazy" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ND014/nd014_20.jpg" alt="Bengo 20"/></div>
+      <div class="gallery-thumb" data-set="b" data-index="3"><img loading="lazy" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ND014/nd014_21.jpg" alt="Bengo 21"/></div>
+      <div class="gallery-thumb" data-set="b" data-index="4"><img loading="lazy" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ND014/nd014_22.jpg" alt="Bengo 22"/></div>
+      <div class="gallery-thumb" data-set="b" data-index="5"><img loading="lazy" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ND014/nd014_23.jpg" alt="Bengo 23"/></div>
+      <div class="gallery-thumb" data-set="b" data-index="6"><img loading="lazy" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ND014/nd014_24.jpg" alt="Bengo 24"/></div>
+      <div class="gallery-thumb" data-set="b" data-index="7"><img loading="lazy" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ND014/nd014_25.jpg" alt="Bengo 25"/></div>
+      <div class="gallery-thumb" data-set="b" data-index="8"><img loading="lazy" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ND014/nd014_26.jpg" alt="Bengo 26"/></div>
+      <div class="gallery-thumb" data-set="b" data-index="9"><img loading="lazy" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ND014/nd014_27.jpg" alt="Bengo 27"/></div>
+      <div class="gallery-thumb" data-set="b" data-index="10"><img loading="lazy" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ND014/nd014_28.jpg" alt="Bengo 28"/></div>
+      <div class="gallery-thumb" data-set="b" data-index="11"><img loading="lazy" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ND014/nd014_29.jpg" alt="Bengo 29"/></div>
+      <div class="gallery-thumb" data-set="b" data-index="12"><img loading="lazy" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ND014/nd014_30.jpg" alt="Bengo 30"/></div>
+      <div class="gallery-thumb" data-set="b" data-index="13"><img loading="lazy" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ND014/nd014_31.jpg" alt="Bengo 31"/></div>
+      <div class="gallery-thumb" data-set="b" data-index="14"><img loading="lazy" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ND014/nd014_32.jpg" alt="Bengo 32"/></div>
+      <div class="gallery-thumb" data-set="b" data-index="15"><img loading="lazy" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ND014/nd014_33.jpg" alt="Bengo 33"/></div>
+      <div class="gallery-thumb" data-set="b" data-index="16"><img loading="lazy" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ND014/nd014_34.jpg" alt="Bengo 34"/></div>
+      <div class="gallery-thumb" data-set="b" data-index="17"><img loading="lazy" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ND014/nd014_35.jpg" alt="Bengo 35"/></div>
+    </div>
+
+    <!-- 36 獨立 -->
+    <div class="block-img"><img loading="lazy" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ND014/nd014_36.jpg" alt="Bengo 36"/></div>
+
+    <!-- 37–43 相簿 -->
+    <div class="block-gallery g4" id="gallery-c">
+      <div class="gallery-thumb" data-set="c" data-index="0"><img loading="lazy" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ND014/nd014_37.jpg" alt="Bengo 37"/></div>
+      <div class="gallery-thumb" data-set="c" data-index="1"><img loading="lazy" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ND014/nd014_38.jpg" alt="Bengo 38"/></div>
+      <div class="gallery-thumb" data-set="c" data-index="2"><img loading="lazy" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ND014/nd014_39.jpg" alt="Bengo 39"/></div>
+      <div class="gallery-thumb" data-set="c" data-index="3"><img loading="lazy" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ND014/nd014_40.jpg" alt="Bengo 40"/></div>
+      <div class="gallery-thumb" data-set="c" data-index="4"><img loading="lazy" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ND014/nd014_41.jpg" alt="Bengo 41"/></div>
+      <div class="gallery-thumb" data-set="c" data-index="5"><img loading="lazy" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ND014/nd014_42.jpg" alt="Bengo 42"/></div>
+      <div class="gallery-thumb" data-set="c" data-index="6"><img loading="lazy" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ND014/nd014_43.jpg" alt="Bengo 43"/></div>
+    </div>
+
+    <div class="project-credits">
+      <table>
+        <tr><td>Project</td><td>VIS</td></tr>
+        <tr><td>Art Director</td><td>Wei-Xun Weng</td></tr>
+        <tr><td>Brand Naming</td><td>Chiao-Li Chang</td></tr>
+        <tr><td>Designers</td><td>Gui-Nong Huang, Bing-Fang Tsai</td></tr>
+        <tr><td>Photographer</td><td>Shih-Chang Wei</td></tr>
+        <tr><td>Client</td><td>Bengo Juice (本菓綱目)</td></tr>
+        <tr><td>Year</td><td>2018</td></tr>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div id="lightbox">
+  <button class="lb-close" id="lb-close">✕</button>
+  <img id="lb-img" src="" alt=""/>
+  <div class="lb-controls">
+    <button class="lb-btn" id="lb-prev">←</button>
+    <span class="lb-count" id="lb-count"></span>
+    <button class="lb-btn" id="lb-next">→</button>
+  </div>
+</div>
+
+<script>
+const R='https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ND014/';
+const sets={
+  a:['06.png','07.png','08.png','09.png','10.png','11.png','12.png','13.png','14.png','15.png','16.png'].map(f=>R+'nd014_'+f),
+  b:['18','19','20','21','22','23','24','25','26','27','28','29','30','31','32','33','34','35'].map(f=>R+'nd014_'+f+'.jpg'),
+  c:['37','38','39','40','41','42','43'].map(f=>R+'nd014_'+f+'.jpg'),
+};
+const lb=document.getElementById('lightbox'),lbImg=document.getElementById('lb-img'),lbCount=document.getElementById('lb-count');
+let cur=0,active=[];
+function openLb(set,i){active=sets[set];cur=i;lbImg.src=active[i];lbCount.textContent=(i+1)+' / '+active.length;lb.classList.add('active');document.body.style.overflow='hidden';}
+function closeLb(){lb.classList.remove('active');document.body.style.overflow='';}
+function goTo(i){cur=(i+active.length)%active.length;lbImg.classList.add('fading');setTimeout(()=>{lbImg.src=active[cur];lbCount.textContent=(cur+1)+' / '+active.length;lbImg.classList.remove('fading');},200);}
+document.querySelectorAll('.gallery-thumb').forEach(el=>el.addEventListener('click',()=>openLb(el.dataset.set,+el.dataset.index)));
+document.getElementById('lb-close').addEventListener('click',closeLb);
+document.getElementById('lb-prev').addEventListener('click',()=>goTo(cur-1));
+document.getElementById('lb-next').addEventListener('click',()=>goTo(cur+1));
+lb.addEventListener('click',e=>{if(e.target===lb)closeLb();});
+document.addEventListener('keydown',e=>{if(!lb.classList.contains('active'))return;if(e.key==='Escape')closeLb();if(e.key==='ArrowLeft')goTo(cur-1);if(e.key==='ArrowRight')goTo(cur+1);});
+document.querySelectorAll('img[loading="lazy"]').forEach(img=>{if(img.complete)img.classList.add('loaded');else img.addEventListener('load',()=>img.classList.add('loaded'));});
+</script>
+</body>
+</html>
