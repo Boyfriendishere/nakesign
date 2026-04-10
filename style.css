@@ -2,7 +2,7 @@
    NAKE DESIGN — Global Stylesheet
    ============================================ */
 
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Noto+Sans+TC:wght@400;500&display=swap');
 
 *, *::before, *::after {
   margin: 0;
@@ -21,7 +21,8 @@ h1, h2, h3, h4, h5, h6 {
   --text-muted: rgba(0,0,0,0.35);
   --border: rgba(0,0,0,0.08);
   --nav-bg: rgba(245,245,243,0.82);
-  --font: 'Noto Sans TC', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+  --font: 'Inter', 'Noto Sans TC', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-zh: 'Noto Sans TC', sans-serif;
 }
 
 html { scroll-behavior: smooth; }
@@ -51,11 +52,12 @@ nav {
 
 .logo {
   font-size: 11px;
-  font-weight: 500;
-  letter-spacing: 0.24em;
+  font-weight: 700;
+  letter-spacing: -0.02em;
   color: var(--text);
   text-decoration: none;
   text-transform: uppercase;
+  font-family: 'Inter', sans-serif;
 }
 
 .nav-links {
@@ -67,9 +69,10 @@ nav {
   font-size: 10px;
   color: var(--text-muted);
   text-decoration: none;
-  letter-spacing: 0.15em;
+  letter-spacing: 0.05em;
   text-transform: uppercase;
   transition: color 0.2s;
+  font-family: 'Inter', sans-serif;
 }
 
 .nav-links a:hover { color: var(--text); }
@@ -144,13 +147,14 @@ nav {
 
 .ht {
   font-size: 13px;
-  font-weight: 500;
+  font-weight: 700;
   color: #fff;
-  letter-spacing: 0.13em;
+  letter-spacing: -0.02em;
   text-transform: uppercase;
   text-align: center;
-  line-height: 1.75;
+  line-height: 1.6;
   text-shadow: 0 1px 12px rgba(0,0,0,0.3);
+  font-family: 'Inter', 'Noto Sans TC', sans-serif;
 }
 
 .hl {
@@ -192,11 +196,12 @@ nav {
 
 .project-header h1 {
   font-size: 15px;
-  font-weight: 500;
-  letter-spacing: 0.2em;
+  font-weight: 700;
+  letter-spacing: -0.02em;
   text-transform: uppercase;
-  line-height: 1.7;
+  line-height: 1.5;
   color: var(--text);
+  font-family: 'Inter', 'Noto Sans TC', sans-serif;
 }
 
 .project-body {
@@ -209,13 +214,15 @@ nav {
 .block-text {
   padding: 2.5rem 0;
   font-size: 14px;
-  line-height: 2;
+  line-height: 1.7;
+  letter-spacing: 0.05em;
   color: rgba(0,0,0,0.68);
   text-align: left;
   max-width: 620px;
   margin: 0 auto;
   width: 100%;
-  font-weight: 300;
+  font-weight: 400;
+  font-family: 'Inter', 'Noto Sans TC', sans-serif;
 }
 
 .block-text p { margin-bottom: 1rem; }
