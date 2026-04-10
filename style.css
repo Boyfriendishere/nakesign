@@ -2,6 +2,8 @@
    NAKE DESIGN — Global Stylesheet
    ============================================ */
 
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500&display=swap');
+
 *, *::before, *::after {
   margin: 0;
   padding: 0;
@@ -19,7 +21,7 @@ h1, h2, h3, h4, h5, h6 {
   --text-muted: rgba(0,0,0,0.35);
   --border: rgba(0,0,0,0.08);
   --nav-bg: rgba(245,245,243,0.82);
-  --font: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --font: 'Noto Sans TC', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
 }
 
 html { scroll-behavior: smooth; }
