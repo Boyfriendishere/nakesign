@@ -53,7 +53,7 @@ nav {
 .logo {
   font-size: 15px;
   font-weight: 700;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.1em;
   color: var(--text);
   text-decoration: none;
   text-transform: uppercase;
@@ -66,10 +66,10 @@ nav {
 }
 
 .nav-links a {
-  font-size: 12px;
+  font-size: 14px;
   color: var(--text-muted);
   text-decoration: none;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   transition: color 0.2s;
   font-family: 'Inter', sans-serif;
@@ -146,21 +146,20 @@ nav {
 .card:hover .hover-title { opacity: 1; transform: translateY(0); }
 
 .ht {
-  font-size: 18px;
+  font-size: 17px;
   font-weight: 700;
-  color: #fff;
-  letter-spacing: 0.05em;
+  color: #2a2a2a;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   text-align: center;
   line-height: 1.6;
-  text-shadow: 0 1px 17px rgba(0,0,0,0.3);
   font-family: 'Inter', 'Noto Sans TC', sans-serif;
 }
 
 .hl {
   width: 18px;
-  height: 1px;
-  background: rgba(255,255,255,0.5);
+  height: 0.5px;
+  background: rgba(0,0,0,0.25);
 }
 
 /* ── STAGGERED GRID ENTRY ── */
@@ -197,7 +196,7 @@ nav {
 .project-header h1 {
   font-size: 15px;
   font-weight: 700;
-  letter-spacing: -0.02em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   line-height: 1.5;
   color: var(--text);
