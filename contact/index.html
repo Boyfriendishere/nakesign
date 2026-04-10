@@ -4,153 +4,190 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Contact — Nake Design</title>
-  <meta property="og:type"        content="website"/>
-  <meta property="og:url"         content="https://nakesign.com/contact/"/>
-  <meta property="og:title"       content="Contact — Nake Design"/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:url" content="https://nakesign.com/contact/"/>
+  <meta property="og:title" content="Contact — Nake Design"/>
   <meta property="og:description" content="Defining the Order of Design. 唯序，立設計"/>
-  <meta name="twitter:card"       content="summary_large_image"/>
+  <meta name="twitter:card" content="summary_large_image"/>
   <link rel="stylesheet" href="/style.css"/>
   <style>
+    .contact-outer {
+      min-height: calc(100vh - 60px);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
     .contact-wrap {
-      max-width: 560px;
+      max-width: 520px;
       margin: 0 auto;
-      padding: 5rem 2rem 8rem;
+      padding: 6rem 2rem 4rem;
+      width: 100%;
     }
 
-    .contact-header {
-      text-align: center;
+    .contact-heading {
       margin-bottom: 3.5rem;
-      padding-bottom: 2.5rem;
-      border-bottom: 0.5px solid var(--border);
     }
 
-    .contact-header h1 {
-      font-size: 15px;
+    .contact-heading h1 {
+      font-size: 11px;
       font-weight: 500;
-      letter-spacing: 0.2em;
+      letter-spacing: 0.24em;
       text-transform: uppercase;
       color: var(--text);
-      margin-bottom: 1rem;
+      margin-bottom: 0.75rem;
     }
 
-    .contact-header p {
+    .contact-heading p {
       font-size: 11px;
       color: var(--text-muted);
-      letter-spacing: 0.08em;
-      line-height: 1.8;
+      letter-spacing: 0.06em;
+      line-height: 1.7;
     }
 
     /* form */
-    .contact-form {
-      display: flex;
-      flex-direction: column;
-      gap: 1.25rem;
+    .contact-form { display: flex; flex-direction: column; gap: 0; }
+
+    .form-field {
+      position: relative;
+      border-bottom: 0.5px solid rgba(0,0,0,0.12);
+      padding: 1.25rem 0 0.6rem;
+      transition: border-color 0.2s;
     }
 
-    .form-group {
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
-    }
+    .form-field:focus-within { border-bottom-color: rgba(0,0,0,0.5); }
 
-    .form-group label {
+    .form-field label {
+      position: absolute;
+      top: 1.3rem;
+      left: 0;
       font-size: 10px;
       letter-spacing: 0.16em;
       text-transform: uppercase;
       color: var(--text-muted);
+      transition: top 0.2s, font-size 0.2s, color 0.2s;
+      pointer-events: none;
     }
 
-    .form-group input,
-    .form-group textarea {
+    .form-field.filled label,
+    .form-field:focus-within label {
+      top: 0;
+      font-size: 9px;
+      color: rgba(0,0,0,0.35);
+    }
+
+    .form-field input,
+    .form-field textarea {
       width: 100%;
       background: transparent;
       border: none;
-      border-bottom: 0.5px solid rgba(0,0,0,0.18);
-      padding: 0.65rem 0;
+      padding: 0.3rem 0 0;
       font-family: var(--font);
       font-size: 13px;
       color: var(--text);
       letter-spacing: 0.04em;
       outline: none;
       border-radius: 0;
-      transition: border-color 0.2s;
       -webkit-appearance: none;
+      line-height: 1.6;
     }
 
-    .form-group input:focus,
-    .form-group textarea:focus {
-      border-bottom-color: rgba(0,0,0,0.6);
-    }
-
-    .form-group textarea {
+    .form-field textarea {
       resize: none;
-      height: 120px;
-      line-height: 1.7;
+      height: 80px;
+      margin-top: 0.25rem;
     }
 
-    .form-submit {
-      margin-top: 0.75rem;
+    .form-actions {
+      margin-top: 2.5rem;
       display: flex;
-      justify-content: center;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .required-note {
+      font-size: 10px;
+      color: var(--text-muted);
+      letter-spacing: 0.08em;
     }
 
     .submit-btn {
-      background: var(--text);
-      color: #fff;
-      border: none;
-      padding: 0.85rem 3rem;
+      background: none;
+      border: 0.5px solid rgba(0,0,0,0.25);
+      color: var(--text);
+      padding: 0.75rem 2rem;
       font-family: var(--font);
       font-size: 10px;
       letter-spacing: 0.2em;
       text-transform: uppercase;
       cursor: pointer;
-      transition: opacity 0.2s;
+      transition: background 0.2s, color 0.2s, border-color 0.2s;
     }
 
-    .submit-btn:hover { opacity: 0.75; }
-    .submit-btn:disabled { opacity: 0.4; cursor: default; }
+    .submit-btn:hover {
+      background: var(--text);
+      color: #fff;
+      border-color: var(--text);
+    }
 
-    /* success state */
+    .submit-btn:disabled { opacity: 0.35; cursor: default; }
+
+    /* success */
     .contact-success {
       display: none;
-      text-align: center;
-      padding: 3rem 0;
+      padding: 4rem 0 2rem;
     }
-
     .contact-success.visible { display: block; }
 
-    .contact-success p {
+    .success-line {
+      width: 20px; height: 0.5px;
+      background: rgba(0,0,0,0.2);
+      margin: 0 auto 2rem;
+    }
+
+    .success-zh {
       font-size: 13px;
-      line-height: 2;
+      line-height: 2.1;
       color: rgba(0,0,0,0.65);
-      margin-bottom: 0.5rem;
-    }
-
-    /* footer tagline */
-    .contact-footer {
-      margin-top: 5rem;
-      padding-top: 2rem;
-      border-top: 0.5px solid var(--border);
       text-align: center;
+      margin-bottom: 2rem;
     }
 
-    .contact-footer .brand {
+    .success-en {
       font-size: 11px;
+      line-height: 2;
+      color: rgba(0,0,0,0.35);
+      text-align: center;
+      letter-spacing: 0.04em;
+    }
+
+    /* footer */
+    .contact-footer {
+      border-top: 0.5px solid var(--border);
+      padding: 1.5rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-brand {
+      font-size: 10px;
       font-weight: 500;
-      letter-spacing: 0.2em;
+      letter-spacing: 0.18em;
       text-transform: uppercase;
       color: var(--text);
-      margin-bottom: 0.4rem;
     }
 
-    .contact-footer .tagline {
+    .footer-tagline {
       font-size: 10px;
       color: var(--text-muted);
-      letter-spacing: 0.1em;
+      letter-spacing: 0.08em;
     }
 
     @media (max-width: 540px) {
-      .contact-wrap { padding: 3rem 1.25rem 6rem; }
+      .contact-wrap { padding: 4rem 1.25rem 3rem; }
+      .form-actions { flex-direction: column; gap: 1.25rem; align-items: flex-start; }
+      .contact-footer { flex-direction: column; gap: 0.4rem; text-align: center; padding: 1.25rem; }
     }
   </style>
 </head>
@@ -164,47 +201,61 @@
   </div>
 </nav>
 
-<div class="contact-wrap page-enter">
+<div class="contact-outer page-enter">
 
-  <div class="contact-header">
-    <h1>Contact</h1>
-    <p>Nake Design · 納序策略設計</p>
+  <div class="contact-wrap">
+
+    <div class="contact-heading">
+      <h1>Contact</h1>
+    </div>
+
+    <form class="contact-form" id="contact-form">
+
+      <div class="form-field" id="field-name">
+        <label for="name">Name *</label>
+        <input type="text" id="name" name="name" required autocomplete="name"
+               oninput="toggleFilled('field-name',this.value)"/>
+      </div>
+
+      <div class="form-field" id="field-email">
+        <label for="email">Mail *</label>
+        <input type="email" id="email" name="email" required autocomplete="email"
+               oninput="toggleFilled('field-email',this.value)"/>
+      </div>
+
+      <div class="form-field" id="field-message">
+        <label for="message">Message</label>
+        <textarea id="message" name="message"
+                  oninput="toggleFilled('field-message',this.value)"></textarea>
+      </div>
+
+      <div class="form-actions">
+        <span class="required-note">* Required</span>
+        <button type="submit" class="submit-btn" id="submit-btn">Send</button>
+      </div>
+
+    </form>
+
+    <div class="contact-success" id="success-msg">
+      <div class="success-line"></div>
+      <div class="success-zh">感謝您的來信。這份聯繫對我們而言非常重要，<br>團隊將會盡快審閱您的需求並與您聯繫，<br>期待與您共同架構品牌的世界觀。</div>
+      <div class="success-en">Thank you for your inquiry. Your connection is of great importance to us.<br>Our team will review your requirements as soon as possible and get in touch with you shortly.<br>We look forward to architecting a unique brand vision together.</div>
+    </div>
+
   </div>
 
-  <form class="contact-form" id="contact-form">
-    <div class="form-group">
-      <label for="name">Name *</label>
-      <input type="text" id="name" name="name" required autocomplete="name"/>
-    </div>
-
-    <div class="form-group">
-      <label for="email">Mail *</label>
-      <input type="email" id="email" name="email" required autocomplete="email"/>
-    </div>
-
-    <div class="form-group">
-      <label for="message">Message</label>
-      <textarea id="message" name="message"></textarea>
-    </div>
-
-    <div class="form-submit">
-      <button type="submit" class="submit-btn" id="submit-btn">Send</button>
-    </div>
-  </form>
-
-  <div class="contact-success" id="success-msg">
-    <p>感謝您的來信。這份聯繫對我們而言非常重要，<br>團隊將會盡快審閱您的需求並與您聯繫，<br>期待與您共同架構品牌的世界觀。</p>
-    <p style="margin-top:1.5rem;font-size:12px;color:rgba(0,0,0,0.4);letter-spacing:0.06em;">Thank you for your inquiry. Your connection is of great importance to us.<br>Our team will review your requirements as soon as possible and get in touch with you shortly.<br>We look forward to architecting a unique brand vision together.</p>
-  </div>
-
-  <div class="contact-footer">
-    <div class="brand">Nake Design · 納序策略設計</div>
-    <div class="tagline">Defining the Order of Design. 唯序，立設計.</div>
-  </div>
+  <footer class="contact-footer">
+    <div class="footer-brand">Nake Design · 納序策略設計</div>
+    <div class="footer-tagline">Defining the Order of Design.</div>
+  </footer>
 
 </div>
 
 <script>
+function toggleFilled(id, val) {
+  document.getElementById(id).classList.toggle('filled', val.length > 0);
+}
+
 document.getElementById('contact-form').addEventListener('submit', async function(e) {
   e.preventDefault();
   const btn = document.getElementById('submit-btn');
@@ -218,24 +269,21 @@ document.getElementById('contact-form').addEventListener('submit', async functio
   };
 
   try {
-    const res = await fetch('https://formspree.io/f/mkopljzd', {
+    const res = await fetch('https://formspree.io/f/YOUR_FORM_ID', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
       body: JSON.stringify(data),
     });
-
     if (res.ok) {
       document.getElementById('contact-form').style.display = 'none';
       document.getElementById('success-msg').classList.add('visible');
     } else {
       btn.disabled = false;
       btn.textContent = 'Send';
-      alert('Something went wrong. Please try again.');
     }
   } catch {
     btn.disabled = false;
     btn.textContent = 'Send';
-    alert('Something went wrong. Please try again.');
   }
 });
 </script>
