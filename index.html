@@ -27,6 +27,14 @@
       -webkit-backdrop-filter: blur(18px) saturate(180%);
     }
   </style>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-KD5VZ79GEN"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-KD5VZ79GEN');
+  </script>
 </head>
 <body>
 <nav>
@@ -37,6 +45,105 @@
   </div>
 </nav>
 <main class="grid page-enter">
+
+  <a class="card" href="/nd036/">
+    <img class="cover" loading="lazy"
+         src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ND036/nd036_cover.png"
+         alt="U41"/>
+    <div class="hover-mask"></div>
+    <div class="hover-title">
+      <div class="ht">U41</div>
+      <div class="hl"></div>
+    </div>
+  </a>
+
+  <a class="card" href="/nd035/">
+    <img class="cover" loading="lazy"
+         src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ND035/nd035_cover.png"
+         alt="菜霸子 VEGEKING"/>
+    <div class="hover-mask"></div>
+    <div class="hover-title">
+      <div class="ht">菜霸子 VEGEKING</div>
+      <div class="hl"></div>
+    </div>
+  </a>
+
+  <a class="card" href="/nd034/">
+    <img class="cover" loading="lazy"
+         src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ND034/nd034_cover.png"
+         alt="北港朝天宮 BEIGANG CHAOTIAN GONG"/>
+    <div class="hover-mask"></div>
+    <div class="hover-title">
+      <div class="ht">北港朝天宮<br>BEIGANG CHAOTIAN GONG</div>
+      <div class="hl"></div>
+    </div>
+  </a>
+
+  <a class="card" href="/nd033/">
+    <img class="cover" loading="lazy"
+         src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ND033/nd033_cover.png"
+         alt="冬瓜行旅 MELON LIFE TRAVEL"/>
+    <div class="hover-mask"></div>
+    <div class="hover-title">
+      <div class="ht">冬瓜行旅 MELON LIFE TRAVEL</div>
+      <div class="hl"></div>
+    </div>
+  </a>
+
+  <a class="card" href="/nd032/">
+    <img class="cover" loading="lazy"
+         src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ND032/nd032_cover.png"
+         alt="純綠舍 PURE JADE"/>
+    <div class="hover-mask"></div>
+    <div class="hover-title">
+      <div class="ht">純綠舍 PURE JADE</div>
+      <div class="hl"></div>
+    </div>
+  </a>
+
+  <a class="card" href="/nd031/">
+    <img class="cover" loading="lazy"
+         src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ND031/nd031_cover.png"
+         alt="名師補習班 MEANSCPA"/>
+    <div class="hover-mask"></div>
+    <div class="hover-title">
+      <div class="ht">名師補習班 MEANSCPA</div>
+      <div class="hl"></div>
+    </div>
+  </a>
+
+  <a class="card" href="/nd030/">
+    <img class="cover" loading="lazy"
+         src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ND030/nd030_cover.png"
+         alt="攝影 PHOTOGRAPHY"/>
+    <div class="hover-mask"></div>
+    <div class="hover-title">
+      <div class="ht">攝影 PHOTOGRAPHY</div>
+      <div class="hl"></div>
+    </div>
+  </a>
+
+  <a class="card" href="/nd029/">
+    <img class="cover" loading="lazy"
+         src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ND029/nd029_cover.png"
+         alt="日曜日 SUNDAY"/>
+    <div class="hover-mask"></div>
+    <div class="hover-title">
+      <div class="ht">日曜日 SUNDAY</div>
+      <div class="hl"></div>
+    </div>
+  </a>
+
+  <a class="card" href="/nd028/">
+    <img class="cover" loading="lazy"
+         src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ND028/nd028_cover.png"
+         alt="多喝水 MOREWATER"/>
+    <div class="hover-mask"></div>
+    <div class="hover-title">
+      <div class="ht">多喝水 MOREWATER</div>
+      <div class="hl"></div>
+    </div>
+  </a>
 
   <a class="card" href="/nd027/">
     <img class="cover" loading="lazy"
@@ -348,11 +455,17 @@ function isMobile() { return window.matchMedia('(hover: none)').matches; }
 
 if (isMobile()) {
   const cards = document.querySelectorAll('.card');
+  const timers = new WeakMap();
   const obs = new IntersectionObserver((entries) => {
     entries.forEach(e => {
       if (e.isIntersecting) {
-        e.target.classList.add('active');
+        const t = setTimeout(() => {
+          e.target.classList.add('active');
+        }, 2000);
+        timers.set(e.target, t);
       } else {
+        const t = timers.get(e.target);
+        if (t) { clearTimeout(t); timers.delete(e.target); }
         e.target.classList.remove('active');
       }
     });
@@ -363,44 +476,6 @@ if (isMobile()) {
   cards.forEach(c => obs.observe(c));
 }
 
-/* Gyroscope / mouse micro-drift for chromatic aberration */
-const hts = document.querySelectorAll('.ht');
-
-function applyDrift(dx, dy) {
-  hts.forEach(el => {
-    const ox = (dx * 2).toFixed(2);
-    const oy = (dy * 0.5).toFixed(2);
-    el.style.textShadow = `
-      ${-1.5 + parseFloat(ox)}px ${oy}px 0px rgba(255,63,0,0.65),
-      ${1.5 + parseFloat(ox)}px ${oy}px 0px rgba(0,229,255,0.65),
-      0px 0px 10px rgba(255,255,255,0.3)
-    `;
-  });
-}
-
-/* Desktop: mouse move drift */
-let mouseRaf;
-document.addEventListener('mousemove', e => {
-  cancelAnimationFrame(mouseRaf);
-  mouseRaf = requestAnimationFrame(() => {
-    const cx = window.innerWidth / 2;
-    const cy = window.innerHeight / 2;
-    const dx = (e.clientX - cx) / cx;
-    const dy = (e.clientY - cy) / cy;
-    applyDrift(dx, dy);
-  });
-});
-
-/* Mobile: gyroscope drift */
-if (window.DeviceOrientationEvent) {
-  window.addEventListener('deviceorientation', e => {
-    if (e.gamma == null) return;
-    const dx = Math.max(-1, Math.min(1, e.gamma / 20));
-    const dy = Math.max(-1, Math.min(1, e.beta / 30));
-    applyDrift(dx, dy);
-  });
-}
 </script>
 </body>
 </html>
-
