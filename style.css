@@ -167,28 +167,13 @@ nav {
 /* Chromatic aberration text */
 .ht {
   font-size: 23px;
-  font-weight: 300;
+  font-weight: 400;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   text-align: center;
   line-height: 1.6;
   font-family: 'Inter', 'Noto Sans TC', sans-serif;
-  color: rgba(255,255,255,0.9);
-  text-shadow:
-    -1.5px 0px 0px rgba(255,63,0,0.65),
-    1.5px 0px 0px rgba(0,229,255,0.65),
-    0px 0px 10px rgba(255,255,255,0.3);
-  position: relative;
-}
-
-.ht::after {
-  content: attr(data-text);
-  position: absolute;
-  inset: 0;
-  color: rgba(255,255,255,0.06);
-  text-shadow: none;
-  -webkit-text-stroke: 0.5px rgba(255,255,255,0.15);
-  pointer-events: none;
+  color: #2a2a2a;
 }
 
 .hl {
