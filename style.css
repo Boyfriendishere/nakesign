@@ -1,122 +1,4 @@
-/* ============================================
-   NAKE DESIGN — Global Stylesheet
-   ============================================ */
-
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&family=Noto+Sans+TC:wght@400;500&display=swap');
-
-*, *::before, *::after {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-h1, h2, h3, h4, h5, h6 {
-  font-size: inherit;
-  font-weight: inherit;
-}
-
-:root {
-  --bg: #f5f5f3;
-  --text: #111111;
-  --text-muted: rgba(0,0,0,0.35);
-  --border: rgba(0,0,0,0.08);
-  --nav-bg: rgba(245,245,243,0.82);
-  --font: 'Inter', 'Noto Sans TC', -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-zh: 'Noto Sans TC', sans-serif;
-}
-
-html { scroll-behavior: smooth; }
-
-body {
-  font-family: var(--font);
-  background: var(--bg);
-  color: var(--text);
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-/* ── NAV ── */
-nav {
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1.25rem 2rem;
-  background: var(--nav-bg);
-  backdrop-filter: blur(28px) saturate(180%);
-  -webkit-backdrop-filter: blur(28px) saturate(180%);
-  border-bottom: 0.5px solid var(--border);
-}
-
-.logo {
-  font-size: 15px;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  color: var(--text);
-  text-decoration: none;
-  text-transform: uppercase;
-  font-family: 'Inter', sans-serif;
-}
-
-.nav-links {
-  display: flex;
-  gap: 2.5rem;
-}
-
-.nav-links a {
-  font-size: 14px;
-  color: var(--text-muted);
-  text-decoration: none;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  transition: color 0.2s;
-  font-family: 'Inter', sans-serif;
-}
-
-.nav-links a:hover { color: var(--text); }
-
-/* ── PAGE FADE IN ── */
-.page-enter {
-  opacity: 0;
-  animation: fadeIn 0.6s ease forwards;
-}
-
-@keyframes fadeIn {
-  to { opacity: 1; }
-}
-
-/* ── HOMEPAGE GRID ── */
-.grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 0;
-}
-
-.card {
-  position: relative;
-  overflow: hidden;
-  cursor: pointer;
-  aspect-ratio: 1 / 1;
-  display: block;
-  text-decoration: none;
-}
-
-.cover {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  transition: transform 0.9s cubic-bezier(.16,1,.3,1);
-}
-
-/* lazy loading fade */
-.cover[loading="lazy"] { opacity: 0; transition: opacity 0.4s ease, transform 0.9s cubic-bezier(.16,1,.3,1); }
-.cover.loaded { opacity: 1; }
-
-.card:hover .cover { transform: scale(1.06); }
-
+/* ── HOVER MASK ── */
 .hover-mask {
   position: absolute;
   inset: 0;
@@ -124,23 +6,14 @@ nav {
   background: rgba(255,255,255,0.0);
   backdrop-filter: blur(0px) saturate(100%);
   -webkit-backdrop-filter: blur(0px) saturate(100%);
+  /* 這裡保持 transition 定義，但將 delay 預設為 0s */
   transition: background 0.6s cubic-bezier(0.2,1,0.3,1),
               backdrop-filter 0.6s cubic-bezier(0.2,1,0.3,1),
               -webkit-backdrop-filter 0.6s cubic-bezier(0.2,1,0.3,1);
+  transition-delay: 0s;
 }
 
-.card:hover .hover-mask,
-.card.active .hover-mask {
-  background: rgba(255,255,255,0.05);
-  backdrop-filter: blur(20px) saturate(150%);
-  -webkit-backdrop-filter: blur(20px) saturate(150%);
-}
-
-.card:hover .cover,
-.card.active .cover {
-  transform: scale(0.96);
-}
-
+/* ── HOVER TITLE ── */
 .hover-title {
   position: absolute;
   inset: 0;
@@ -152,201 +25,45 @@ nav {
   gap: 10px;
   opacity: 0;
   transform: translateY(20px);
+  /* 這裡同樣將 delay 預設為 0s，確保消失時是立即的 */
   transition: opacity 0.6s cubic-bezier(0.2,1,0.3,1),
               transform 0.6s cubic-bezier(0.2,1,0.3,1);
+  transition-delay: 0s;
   pointer-events: none;
   padding: 1.5rem;
 }
 
-.card:hover .hover-title,
+/* 1. 電腦版 Hover：保持即時反應 */
+.card:hover .hover-mask,
+.card:hover .hover-title {
+  opacity: 1;
+  transform: translateY(0);
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(20px) saturate(150%);
+  -webkit-backdrop-filter: blur(20px) saturate(150%);
+  transition-delay: 0s; /* 滑鼠移入不需要等待 */
+}
+
+/* 2. 行動端 Active：進入中心偵測區時延遲出現 */
+.card.active .hover-mask,
 .card.active .hover-title {
   opacity: 1;
   transform: translateY(0);
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(20px) saturate(150%);
+  -webkit-backdrop-filter: blur(20px) saturate(150%);
+  /* 關鍵：延遲 1.5秒 至 2秒，讓使用者看清 Cover */
+  transition-delay: 1.5s; 
 }
 
-/* Chromatic aberration text */
-.ht {
-  font-size: 23px;
-  font-weight: 300;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  text-align: center;
-  line-height: 1.6;
-  font-family: 'Inter', 'Noto Sans TC', sans-serif;
-  color: rgba(255,255,255,0.9);
-  text-shadow:
-    -1.5px 0px 0px rgba(255,63,0,0.65),
-    1.5px 0px 0px rgba(0,229,255,0.65),
-    0px 0px 10px rgba(255,255,255,0.3);
-  position: relative;
-}
+/* 3. 當狀態移除（離開 Hover 或滑離中心）時：立即消失 */
+/* 藉由將非狀態下的 transition-delay 設為 0s (如上方 hover-mask 初始設定)，
+   當 .active 或 :hover 移除時，它會立刻套用 0s 延遲回場 */
 
-.ht::after {
-  content: attr(data-text);
-  position: absolute;
-  inset: 0;
-  color: rgba(255,255,255,0.06);
-  text-shadow: none;
-  -webkit-text-stroke: 0.5px rgba(255,255,255,0.15);
-  pointer-events: none;
-}
-
-.hl {
-  width: 24px;
-  height: 0.5px;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
-}
-
-/* ── STAGGERED GRID ENTRY ── */
-.card:nth-child(1)  { animation: cardIn 0.5s ease 0.05s both; }
-.card:nth-child(2)  { animation: cardIn 0.5s ease 0.10s both; }
-.card:nth-child(3)  { animation: cardIn 0.5s ease 0.15s both; }
-.card:nth-child(4)  { animation: cardIn 0.5s ease 0.20s both; }
-.card:nth-child(5)  { animation: cardIn 0.5s ease 0.25s both; }
-.card:nth-child(6)  { animation: cardIn 0.5s ease 0.30s both; }
-.card:nth-child(7)  { animation: cardIn 0.5s ease 0.35s both; }
-.card:nth-child(8)  { animation: cardIn 0.5s ease 0.40s both; }
-.card:nth-child(9)  { animation: cardIn 0.5s ease 0.45s both; }
-.card:nth-child(n+10) { animation: cardIn 0.5s ease 0.50s both; }
-
-@keyframes cardIn {
-  from { opacity: 0; transform: translateY(12px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-
-/* ── PROJECT PAGE ── */
-.project-wrap {
-  max-width: 780px;
-  margin: 0 auto;
-  padding: 4rem 2rem 7rem;
-}
-
-.project-header {
-  margin-bottom: 3rem;
-  padding-bottom: 2rem;
-  border-bottom: 0.5px solid var(--border);
-  text-align: center;
-}
-
-.project-header h1 {
-  font-size: 15px;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  line-height: 1.5;
-  color: var(--text);
-  font-family: 'Inter', 'Noto Sans TC', sans-serif;
-}
-
-.project-body {
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-}
-
-/* text block */
-.block-text {
-  padding: 2.5rem 0;
-  font-size: 14px;
-  line-height: 1.7;
-  letter-spacing: 0.05em;
-  color: rgba(0,0,0,0.68);
-  text-align: left;
-  max-width: 620px;
-  margin: 0 auto;
-  width: 100%;
-  font-weight: 400;
-  font-family: 'Inter', 'Noto Sans TC', sans-serif;
-}
-
-.block-text p { margin-bottom: 1rem; }
-.block-text p:last-child { margin-bottom: 0; }
-.block-text strong { font-weight: 500; color: var(--text); }
-
-.block-text ul {
-  list-style: disc;
-  padding-left: 1.2em;
-  margin-top: 1.5rem;
-  display: flex;
-  flex-direction: column;
-  gap: 1.25rem;
-  text-align: left;
-}
-
-.block-text ul li {
-  line-height: 1.9;
-  color: rgba(0,0,0,0.7);
-}
-
-/* single image */
-.block-img {
-  width: 100%;
-  line-height: 0;
-  margin-bottom: 2px;
-}
-
-.block-img:last-of-type { margin-bottom: 0; }
-
-.block-img img {
-  width: 100%;
-  height: auto;
-  display: block;
-  opacity: 0;
-  transition: opacity 0.5s ease;
-}
-
-.block-img img.loaded { opacity: 1; }
-
-/* image row (2-up) */
-.block-img-row {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2px;
-  margin-bottom: 2px;
-}
-
-/* credits / colophon */
-.project-credits {
-  margin-top: 4rem;
-  padding-top: 2rem;
-  border-top: 0.5px solid var(--border);
-  display: flex;
-  justify-content: center;
-}
-
-.project-credits table {
-  border-collapse: collapse;
-  width: auto;
-}
-
-.project-credits td {
-  font-size: 11px;
-  letter-spacing: 0.06em;
-  padding: 0.4rem 0;
-  vertical-align: top;
-  line-height: 1.6;
-}
-
-.project-credits td:first-child {
-  color: var(--text-muted);
-  text-transform: uppercase;
-  font-size: 10px;
-  letter-spacing: 0.1em;
-  padding-right: 2rem;
-  white-space: nowrap;
-}
-
-
-/* ── RESPONSIVE ── */
-@media (max-width: 900px) {
-  .grid { grid-template-columns: repeat(2, 1fr); }
-  .project-wrap { padding: 3rem 1.5rem 5rem; }
-}
-
-@media (max-width: 540px) {
-  .grid { grid-template-columns: 1fr; }
-  nav { padding: 1rem 1.25rem; }
-  .project-wrap { padding: 2rem 1.25rem 4rem; }
-  .block-img-row { grid-template-columns: 1fr; }
-  .project-credits td:first-child { width: 120px; }
+.card:hover .cover,
+.card.active .cover {
+  transform: scale(0.96);
+  /* 圖片縮小也可以跟著標題一起延遲，或是即時縮小以提示「已選中」 */
+  /* 建議圖片縮小可以稍微快一點點，延遲設為 0.5s 或 0s 較有互動感 */
+  transition-delay: 0.5s; 
 }
