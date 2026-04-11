@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Garmin — Nake Design</title>
+  <meta property="og:type" content="article"/>
+  <meta property="og:url" content="https://nakesign.com/nd023/"/>
+  <meta property="og:title" content="Garmin — Nake Design"/>
+  <meta property="og:description" content="E-commerce Visual Strategy & Multi-language Localization · 2020"/>
+  <meta property="og:image" content="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ND023/nd023_cover.png"/>
+  <meta name="twitter:card" content="summary_large_image"/>
+  <link rel="icon" type="image/png" href="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ABOUT/img_3369.png"/>
+  <link rel="stylesheet" href="/style.css"/>
+  <style>
+    .compare-wrap{position:relative;width:100%;cursor:col-resize;user-select:none;margin-bottom:2px;line-height:0;}
+    .compare-base{width:100%;height:auto;display:block;}
+    .compare-after{position:absolute;top:0;left:0;height:100%;overflow:hidden;width:50%;}
+    .compare-after img{position:absolute;top:0;left:0;height:100%;object-fit:cover;display:block;}
+    .compare-handle{position:absolute;top:0;left:50%;width:2px;height:100%;background:rgba(255,255,255,0.9);transform:translateX(-50%);pointer-events:none;}
+    .compare-knob{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,0.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:0.5px solid rgba(255,255,255,0.6);display:flex;align-items:center;justify-content:center;pointer-events:none;font-size:13px;color:#111;letter-spacing:-1px;}
+  </style>
+</head>
+<body>
+<nav>
+  <a class="logo" href="/">NAKE DESIGN</a>
+  <div class="nav-links">
+    <a href="/about/">About</a>
+    <a href="/contact/">Contact</a>
+  </div>
+</nav>
+
+<div class="project-wrap page-enter">
+  <header class="project-header">
+    <h1>GARMIN</h1>
+  </header>
+  <div class="project-body">
+
+    <div class="block-text">
+      <p><strong>Garmin | Global Leader in GPS &amp; Navigation</strong></p>
+      <p>Founded in 1989, Garmin is the world's most iconic GPS enterprise and a recognized leader in the aviation, marine, automotive, outdoor, and fitness markets. By combining breathtaking design, superior quality, and exceptional reliability, Garmin creates unparalleled product experiences. Supported by a comprehensive product ecosystem, Garmin is committed to becoming the ultimate brand for everyone who loves to live life to the fullest.</p>
+    </div>
+
+    <div class="block-img"><img loading="lazy" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ND023/nd023_01.jpg" alt="Garmin 01"/></div>
+    <div class="block-img"><img loading="lazy" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ND023/nd023_02.jpg" alt="Garmin 02"/></div>
+    <div class="block-img"><img loading="lazy" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ND023/nd023_03.jpg" alt="Garmin 03"/></div>
+    <div class="block-img"><img loading="lazy" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ND023/nd023_04.jpg" alt="Garmin 04"/></div>
+    <div class="block-img"><img loading="lazy" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ND023/nd023_05.jpg" alt="Garmin 05"/></div>
+    <div class="block-img"><img loading="lazy" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ND023/nd023_06.png" alt="Garmin 06"/></div>
+
+    <div class="compare-wrap" id="cmp1">
+      <img class="compare-base" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ND023/nd023_07.png" alt="Garmin 07"/>
+      <div class="compare-after" id="cmp1-after">
+        <img src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ND023/nd023_08.png" alt="Garmin 08"/>
+      </div>
+      <div class="compare-handle" id="cmp1-handle">
+        <div class="compare-knob">⇔</div>
+      </div>
+    </div>
+
+    <div class="project-credits">
+      <table>
+        <tr><td>Project</td><td>E-commerce Visual Strategy &amp; Multi-language Localization</td></tr>
+        <tr><td>Art Director</td><td>Wei-Xun Weng</td></tr>
+        <tr><td>Designers</td><td>Ping-Fang Tsai, Kuei-Nung Huang</td></tr>
+        <tr><td>Image Retoucher</td><td>Jen-Chun Wang</td></tr>
+        <tr><td>Client</td><td>Garmin Taiwan</td></tr>
+        <tr><td>Special Thanks</td><td>Yi-Shan Tsou</td></tr>
+        <tr><td>Year</td><td>2020</td></tr>
+      </table>
+    </div>
+  </div>
+</div>
+
+<script>
+function initCompare(wrapId, afterId){
+  const wrap=document.getElementById(wrapId);
+  const after=document.getElementById(afterId);
+  const afterImg=after.querySelector('img');
+  const handle=wrap.querySelector('.compare-handle');
+  let dragging=false;
+  function syncAfterImg(){afterImg.style.width=wrap.offsetWidth+'px';}
+  syncAfterImg();
+  window.addEventListener('resize',syncAfterImg);
+  function setPos(x){
+    const rect=wrap.getBoundingClientRect();
+    let pct=Math.max(0,Math.min(1,(x-rect.left)/rect.width));
+    after.style.width=(pct*100)+'%';
+    handle.style.left=(pct*100)+'%';
+  }
+  wrap.addEventListener('mousedown',e=>{dragging=true;setPos(e.clientX);e.preventDefault();});
+  window.addEventListener('mousemove',e=>{if(dragging)setPos(e.clientX);});
+  window.addEventListener('mouseup',()=>dragging=false);
+  wrap.addEventListener('touchstart',e=>{dragging=true;setPos(e.touches[0].clientX);},{passive:true});
+  window.addEventListener('touchmove',e=>{if(dragging)setPos(e.touches[0].clientX);},{passive:true});
+  window.addEventListener('touchend',()=>dragging=false);
+}
+initCompare('cmp1','cmp1-after');
+document.querySelectorAll('img[loading="lazy"]').forEach(img=>{
+  if(img.complete)img.classList.add('loaded');
+  else img.addEventListener('load',()=>img.classList.add('loaded'));
+});
+</script>
+</body>
+</html>
