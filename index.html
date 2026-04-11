@@ -14,17 +14,48 @@
   <link rel="icon" type="image/png" href="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ABOUT/img_3369.png"/>
   <link rel="stylesheet" href="style.css"/>
   <style>
-    /* liquid glass hover */
+    /* 整合優化：
+       1. 移除多餘的 !important 確保 transition-delay 生效
+       2. 增加行動端觸發延遲，讓使用者看清 Cover
+    */
     .hover-mask {
-      background: rgba(245,245,243,0) !important;
+      background: rgba(255,255,255,0);
       backdrop-filter: blur(0px) saturate(100%);
       -webkit-backdrop-filter: blur(0px) saturate(100%);
-      transition: background 0.5s ease, backdrop-filter 0.5s ease, -webkit-backdrop-filter 0.5s ease !important;
+      transition: all 0.6s cubic-bezier(0.2, 1, 0.3, 1);
+      transition-delay: 0s;
     }
+    
+    .hover-title {
+      transition: all 0.6s cubic-bezier(0.2, 1, 0.3, 1);
+      transition-delay: 0s;
+    }
+
+    /* PC 端：即時反應 */
     .card:hover .hover-mask {
-      background: rgba(245,245,243,0.45) !important;
-      backdrop-filter: blur(18px) saturate(180%);
-      -webkit-backdrop-filter: blur(18px) saturate(180%);
+      background: rgba(255,255,255,0.12);
+      backdrop-filter: blur(20px) saturate(150%);
+      -webkit-backdrop-filter: blur(20px) saturate(150%);
+      transition-delay: 0s;
+    }
+    .card:hover .hover-title {
+      transition-delay: 0.s;
+    }
+
+    /* 行動端：1.5秒延遲觸發 (由 JS 加入 .active 類別) */
+    .card.active .hover-mask {
+      background: rgba(255,255,255,0.12);
+      backdrop-filter: blur(20px) saturate(150%);
+      -webkit-backdrop-filter: blur(20px) saturate(150%);
+      transition-delay: 1.5s;
+    }
+    .card.active .hover-title {
+      transition-delay: 1.5s;
+    }
+
+    /* 離開狀態時立刻消失 */
+    .card .hover-mask, .card .hover-title {
+      transition-delay: 0s;
     }
   </style>
 </head>
@@ -368,12 +399,15 @@ const hts = document.querySelectorAll('.ht');
 
 function applyDrift(dx, dy) {
   hts.forEach(el => {
-    const ox = (dx * 2).toFixed(2);
-    const oy = (dy * 0.5).toFixed(2);
+    const ox = (dx * 2.5).toFixed(2); // 放大橫向位移感
+    const oy = (dy * 0.8).toFixed(2); 
+    
+    // 保留視覺 B 的精密層次感：紅藍色偏 + 黑色辨識底暈 + 白色散射光
     el.style.textShadow = `
-      ${-1.5 + parseFloat(ox)}px ${oy}px 0px rgba(255,63,0,0.65),
-      ${1.5 + parseFloat(ox)}px ${oy}px 0px rgba(0,229,255,0.65),
-      0px 0px 10px rgba(255,255,255,0.3)
+      ${-1.5 + parseFloat(ox)}px ${oy}px 0.3px rgba(255, 63, 0, 0.7),
+      ${1.5 + parseFloat(ox)}px ${oy}px 0.3px rgba(0, 229, 255, 0.7),
+      0px 0px 10px rgba(0, 0, 0, 0.35),
+      0px 0px 15px rgba(255, 255, 255, 0.4)
     `;
   });
 }
