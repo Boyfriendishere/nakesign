@@ -119,19 +119,26 @@ nav {
   position: absolute;
   inset: 0;
   z-index: 2;
-  background: rgba(255,255,255,0.0);
+  opacity: 0;
+  background:
+    radial-gradient(ellipse 80% 60% at 20% 80%, rgba(255,180,200,0.55) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 50% at 80% 70%, rgba(160,200,255,0.5) 0%, transparent 55%),
+    radial-gradient(ellipse 50% 40% at 55% 90%, rgba(200,255,210,0.45) 0%, transparent 50%),
+    radial-gradient(ellipse 70% 40% at 10% 60%, rgba(255,230,160,0.4) 0%, transparent 55%),
+    radial-gradient(ellipse 40% 30% at 70% 50%, rgba(220,180,255,0.4) 0%, transparent 50%),
+    rgba(255,255,255,0.12);
   backdrop-filter: blur(0px) saturate(100%);
   -webkit-backdrop-filter: blur(0px) saturate(100%);
-  transition: background 0.6s cubic-bezier(0.2,1,0.3,1),
-              backdrop-filter 0.6s cubic-bezier(0.2,1,0.3,1),
-              -webkit-backdrop-filter 0.6s cubic-bezier(0.2,1,0.3,1);
+  transition: opacity 0.65s cubic-bezier(0.2,1,0.3,1),
+              backdrop-filter 0.65s cubic-bezier(0.2,1,0.3,1),
+              -webkit-backdrop-filter 0.65s cubic-bezier(0.2,1,0.3,1);
 }
 
 .card:hover .hover-mask,
 .card.active .hover-mask {
-  background: rgba(255,255,255,0.05);
-  backdrop-filter: blur(20px) saturate(150%);
-  -webkit-backdrop-filter: blur(20px) saturate(150%);
+  opacity: 1;
+  backdrop-filter: blur(18px) saturate(140%);
+  -webkit-backdrop-filter: blur(18px) saturate(140%);
 }
 
 .hover-title {
@@ -165,34 +172,14 @@ nav {
   text-align: center;
   line-height: 1.6;
   font-family: 'Inter', 'Noto Sans TC', sans-serif;
-  color: rgba(255,255,255,0.92);
-  text-shadow:
-    0px -0.5px 0px rgba(255,255,255,0.3),
-    0px 0.5px 1px rgba(0,0,0,0.2),
-    0px 0px 0px rgba(255,63,0,0),
-    0px 0px 0px rgba(0,229,255,0);
-  transition:
-    text-shadow 0.5s cubic-bezier(0.2,1,0.3,1) 0s,
-    opacity 0.6s cubic-bezier(0.2,1,0.3,1) 0s;
-}
-
-.card:hover .ht,
-.card.active .ht {
-  text-shadow:
-    0px -0.5px 0px rgba(255,255,255,0.6),
-    0px 0.5px 1px rgba(0,0,0,0.25),
-    -2px 0px 4px rgba(255,63,0,0.7),
-    2px 0px 4px rgba(0,229,255,0.7),
-    0px 0px 12px rgba(255,255,255,0.15);
-  transition:
-    text-shadow 0.5s cubic-bezier(0.2,1,0.3,1) 0.3s,
-    opacity 0.6s cubic-bezier(0.2,1,0.3,1) 0s;
+  color: #111111;
+  text-shadow: 0 1px 0 rgba(255,255,255,0.6);
 }
 
 .hl {
   width: 24px;
   height: 0.5px;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+  background: linear-gradient(90deg, transparent, rgba(0,0,0,0.15), transparent);
 }
 
 /* ── STAGGERED GRID ENTRY — 每列間隔拉長，前9個有明顯層次 ── */
