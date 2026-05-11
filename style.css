@@ -142,9 +142,9 @@ nav {
   border-radius: 50%;
   pointer-events: none;
   opacity: 0;
-  transition: opacity 0.4s ease;
+  transition: opacity 0.5s ease;
   will-change: transform;
-  filter: blur(28px);
+  filter: blur(32px);
 }
 
 .card:hover .orb,
@@ -152,9 +152,13 @@ nav {
   opacity: 1;
 }
 
-@keyframes orbFloat1 {
-  0%   { transform: translate(0px, 0px) scale(1); }
-  100% { transform: translate(var(--dx), var(--dy)) scale(var(--ds)); }
+/* orb travels from left edge to right edge of card */
+@keyframes orbTraverse {
+  0%   { transform: translateX(var(--x-start)) translateY(var(--y-drift-0)) scale(var(--s0)); }
+  25%  { transform: translateX(var(--x-q1))    translateY(var(--y-drift-1)) scale(var(--s1)); }
+  50%  { transform: translateX(var(--x-q2))    translateY(var(--y-drift-2)) scale(var(--s0)); }
+  75%  { transform: translateX(var(--x-q3))    translateY(var(--y-drift-1)) scale(var(--s1)); }
+  100% { transform: translateX(var(--x-end))   translateY(var(--y-drift-0)) scale(var(--s0)); }
 }
 
 .hover-title {
