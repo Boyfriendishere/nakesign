@@ -265,6 +265,7 @@ const ORB_COLORS = [
   'rgba(200,150,255,0.68)',
   'rgba(255,200,140,0.60)',
   'rgba(140,230,255,0.65)',
+  'rgba(255,170,120,0.65)',
 ];
 
 function rand(min, max) { return min + Math.random() * (max - min); }
@@ -272,26 +273,43 @@ function rand(min, max) { return min + Math.random() * (max - min); }
 function createOrbs(mask) {
   if (mask.dataset.orbsReady) return;
   mask.dataset.orbsReady = '1';
-  const count = 5 + Math.floor(Math.random() * 2);
+
+  const count = 5 + Math.floor(Math.random() * 3); // 5–7 orbs
   for (let i = 0; i < count; i++) {
     const orb = document.createElement('div');
     orb.className = 'orb';
-    const size = rand(55, 105);
-    const x    = rand(5, 85);
-    const y    = rand(10, 85);
+
+    const size  = rand(50, 100);
+    const y     = rand(0, 80);   // vertical start position
     const color = ORB_COLORS[Math.floor(Math.random() * ORB_COLORS.length)];
-    const dur  = rand(3.5, 7).toFixed(2);
-    const delay = rand(0, 2).toFixed(2);
-    const dx   = rand(-25, 25).toFixed(1) + 'px';
-    const dy   = rand(-20, 20).toFixed(1) + 'px';
-    const ds   = rand(0.85, 1.18).toFixed(2);
+    const dur   = rand(5, 12).toFixed(2);   // speed: slower = more hypnotic
+    const delay = rand(-6, 0).toFixed(2);   // negative delay = already mid-journey on load
+
+    // Horizontal traverse: start off left (-60%) → end off right (150%)
+    // Each orb starts at a random phase so they're staggered
+    const xStart  = rand(-70, -30).toFixed(1) + '%';
+    const xEnd    = rand(130, 170).toFixed(1) + '%';
+    const xQ1     = rand(-10, 20).toFixed(1) + '%';
+    const xQ2     = rand(40, 70).toFixed(1) + '%';
+    const xQ3     = rand(90, 120).toFixed(1) + '%';
+
+    // Vertical drift: gentle sine-like wander
+    const yD0 = '0px';
+    const yD1 = rand(-18, 18).toFixed(1) + 'px';
+    const yD2 = rand(-10, 10).toFixed(1) + 'px';
+
+    const s0 = rand(0.9, 1.05).toFixed(2);
+    const s1 = rand(1.0, 1.15).toFixed(2);
+
     orb.style.cssText = `
       width:${size}%;height:${size}%;
-      left:${x}%;top:${y}%;
-      transform:translate(-50%,-50%);
+      left:0;top:${y}%;
       background:radial-gradient(circle,${color} 0%,transparent 65%);
-      --dx:${dx};--dy:${dy};--ds:${ds};
-      animation:orbFloat1 ${dur}s ease-in-out ${delay}s infinite alternate;
+      --x-start:${xStart};--x-end:${xEnd};
+      --x-q1:${xQ1};--x-q2:${xQ2};--x-q3:${xQ3};
+      --y-drift-0:${yD0};--y-drift-1:${yD1};--y-drift-2:${yD2};
+      --s0:${s0};--s1:${s1};
+      animation:orbTraverse ${dur}s linear ${delay}s infinite;
     `;
     mask.appendChild(orb);
   }
