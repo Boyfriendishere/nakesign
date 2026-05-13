@@ -186,11 +186,12 @@ nav {
   text-align: center;
   line-height: 1.7;
   font-family: 'Inter', 'Noto Sans TC', sans-serif;
-  color: #111111;
+  color: rgba(255,255,255,0.95);
   text-shadow:
-    0 0 12px rgba(255,255,255,0.9),
-    0 0 24px rgba(255,255,255,0.7),
-    0 0 40px rgba(255,255,255,0.5);
+    0 0 8px  rgba(255,255,255,1),
+    0 0 20px rgba(255,255,255,0.85),
+    0 0 40px rgba(255,255,255,0.6),
+    0 0 70px rgba(255,255,255,0.35);
 }
 
 .hl {
