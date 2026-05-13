@@ -187,11 +187,10 @@ nav {
   line-height: 1.7;
   font-family: 'Inter', 'Noto Sans TC', sans-serif;
   color: #111111;
-  background: rgba(255,255,255,0.55);
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
-  padding: 0.35em 0.7em;
-  border-radius: 4px;
+  text-shadow:
+    0 0 12px rgba(255,255,255,0.9),
+    0 0 24px rgba(255,255,255,0.7),
+    0 0 40px rgba(255,255,255,0.5);
 }
 
 .hl {
