@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&family=Noto+Sans+TC:wght@400;500&display=swap');
+/* 字型已移至 index.html 的 <head>(preconnect + link),載入較快,此處不再 @import */
 
 *, *::before, *::after {
   margin: 0;
@@ -73,6 +73,12 @@ nav {
 
 .nav-links a:hover { color: var(--text); }
 
+/* 鍵盤聚焦時的可見外框(無障礙) */
+a:focus-visible {
+  outline: 2px solid var(--text);
+  outline-offset: 3px;
+}
+
 /* ── PAGE FADE IN ── */
 .page-enter {
   opacity: 0;
@@ -110,9 +116,10 @@ nav {
 .cover[loading="lazy"] { opacity: 0; transition: opacity 0.4s ease, transform 0.9s cubic-bezier(.16,1,.3,1); }
 .cover.loaded { opacity: 1; }
 
+/* hover / active 時封面微放大(原本誤設為 scale(1),等於沒效果) */
 .card:hover .cover,
 .card.active .cover {
-  transform: scale(1);
+  transform: scale(1.05);
 }
 
 .hover-mask {
@@ -410,4 +417,19 @@ nav {
   .project-credits td:first-child { width: 120px; }
   .project-nav { padding: 2rem 1.25rem 3rem; flex-wrap: wrap; }
   .project-nav-home { order: -1; width: 100%; text-align: center; padding-bottom: 1rem; border-bottom: 0.5px solid var(--border); margin-bottom: 0.5rem; }
+}
+
+/* ── 尊重「減少動態效果」的系統偏好(無障礙) ── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  /* 關閉動畫後,確保圖片與內容仍然顯示 */
+  .page-enter,
+  .cover,
+  .cover[loading="lazy"],
+  .block-img img { opacity: 1 !important; }
 }
