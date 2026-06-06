@@ -1,4 +1,6 @@
-/* 字型已移至 index.html 的 <head>(preconnect + link),載入較快,此處不再 @import */
+/* 字型:保留 @import 讓全站(about / contact / 各專案頁)都吃得到字型。
+   首頁 index.html 另有 preconnect + link 加速首屏,瀏覽器會自動去重,不會重複下載。 */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&family=Noto+Sans+TC:wght@400;500&display=swap');
 
 *, *::before, *::after {
   margin: 0;
