@@ -155,6 +155,23 @@ a:focus-visible {
   opacity: 1;
 }
 
+/* cursor-tracking spotlight: lights up the dark mask where the pointer is */
+.spotlight {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  opacity: 0;
+  background: radial-gradient(circle 220px at var(--mx, 50%) var(--my, 50%), rgba(255,255,255,0.35), transparent 70%);
+  mix-blend-mode: overlay;
+  transition: opacity 0.35s ease;
+  pointer-events: none;
+}
+
+.card:hover .spotlight,
+.card.active .spotlight {
+  opacity: 1;
+}
+
 /* orb travels from left edge to right edge of card */
 @keyframes orbTraverse {
   0%   { transform: translateX(var(--x-start)) translateY(var(--y-drift-0)) scale(var(--s0)); }
