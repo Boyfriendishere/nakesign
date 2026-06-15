@@ -94,12 +94,26 @@
       padding-bottom: 4rem;
       border-bottom: 0.5px solid var(--border);
     }
-    .about-photo {
+    .about-photo-wrap {
+      position: relative;
       width: 100%; aspect-ratio: 3/4;
+      overflow: hidden;
+    }
+    .about-photo {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
       object-fit: cover; display: block;
       opacity: 0; transition: opacity 0.6s ease;
     }
     .about-photo.loaded { opacity: 1; }
+    .about-photo-bw { filter: grayscale(1); }
+    .about-photo-color {
+      -webkit-mask-image: radial-gradient(circle 140px at var(--mx, 50%) var(--my, 50%), black 0%, transparent 70%);
+      mask-image: radial-gradient(circle 140px at var(--mx, 50%) var(--my, 50%), black 0%, transparent 70%);
+      transition: opacity 0.3s ease;
+    }
+    .about-photo-color.loaded { opacity: 0; }
+    .about-photo-wrap:hover .about-photo-color.loaded { opacity: 1; }
     .about-intro {
       display: flex; flex-direction: column;
       justify-content: flex-end;
@@ -155,16 +169,31 @@
       margin-bottom: 0.4rem;
     }
 
-    .award-row {
+    .award-grid {
       display: grid;
-      grid-template-columns: 32px 1fr;
-      gap: 1rem;
-      padding: 0.5rem 0;
-      border-bottom: 0.5px solid var(--border);
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 0.75rem;
     }
-    .award-row:last-child { border-bottom: none; }
-    .award-year { font-size: 10px; color: var(--text-muted); letter-spacing: 0.08em; padding-top: 1px; }
+    .award-card {
+      display: flex; flex-direction: column; gap: 0.5rem;
+      padding: 1rem 1.1rem;
+      border: 0.5px solid var(--border);
+      border-left: 2px solid var(--border);
+      transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .award-card:hover {
+      border-color: rgba(0,0,0,0.18);
+      border-left-color: rgba(0,0,0,0.18);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 26px rgba(0,0,0,0.06);
+    }
+    .award-card.is-winner {
+      border-left-color: #c9a227;
+    }
+    .award-card.is-winner:hover { border-left-color: #c9a227; }
+    .award-year { font-size: 10px; color: var(--text-muted); letter-spacing: 0.14em; text-transform: uppercase; }
     .award-name { font-size: 12px; color: rgba(0,0,0,0.75); letter-spacing: 0.04em; line-height: 1.6; }
+    .award-card.is-winner .award-year { color: #c9a227; }
 
     .exp-item { padding: 0 0 1.75rem; margin-bottom: 1.75rem; border-bottom: 0.5px solid var(--border); }
     .exp-item:last-child { padding-bottom: 0; margin-bottom: 0; border-bottom: none; }
@@ -174,11 +203,20 @@
     .exp-role { font-size: 11px; color: rgba(0,0,0,0.45); letter-spacing: 0.06em; font-style: italic; margin-bottom: 6px; }
     .exp-desc { font-size: 11px; color: rgba(0,0,0,0.45); letter-spacing: 0.03em; line-height: 1.75; }
 
+    /* ── SCROLL REVEAL ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.7s cubic-bezier(.16,1,.3,1), transform 0.7s cubic-bezier(.16,1,.3,1);
+    }
+    .reveal.in-view { opacity: 1; transform: translateY(0); }
+
     @media (max-width: 700px) {
       .about-statement p { font-size: 22px; }
       .about-hero { grid-template-columns: 1fr; gap: 2rem; }
       .about-photo { max-width: 220px; }
       .about-section { grid-template-columns: 1fr; gap: 1rem; }
+      .award-grid { grid-template-columns: 1fr 1fr; }
     }
   </style>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-KD5VZ79GEN"></script>
@@ -209,9 +247,14 @@
   </div>
 
   <div class="about-hero">
-    <img class="about-photo" loading="eager" fetchpriority="high" decoding="async"
-         src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ABOUT/img_5569.jpg"
-         alt="Wei-Xun Weng"/>
+    <div class="about-photo-wrap">
+      <img class="about-photo about-photo-bw" loading="eager" fetchpriority="high" decoding="async"
+           src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ABOUT/img_5569.jpg"
+           alt="Wei-Xun Weng"/>
+      <img class="about-photo about-photo-color" loading="eager" decoding="async"
+           src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ABOUT/img_5569.jpg"
+           alt=""/>
+    </div>
     <div class="about-intro">
       <div class="about-name">Wei-Xun Weng</div>
       <div class="about-location">Taipei, Taiwan</div>
@@ -221,7 +264,7 @@
 
   <div class="about-sections">
 
-    <div class="about-section">
+    <div class="about-section reveal">
       <div class="section-label">Education</div>
       <div class="section-content">
         <div class="edu-item">
@@ -232,7 +275,7 @@
       </div>
     </div>
 
-    <div class="about-section">
+    <div class="about-section reveal">
       <div class="section-label">Skills</div>
       <div class="section-content">
         <div class="skill-tags">
@@ -246,19 +289,21 @@
       </div>
     </div>
 
-    <div class="about-section">
+    <div class="about-section reveal">
       <div class="section-label">Awards</div>
       <div class="section-content">
-        <div class="award-row"><div class="award-year">'18</div><div class="award-name">Golden Design Award — Finalist</div></div>
-        <div class="award-row"><div class="award-year">'18</div><div class="award-name">Golden Melody Awards (GMA) — Project Visual</div></div>
-        <div class="award-row"><div class="award-year">'21</div><div class="award-name">A' Design Award — Iron / Runner-up</div></div>
-        <div class="award-row"><div class="award-year">'22</div><div class="award-name">Creative Communication Award (C2A) — Finalist</div></div>
-        <div class="award-row"><div class="award-year">'23</div><div class="award-name">Muse Design Awards — Silver</div></div>
-        <div class="award-row"><div class="award-year">'25</div><div class="award-name">Red Dot Design Award — Winner</div></div>
+        <div class="award-grid">
+          <div class="award-card"><div class="award-year">'18</div><div class="award-name">Golden Design Award — Finalist</div></div>
+          <div class="award-card"><div class="award-year">'18</div><div class="award-name">Golden Melody Awards (GMA) — Project Visual</div></div>
+          <div class="award-card"><div class="award-year">'21</div><div class="award-name">A' Design Award — Iron / Runner-up</div></div>
+          <div class="award-card"><div class="award-year">'22</div><div class="award-name">Creative Communication Award (C2A) — Finalist</div></div>
+          <div class="award-card is-winner"><div class="award-year">'23</div><div class="award-name">Muse Design Awards — Silver</div></div>
+          <div class="award-card is-winner"><div class="award-year">'25</div><div class="award-name">Red Dot Design Award — Winner</div></div>
+        </div>
       </div>
     </div>
 
-    <div class="about-section">
+    <div class="about-section reveal">
       <div class="section-label">Experience</div>
       <div class="section-content">
 
@@ -317,6 +362,26 @@ document.querySelectorAll('.about-photo').forEach(img => {
   if (img.complete) { img.classList.add('loaded'); }
   else { img.addEventListener('load', () => img.classList.add('loaded')); }
 });
+
+const photoWrap = document.querySelector('.about-photo-wrap');
+if (photoWrap) {
+  photoWrap.addEventListener('pointermove', e => {
+    const r = photoWrap.getBoundingClientRect();
+    photoWrap.style.setProperty('--mx', `${e.clientX - r.left}px`);
+    photoWrap.style.setProperty('--my', `${e.clientY - r.top}px`);
+  });
+}
+
+const revealObserver = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('in-view');
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, { rootMargin: '0px 0px -10% 0px', threshold: 0.15 });
+
+document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 </script>
 </body>
 </html>
