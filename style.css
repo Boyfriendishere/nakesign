@@ -162,14 +162,16 @@ a:focus-visible {
   z-index: 3;
   opacity: 0;
   background: radial-gradient(circle 220px at var(--mx, 50%) var(--my, 50%), rgba(255,255,255,0.35), transparent 70%);
-  mix-blend-mode: overlay;
   transition: opacity 0.35s ease;
   pointer-events: none;
 }
 
-/* desktop only: mobile has no cursor to track, so .active (auto-trigger) is excluded */
+/* mix-blend-mode only applied while active: leaving it set at all times (even at
+   opacity:0) forces a blend context that washes out the cover image on some
+   mobile GPUs. desktop only: mobile has no cursor to track. */
 .card:hover .spotlight {
   opacity: 1;
+  mix-blend-mode: overlay;
 }
 
 /* orb travels from left edge to right edge of card */
