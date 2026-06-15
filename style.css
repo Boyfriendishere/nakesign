@@ -167,8 +167,8 @@ a:focus-visible {
   pointer-events: none;
 }
 
-.card:hover .spotlight,
-.card.active .spotlight {
+/* desktop only: mobile has no cursor to track, so .active (auto-trigger) is excluded */
+.card:hover .spotlight {
   opacity: 1;
 }
 
