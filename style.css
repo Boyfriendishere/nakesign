@@ -1,6 +1,5 @@
-/* 字型:保留 @import 讓全站(about / contact / 各專案頁)都吃得到字型。
-   首頁 index.html 另有 preconnect + link 加速首屏,瀏覽器會自動去重,不會重複下載。 */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&family=Noto+Sans+TC:wght@400;500&display=swap');
+/* 字型改由各頁 <head> 的 preconnect + <link> 載入(避免 @import 串聯阻塞:
+   下載 CSS → 才發現 @import → 再抓字型 CSS,平白多一輪 RTT)。 */
 
 *, *::before, *::after {
   margin: 0;
@@ -24,6 +23,10 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 html { scroll-behavior: smooth; }
+
+/* ── 跨頁轉場(View Transitions):同源 MPA 導航自動 cross-fade,
+   不支援的瀏覽器會直接忽略,屬漸進增強 ── */
+@view-transition { navigation: auto; }
 
 body {
   font-family: var(--font);
@@ -218,10 +221,11 @@ a:focus-visible {
   text-shadow: 0 1px 12px rgba(0,0,0,0.4);
 }
 
+/* 顯示在深色 hover 遮罩上,必須用白色才看得見 */
 .hl {
   width: 24px;
   height: 0.5px;
-  background: linear-gradient(90deg, transparent, rgba(0,0,0,0.15), transparent);
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.45), transparent);
 }
 
 /* ── STAGGERED GRID ENTRY — 每列間隔拉長，前9個有明顯層次 ── */
@@ -522,6 +526,7 @@ a:focus-visible {
 
 /* ── 尊重「減少動態效果」的系統偏好(無障礙) ── */
 @media (prefers-reduced-motion: reduce) {
+  @view-transition { navigation: none; }
   *, *::before, *::after {
     animation-duration: 0.001ms !important;
     animation-iteration-count: 1 !important;

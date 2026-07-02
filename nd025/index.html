@@ -16,6 +16,9 @@
   <meta name="twitter:image" content="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ND025/nd025_cover.png"/>
   <meta name="twitter:card" content="summary_large_image"/>
   <link rel="icon" type="image/png" href="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ABOUT/img_3369.png"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&family=Noto+Sans+TC:wght@400;500&display=swap"/>
   <link rel="stylesheet" href="/style.css"/>
   <style>
     .block-gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-bottom:2px;cursor:pointer;}
@@ -124,5 +127,6 @@ lb.addEventListener('click',e=>{if(e.target===lb)closeLb();});
 document.addEventListener('keydown',e=>{if(!lb.classList.contains('active'))return;if(e.key==='Escape')closeLb();if(e.key==='ArrowLeft')goTo(cur-1);if(e.key==='ArrowRight')goTo(cur+1);});
 document.querySelectorAll('img[loading="lazy"]').forEach(img=>{if(img.complete)img.classList.add('loaded');else img.addEventListener('load',()=>img.classList.add('loaded'));});
 </script>
+<script>/* Lightbox 觸控滑動切換 */(function(){const lb=document.getElementById('lightbox');if(!lb)return;let tX=0,tY=0;lb.addEventListener('touchstart',e=>{tX=e.changedTouches[0].clientX;tY=e.changedTouches[0].clientY;},{passive:true});lb.addEventListener('touchend',e=>{const dx=e.changedTouches[0].clientX-tX,dy=e.changedTouches[0].clientY-tY;if(Math.abs(dx)>50&&Math.abs(dx)>Math.abs(dy)&&typeof goTo==='function')goTo(dx>0?cur-1:cur+1);},{passive:true});})();</script>
 </body>
 </html>
