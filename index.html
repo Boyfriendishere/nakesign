@@ -6,11 +6,11 @@
   <title>Nake Design</title>
   <meta name="description"        content="Defining the Order of Design."/>
   <meta name="theme-color"        content="#f5f5f3"/>
-  <link rel="canonical"           href="https://nakesign.pages.dev/"/>
+  <link rel="canonical"           href="/"/>
 
   <!-- Open Graph -->
   <meta property="og:type"        content="website"/>
-  <meta property="og:url"         content="https://nakesign.pages.dev/"/>
+  <meta property="og:url"         content="/"/>
   <meta property="og:site_name"   content="Nake Design"/>
   <meta property="og:locale"      content="zh_TW"/>
   <meta property="og:title"       content="Nake Design"/>
@@ -26,17 +26,15 @@
   <meta name="google-site-verification" content="f1OIA2M_eKxta-r8jFqDRatQ30_Wb2Zza2t0S-gkN7Y"/>
   <link rel="icon" type="image/png" href="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ABOUT/img_3369.png"/>
 
-  <!-- Preconnect: 字型 + R2 圖床,讓資源更早開始下載 -->
+  <!-- Preconnect: 字型 + R2 圖床 -->
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link rel="preconnect" href="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev" crossorigin/>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&family=Noto+Sans+TC:wght@400;500&display=swap"/>
-
-  <link rel="stylesheet" href="style.css"/>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&family=Noto+Sans+TC:wght@400;500&display=swap"/>
 
   <!-- 結構化資料 -->
   <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"Organization","name":"Nake Design","url":"https://nakesign.pages.dev/","logo":"https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ABOUT/img_3369.png","description":"Defining the Order of Design."}
+  {"@context":"https://schema.org","@type":"Organization","name":"Nake Design","url":"/","logo":"https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ABOUT/img_3369.png","description":"Defining the Order of Design."}
   </script>
 
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-KD5VZ79GEN"></script>
@@ -46,8 +44,154 @@
     gtag('js', new Date());
     gtag('config', 'G-KD5VZ79GEN');
   </script>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#f5f5f3;--text:#111;--text-muted:rgba(0,0,0,0.35);--border:rgba(0,0,0,0.08);
+  --font:'Inter','Noto Sans TC',-apple-system,BlinkMacSystemFont,sans-serif;
+}
+@view-transition{navigation:auto}
+body{font-family:var(--font);background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body.smooth{overflow:hidden;height:100vh}       /* 絲滑模式:捲動由 spacer 提供 */
+body.smooth #spacer{position:absolute;top:0;left:0;width:1px}
+#smoothWrap{position:relative;z-index:2}
+body.smooth #smoothWrap{position:fixed;top:0;left:0;right:0;will-change:transform}
+body.smooth{overflow:visible;height:auto}       /* 修正:body 保持可捲,由 spacer 撐高 */
+
+/* ── 背景:液態光暈 ── */
+.bg-field{position:fixed;inset:-20vh 0;z-index:0;pointer-events:none;filter:blur(70px) saturate(130%)}
+.blob{position:absolute;border-radius:50%;will-change:transform;animation:drift var(--dur) ease-in-out var(--delay) infinite alternate}
+.blob:nth-child(1){width:44vw;height:44vw;left:-10vw;top:4vh;background:radial-gradient(circle,rgba(255,120,160,0.4),transparent 65%);--dur:19s;--delay:0s}
+.blob:nth-child(2){width:38vw;height:38vw;right:-8vw;top:28vh;background:radial-gradient(circle,rgba(90,170,255,0.38),transparent 65%);--dur:23s;--delay:-7s}
+.blob:nth-child(3){width:34vw;height:34vw;left:20vw;top:64vh;background:radial-gradient(circle,rgba(255,200,80,0.32),transparent 65%);--dur:21s;--delay:-12s}
+.blob:nth-child(4){width:36vw;height:36vw;right:2vw;top:92vh;background:radial-gradient(circle,rgba(190,120,255,0.36),transparent 65%);--dur:25s;--delay:-4s}
+@keyframes drift{from{transform:translate3d(0,0,0) scale(1)}to{transform:translate3d(6vw,-5vh,0) scale(1.12)}}
+.grain{position:fixed;inset:0;z-index:1;pointer-events:none;opacity:0.35;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeComponentTransfer%3E%3CfeFuncA type='linear' slope='0.05'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+
+/* ── 玻璃膠囊導覽列 ── */
+nav{position:fixed;top:18px;left:50%;transform:translateX(-50%);z-index:100;display:flex;align-items:center;gap:2.2rem;padding:0.8rem 1.8rem;border-radius:999px;background:rgba(255,255,255,0.38);backdrop-filter:blur(26px) saturate(180%);-webkit-backdrop-filter:blur(26px) saturate(180%);border:1px solid rgba(255,255,255,0.65);box-shadow:0 12px 36px rgba(0,0,0,0.10),inset 0 1px 0 rgba(255,255,255,0.85);white-space:nowrap}
+.logo{font-size:13px;font-weight:700;letter-spacing:0.12em;color:var(--text);text-decoration:none;text-transform:uppercase}
+.nav-links{display:flex;gap:1.6rem}
+.nav-links a{font-size:12px;color:var(--text-muted);text-decoration:none;letter-spacing:0.1em;text-transform:uppercase;transition:color 0.25s}
+.nav-links a:hover{color:var(--text)}
+a:focus-visible{outline:2px solid var(--text);outline-offset:3px}
+
+/* ── 捲動進度線(髮絲) ── */
+#progress{position:fixed;bottom:0;left:0;height:2px;width:0;z-index:100;background:linear-gradient(90deg,rgba(17,17,17,0.5),rgba(17,17,17,0.25));pointer-events:none}
+
+/* ── 三欄視差長流 ── */
+.stream{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:14px;
+  padding:96px 14px 0;
+  cursor:none;
+  align-items:start;
+}
+.col{display:flex;flex-direction:column;gap:14px;will-change:transform;transform-origin:center}
+.col:nth-child(1){padding-top:110px}
+.col:nth-child(3){padding-top:220px}
+
+.card{position:relative;overflow:hidden;display:block;text-decoration:none;border-radius:16px;
+  aspect-ratio:1/1;
+  opacity:0;transform:translateY(36px);
+  transition:opacity 0.9s cubic-bezier(.16,1,.3,1),transform 0.9s cubic-bezier(.16,1,.3,1);
+}
+.card.tall{aspect-ratio:4/5}
+.card.in-view{opacity:1;transform:translateY(0)}
+
+/* 格內視差:media 比格子高,JS 推 translateY */
+.media{position:absolute;inset:-9% 0;will-change:transform}
+.cover{width:100%;height:100%;object-fit:cover;display:block;
+  transform:scale(1.15);opacity:0;
+  transition:transform 1.2s cubic-bezier(.16,1,.3,1),opacity 0.5s ease;
+}
+.card.in-view .cover.loaded{transform:scale(1);opacity:1}
+.card:hover .cover.loaded{transform:scale(1.05)}
+
+/* hover 系統 */
+.hover-mask{position:absolute;inset:0;z-index:2;opacity:0;background:rgba(0,0,0,0.52);transition:opacity 0.55s cubic-bezier(0.2,1,0.3,1);overflow:hidden}
+.card:hover .hover-mask,.card.active .hover-mask{opacity:1}
+.orb{position:absolute;border-radius:50%;pointer-events:none;opacity:0;transition:opacity 0.5s ease;will-change:transform;filter:blur(32px)}
+.card:hover .orb,.card.active .orb{opacity:1}
+.spotlight{position:absolute;inset:0;z-index:3;opacity:0;background:radial-gradient(circle 220px at var(--mx,50%) var(--my,50%),rgba(255,255,255,0.35),transparent 70%);transition:opacity 0.35s ease;pointer-events:none}
+.card:hover .spotlight{opacity:1;mix-blend-mode:overlay}
+@keyframes orbTraverse{
+  0%{transform:translateX(var(--x-start)) translateY(var(--y-drift-0)) scale(var(--s0))}
+  25%{transform:translateX(var(--x-q1)) translateY(var(--y-drift-1)) scale(var(--s1))}
+  50%{transform:translateX(var(--x-q2)) translateY(var(--y-drift-2)) scale(var(--s0))}
+  75%{transform:translateX(var(--x-q3)) translateY(var(--y-drift-1)) scale(var(--s1))}
+  100%{transform:translateX(var(--x-end)) translateY(var(--y-drift-0)) scale(var(--s0))}
+}
+.hover-title{position:absolute;inset:0;z-index:3;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:10px;opacity:0;transform:translateY(20px);transition:opacity 0.6s cubic-bezier(0.2,1,0.3,1),transform 0.6s cubic-bezier(0.2,1,0.3,1);pointer-events:none;padding:1.5rem}
+.card:hover .hover-title,.card.active .hover-title{opacity:1;transform:translateY(0)}
+.ht{font-size:20px;font-weight:400;letter-spacing:0.1em;text-transform:uppercase;text-align:center;line-height:1.7;color:rgba(255,255,255,0.95);text-shadow:0 1px 12px rgba(0,0,0,0.4)}
+.hl{width:24px;height:0.5px;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.45),transparent)}
+
+/* ── 液態透鏡游標(真放大折射,與 about hero 同原理) ── */
+#cursor{
+  position:fixed;top:0;left:0;z-index:999;pointer-events:none;
+  width:22px;height:22px;border-radius:50%;
+  backdrop-filter:blur(2.5px) saturate(200%) brightness(1.05);
+  -webkit-backdrop-filter:blur(2.5px) saturate(200%) brightness(1.05);
+  border:1px solid rgba(255,255,255,0.75);
+  box-shadow:0 22px 52px rgba(0,0,0,0.18),
+    inset 0 1px 1px rgba(255,255,255,0.9),
+    inset 0 -12px 24px rgba(255,255,255,0.28),
+    inset 0 10px 22px rgba(0,0,0,0.05);
+  opacity:0;overflow:hidden;
+  transition:width 0.45s cubic-bezier(.16,1,.3,1),height 0.45s cubic-bezier(.16,1,.3,1),opacity 0.25s ease;
+  will-change:transform;
+}
+/* 鏡內放大層:即時重繪游標下方的作品 */
+#cursor .zoom{position:absolute;z-index:1;object-fit:cover;display:none;filter:saturate(1.25) contrast(1.04);will-change:left,top,width,height}
+/* 彩虹色散邊 */
+#cursor::after{content:'';position:absolute;inset:0;z-index:2;border-radius:50%;
+  background:conic-gradient(from 20deg,rgba(255,120,160,0.35),rgba(90,170,255,0.35),rgba(100,255,180,0.3),rgba(255,200,80,0.32),rgba(190,120,255,0.35),rgba(255,120,160,0.35));
+  -webkit-mask:radial-gradient(circle,transparent 58%,#000 76%,transparent 96%);
+  mask:radial-gradient(circle,transparent 58%,#000 76%,transparent 96%);
+  mix-blend-mode:overlay}
+#cursor.on{opacity:1}
+#cursor.view{width:130px;height:130px}
+@media (hover:none){#cursor{display:none}.stream{cursor:auto}}
+
+/* ── 玻璃頁尾 ── */
+.footer-wrap{max-width:920px;margin:0 auto;padding:6rem 2rem 5rem}
+.footer-card{position:relative;text-align:center;border-radius:26px;padding:4.5rem 2.8rem;background:rgba(255,255,255,0.38);backdrop-filter:blur(28px) saturate(170%);-webkit-backdrop-filter:blur(28px) saturate(170%);border:1px solid rgba(255,255,255,0.65);box-shadow:0 24px 60px rgba(0,0,0,0.09),inset 0 1px 0 rgba(255,255,255,0.85);overflow:hidden;opacity:0;transform:translateY(36px);transition:opacity 0.8s cubic-bezier(.16,1,.3,1),transform 0.8s cubic-bezier(.16,1,.3,1)}
+.footer-card.in-view{opacity:1;transform:translateY(0)}
+.footer-card::before{content:'';position:absolute;top:0;left:8%;right:8%;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.95),transparent)}
+.footer-line{font-size:clamp(22px,3.6vw,34px);font-weight:700;letter-spacing:0.02em;margin-bottom:2rem}
+.footer-btn{display:inline-flex;align-items:center;gap:10px;font-size:11px;font-weight:500;letter-spacing:0.22em;text-transform:uppercase;color:var(--text);text-decoration:none;padding:1rem 2.2rem;border-radius:999px;background:rgba(255,255,255,0.55);border:1px solid rgba(255,255,255,0.85);box-shadow:0 10px 28px rgba(0,0,0,0.08),inset 0 1px 0 rgba(255,255,255,0.95);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);transition:transform 0.35s cubic-bezier(.16,1,.3,1),box-shadow 0.35s ease}
+.footer-btn:hover{transform:translateY(-3px);box-shadow:0 18px 44px rgba(0,0,0,0.13),inset 0 1px 0 rgba(255,255,255,0.95)}
+.footer-btn i{font-style:normal;transition:transform 0.35s cubic-bezier(.16,1,.3,1)}
+.footer-btn:hover i{transform:translateX(4px)}
+.footer-meta{display:flex;justify-content:space-between;align-items:center;padding:2rem 0.5rem 0;font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-muted)}
+
+/* ── RWD ── */
+@media (max-width:720px){
+  /* 手機減負:光暈減半、模糊減弱、關閉漂移動畫(靜態光暈視覺相近但 GPU 成本大降) */
+  .bg-field{filter:blur(46px) saturate(125%)}
+  .blob{animation:none}
+  .blob:nth-child(3),.blob:nth-child(4){display:none}
+  .stream{grid-template-columns:repeat(2,1fr);gap:10px;padding:84px 10px 0}
+  .col:nth-child(1){padding-top:70px}
+  .col:nth-child(3){display:contents}
+  .ht{font-size:15px}
+  .footer-meta{flex-direction:column;gap:0.4rem}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:0.001ms!important;animation-iteration-count:1!important;transition-duration:0.001ms!important;scroll-behavior:auto!important}
+  .card,.footer-card{opacity:1!important;transform:none!important}
+  .cover{opacity:1!important;transform:none!important}
+  .col,.media{transform:none!important}
+  #cursor,#progress{display:none}.stream{cursor:auto}
+}
+</style>
 </head>
 <body>
+
+<div class="bg-field" aria-hidden="true"><div class="blob"></div><div class="blob"></div><div class="blob"></div><div class="blob"></div></div>
+<div class="grain" aria-hidden="true"></div>
+
 <nav aria-label="主導覽">
   <a class="logo" href="/">NAKE DESIGN</a>
   <div class="nav-links">
@@ -55,46 +199,231 @@
     <a href="/contact/">Contact</a>
   </div>
 </nav>
-<main class="grid page-enter">
-  <a class="card" href="/nd036/"><img class="cover" loading="eager" fetchpriority="high" decoding="async" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/Ncover/nd036_cover.webp" alt="U41"/><div class="hover-mask"></div><div class="spotlight"></div><div class="hover-title"><div class="ht">U41</div><div class="hl"></div></div></a>
-  <a class="card" href="/nd035/"><img class="cover" loading="eager" fetchpriority="high" decoding="async" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/Ncover/nd035_cover.webp" alt="菜霸子 VEGEKING"/><div class="hover-mask"></div><div class="spotlight"></div><div class="hover-title"><div class="ht">菜霸子 VEGEKING</div><div class="hl"></div></div></a>
-  <a class="card" href="/nd034/"><img class="cover" loading="eager" fetchpriority="high" decoding="async" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/Ncover/nd034_cover.webp" alt="北港朝天宮 BEIGANG CHAOTIAN GONG"/><div class="hover-mask"></div><div class="spotlight"></div><div class="hover-title"><div class="ht">北港朝天宮<br>BEIGANG CHAOTIAN GONG</div><div class="hl"></div></div></a>
-  <a class="card" href="/nd033/"><img class="cover" loading="lazy" decoding="async" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/Ncover/nd033_cover.webp" alt="冬瓜行旅 MELON LIFE TRAVEL"/><div class="hover-mask"></div><div class="spotlight"></div><div class="hover-title"><div class="ht">冬瓜行旅 MELON LIFE TRAVEL</div><div class="hl"></div></div></a>
-  <a class="card" href="/nd032/"><img class="cover" loading="lazy" decoding="async" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/Ncover/nd032_cover.webp" alt="純綠舍 PURE JADE"/><div class="hover-mask"></div><div class="spotlight"></div><div class="hover-title"><div class="ht">純綠舍 PURE JADE</div><div class="hl"></div></div></a>
-  <a class="card" href="/nd031/"><img class="cover" loading="lazy" decoding="async" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/Ncover/nd031_cover.webp" alt="名師補習班 MEANSCPA"/><div class="hover-mask"></div><div class="spotlight"></div><div class="hover-title"><div class="ht">名師補習班 MEANSCPA</div><div class="hl"></div></div></a>
-  <a class="card" href="/nd030/"><img class="cover" loading="lazy" decoding="async" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/Ncover/nd030_cover.webp" alt="攝影 PHOTOGRAPHY"/><div class="hover-mask"></div><div class="spotlight"></div><div class="hover-title"><div class="ht">攝影 PHOTOGRAPHY</div><div class="hl"></div></div></a>
-  <a class="card" href="/nd029/"><img class="cover" loading="lazy" decoding="async" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/Ncover/nd029_cover.webp" alt="日曜日 SUNDAY"/><div class="hover-mask"></div><div class="spotlight"></div><div class="hover-title"><div class="ht">日曜日 SUNDAY</div><div class="hl"></div></div></a>
-  <a class="card" href="/nd028/"><img class="cover" loading="lazy" decoding="async" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/Ncover/nd028_cover.webp" alt="多喝水 MOREWATER"/><div class="hover-mask"></div><div class="spotlight"></div><div class="hover-title"><div class="ht">多喝水 MOREWATER</div><div class="hl"></div></div></a>
-  <a class="card" href="/nd027/"><img class="cover" loading="lazy" decoding="async" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/Ncover/nd027_cover.webp" alt="國立中山大學 NATIONAL SUN YAT-SEN UNIVERSITY"/><div class="hover-mask"></div><div class="spotlight"></div><div class="hover-title"><div class="ht">國立中山大學<br>NATIONAL SUN YAT-SEN UNIVERSITY</div><div class="hl"></div></div></a>
-  <a class="card" href="/nd026/"><img class="cover" loading="lazy" decoding="async" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/Ncover/nd026_cover.webp" alt="華信航空 MANDARIN AIRLINES"/><div class="hover-mask"></div><div class="spotlight"></div><div class="hover-title"><div class="ht">華信航空 MANDARIN AIRLINES</div><div class="hl"></div></div></a>
-  <a class="card" href="/nd025/"><img class="cover" loading="lazy" decoding="async" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/Ncover/nd025_cover.webp" alt="一起哈拉 CILAMITAY"/><div class="hover-mask"></div><div class="spotlight"></div><div class="hover-title"><div class="ht">一起哈拉 CILAMITAY</div><div class="hl"></div></div></a>
-  <a class="card" href="/nd024/"><img class="cover" loading="lazy" decoding="async" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/Ncover/nd024_cover.webp" alt="川山蜀 CHUAN SHAN SHU"/><div class="hover-mask"></div><div class="spotlight"></div><div class="hover-title"><div class="ht">川山蜀 CHUAN SHAN SHU</div><div class="hl"></div></div></a>
-  <a class="card" href="/nd023/"><img class="cover" loading="lazy" decoding="async" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/Ncover/nd023_cover.webp" alt="GARMIN"/><div class="hover-mask"></div><div class="spotlight"></div><div class="hover-title"><div class="ht">GARMIN</div><div class="hl"></div></div></a>
-  <a class="card" href="/nd022/"><img class="cover" loading="lazy" decoding="async" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/Ncover/nd022_cover.webp" alt="富邦人壽 FUBON LIFE"/><div class="hover-mask"></div><div class="spotlight"></div><div class="hover-title"><div class="ht">富邦人壽 FUBON LIFE</div><div class="hl"></div></div></a>
-  <a class="card" href="/nd021/"><img class="cover" loading="lazy" decoding="async" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/Ncover/nd021_cover.webp" alt="重點 EL PUNTO"/><div class="hover-mask"></div><div class="spotlight"></div><div class="hover-title"><div class="ht">重點 EL PUNTO</div><div class="hl"></div></div></a>
-  <a class="card" href="/nd020/"><img class="cover" loading="lazy" decoding="async" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/Ncover/nd020_cover.webp" alt="味亦美 WIM"/><div class="hover-mask"></div><div class="spotlight"></div><div class="hover-title"><div class="ht">味亦美 WIM</div><div class="hl"></div></div></a>
-  <a class="card" href="/nd019/"><img class="cover" loading="lazy" decoding="async" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/Ncover/nd019_cover.webp" alt="藍裙 BLUE SKIRT"/><div class="hover-mask"></div><div class="spotlight"></div><div class="hover-title"><div class="ht">藍裙 BLUE SKIRT</div><div class="hl"></div></div></a>
-  <a class="card" href="/nd018/"><img class="cover" loading="lazy" decoding="async" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/Ncover/nd018_cover.webp" alt="左阜右邑 RIGHT AND LEFT"/><div class="hover-mask"></div><div class="spotlight"></div><div class="hover-title"><div class="ht">左阜右邑 RIGHT AND LEFT</div><div class="hl"></div></div></a>
-  <a class="card" href="/nd017/"><img class="cover" loading="lazy" decoding="async" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/Ncover/nd017_cover.webp" alt="華南銀行 HUA NAN BANK"/><div class="hover-mask"></div><div class="spotlight"></div><div class="hover-title"><div class="ht">華南銀行 HUA NAN BANK</div><div class="hl"></div></div></a>
-  <a class="card" href="/nd016/"><img class="cover" loading="lazy" decoding="async" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/Ncover/nd016_cover.webp" alt="台積電 TSMC"/><div class="hover-mask"></div><div class="spotlight"></div><div class="hover-title"><div class="ht">台積電 TSMC</div><div class="hl"></div></div></a>
-  <a class="card" href="/nd015/"><img class="cover" loading="lazy" decoding="async" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/Ncover/nd015_cover.webp" alt="瑪蓋丹 MAGAITAN"/><div class="hover-mask"></div><div class="spotlight"></div><div class="hover-title"><div class="ht">瑪蓋丹 MAGAITAN</div><div class="hl"></div></div></a>
-  <a class="card" href="/nd014/"><img class="cover" loading="lazy" decoding="async" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/Ncover/nd014_cover.webp" alt="本菓綱目 BENGO JUICE"/><div class="hover-mask"></div><div class="spotlight"></div><div class="hover-title"><div class="ht">本菓綱目 BENGO JUICE</div><div class="hl"></div></div></a>
-  <a class="card" href="/nd013/"><img class="cover" loading="lazy" decoding="async" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/Ncover/nd013_cover.webp" alt="中華電信 CHT"/><div class="hover-mask"></div><div class="spotlight"></div><div class="hover-title"><div class="ht">中華電信 CHT</div><div class="hl"></div></div></a>
-  <a class="card" href="/nd012/"><img class="cover" loading="lazy" decoding="async" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/Ncover/nd012_cover.webp" alt="國立體育大學 NATIONAL TAIWAN SPORT UNIVERSITY"/><div class="hover-mask"></div><div class="spotlight"></div><div class="hover-title"><div class="ht">國立體育大學<br>NATIONAL TAIWAN SPORT UNIVERSITY</div><div class="hl"></div></div></a>
-  <a class="card" href="/nd011/"><img class="cover" loading="lazy" decoding="async" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/Ncover/nd011_cover.webp" alt="台雞店 TSCC"/><div class="hover-mask"></div><div class="spotlight"></div><div class="hover-title"><div class="ht">台雞店 TSCC</div><div class="hl"></div></div></a>
-  <a class="card" href="/nd010/"><img class="cover" loading="lazy" decoding="async" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/Ncover/nd010_cover.webp" alt="巴拉圭駐台大使館 EMBASSY OF PARAGUAY IN ROC (TAIWAN)"/><div class="hover-mask"></div><div class="spotlight"></div><div class="hover-title"><div class="ht">巴拉圭駐台大使館<br>EMBASSY OF PARAGUAY IN ROC (TAIWAN)</div><div class="hl"></div></div></a>
-  <a class="card" href="/nd009/"><img class="cover" loading="lazy" decoding="async" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/Ncover/nd009_cover.webp" alt="KAWAJUN"/><div class="hover-mask"></div><div class="spotlight"></div><div class="hover-title"><div class="ht">KAWAJUN</div><div class="hl"></div></div></a>
-  <a class="card" href="/nd008/"><img class="cover" loading="lazy" decoding="async" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/Ncover/nd008_cover.webp" alt="施巴 SEBAMED"/><div class="hover-mask"></div><div class="spotlight"></div><div class="hover-title"><div class="ht">施巴 SEBAMED</div><div class="hl"></div></div></a>
-  <a class="card" href="/nd007/"><img class="cover" loading="lazy" decoding="async" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/Ncover/nd007_cover.webp" alt="新北市立美術館 NEW TAIPEI CITY ART MUSEUM"/><div class="hover-mask"></div><div class="spotlight"></div><div class="hover-title"><div class="ht">新北市立美術館<br>NEW TAIPEI CITY ART MUSEUM</div><div class="hl"></div></div></a>
-  <a class="card" href="/nd006/"><img class="cover" loading="lazy" decoding="async" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/Ncover/nd006_cover.webp" alt="寶哥麻花捲 BAOGE TWIST ROLLS"/><div class="hover-mask"></div><div class="spotlight"></div><div class="hover-title"><div class="ht">寶哥麻花捲 BAOGE TWIST ROLLS</div><div class="hl"></div></div></a>
-  <a class="card" href="/nd005/"><img class="cover" loading="lazy" decoding="async" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/Ncover/nd005_cover.webp" alt="一大塑膠 I.TA PLASTICS"/><div class="hover-mask"></div><div class="spotlight"></div><div class="hover-title"><div class="ht">一大塑膠 I.TA PLASTICS</div><div class="hl"></div></div></a>
-  <a class="card" href="/nd004/"><img class="cover" loading="lazy" decoding="async" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/Ncover/nd004_cover.webp" alt="彼得羅夫 PETER THOMAS ROTH"/><div class="hover-mask"></div><div class="spotlight"></div><div class="hover-title"><div class="ht">彼得羅夫 PETER THOMAS ROTH</div><div class="hl"></div></div></a>
-  <a class="card" href="/nd003/"><img class="cover" loading="lazy" decoding="async" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/Ncover/nd003_cover.webp" alt="科麗研 LA COLLINE"/><div class="hover-mask"></div><div class="spotlight"></div><div class="hover-title"><div class="ht">科麗研 LA COLLINE</div><div class="hl"></div></div></a>
-  <a class="card" href="/nd002/"><img class="cover" loading="lazy" decoding="async" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/Ncover/nd002_cover.webp" alt="維娜斯 VENUS"/><div class="hover-mask"></div><div class="spotlight"></div><div class="hover-title"><div class="ht">維娜斯 VENUS</div><div class="hl"></div></div></a>
-  <a class="card" href="/nd001/"><img class="cover" loading="lazy" decoding="async" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/Ncover/nd001_cover.webp" alt="上報 UP MEDIA"/><div class="hover-mask"></div><div class="spotlight"></div><div class="hover-title"><div class="ht">上報 UP MEDIA</div><div class="hl"></div></div></a>
+
+<div id="progress" aria-hidden="true"></div>
+
+<div id="smoothWrap">
+<main class="stream" id="stream">
+  <div class="col" data-f="0.05" data-sk="1.0">
+    <a class="card tall" href="/nd035/">
+      <div class="media"><img class="cover" loading="eager" fetchpriority="high" decoding="async" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/Ncover/nd035_cover.webp" alt="菜霸子 VEGEKING"/></div>
+      <div class="hover-mask"></div><div class="spotlight"></div>
+      <div class="hover-title"><div class="ht">菜霸子 VEGEKING</div><div class="hl"></div></div>
+    </a>
+    <a class="card" href="/nd032/">
+      <div class="media"><img class="cover" loading="lazy" decoding="async" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/Ncover/nd032_cover.webp" alt="純綠舍 PURE JADE"/></div>
+      <div class="hover-mask"></div><div class="spotlight"></div>
+      <div class="hover-title"><div class="ht">純綠舍 PURE JADE</div><div class="hl"></div></div>
+    </a>
+    <a class="card tall" href="/nd029/">
+      <div class="media"><img class="cover" loading="lazy" decoding="async" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/Ncover/nd029_cover.webp" alt="日曜日 SUNDAY"/></div>
+      <div class="hover-mask"></div><div class="spotlight"></div>
+      <div class="hover-title"><div class="ht">日曜日 SUNDAY</div><div class="hl"></div></div>
+    </a>
+    <a class="card" href="/nd026/">
+      <div class="media"><img class="cover" loading="lazy" decoding="async" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/Ncover/nd026_cover.webp" alt="華信航空 MANDARIN AIRLINES"/></div>
+      <div class="hover-mask"></div><div class="spotlight"></div>
+      <div class="hover-title"><div class="ht">華信航空 MANDARIN AIRLINES</div><div class="hl"></div></div>
+    </a>
+    <a class="card tall" href="/nd023/">
+      <div class="media"><img class="cover" loading="lazy" decoding="async" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/Ncover/nd023_cover.webp" alt="GARMIN"/></div>
+      <div class="hover-mask"></div><div class="spotlight"></div>
+      <div class="hover-title"><div class="ht">GARMIN</div><div class="hl"></div></div>
+    </a>
+    <a class="card" href="/nd020/">
+      <div class="media"><img class="cover" loading="lazy" decoding="async" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/Ncover/nd020_cover.webp" alt="味亦美 WIM"/></div>
+      <div class="hover-mask"></div><div class="spotlight"></div>
+      <div class="hover-title"><div class="ht">味亦美 WIM</div><div class="hl"></div></div>
+    </a>
+    <a class="card tall" href="/nd017/">
+      <div class="media"><img class="cover" loading="lazy" decoding="async" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/Ncover/nd017_cover.webp" alt="華南銀行 HUA NAN BANK"/></div>
+      <div class="hover-mask"></div><div class="spotlight"></div>
+      <div class="hover-title"><div class="ht">華南銀行 HUA NAN BANK</div><div class="hl"></div></div>
+    </a>
+    <a class="card" href="/nd014/">
+      <div class="media"><img class="cover" loading="lazy" decoding="async" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/Ncover/nd014_cover.webp" alt="本菓綱目 BENGO JUICE"/></div>
+      <div class="hover-mask"></div><div class="spotlight"></div>
+      <div class="hover-title"><div class="ht">本菓綱目 BENGO JUICE</div><div class="hl"></div></div>
+    </a>
+    <a class="card tall" href="/nd011/">
+      <div class="media"><img class="cover" loading="lazy" decoding="async" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/Ncover/nd011_cover.webp" alt="台雞店 TSCC"/></div>
+      <div class="hover-mask"></div><div class="spotlight"></div>
+      <div class="hover-title"><div class="ht">台雞店 TSCC</div><div class="hl"></div></div>
+    </a>
+    <a class="card" href="/nd008/">
+      <div class="media"><img class="cover" loading="lazy" decoding="async" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/Ncover/nd008_cover.webp" alt="施巴 SEBAMED"/></div>
+      <div class="hover-mask"></div><div class="spotlight"></div>
+      <div class="hover-title"><div class="ht">施巴 SEBAMED</div><div class="hl"></div></div>
+    </a>
+    <a class="card tall" href="/nd005/">
+      <div class="media"><img class="cover" loading="lazy" decoding="async" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/Ncover/nd005_cover.webp" alt="一大塑膠 I.TA PLASTICS"/></div>
+      <div class="hover-mask"></div><div class="spotlight"></div>
+      <div class="hover-title"><div class="ht">一大塑膠 I.TA PLASTICS</div><div class="hl"></div></div>
+    </a>
+    <a class="card" href="/nd002/">
+      <div class="media"><img class="cover" loading="lazy" decoding="async" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/Ncover/nd002_cover.webp" alt="維娜斯 VENUS"/></div>
+      <div class="hover-mask"></div><div class="spotlight"></div>
+      <div class="hover-title"><div class="ht">維娜斯 VENUS</div><div class="hl"></div></div>
+    </a>
+  </div>
+  <div class="col" data-f="0.14" data-sk="1.35">
+    <a class="card" href="/nd036/">
+      <div class="media"><img class="cover" loading="eager" fetchpriority="high" decoding="async" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/Ncover/nd036_cover.webp" alt="U41"/></div>
+      <div class="hover-mask"></div><div class="spotlight"></div>
+      <div class="hover-title"><div class="ht">U41</div><div class="hl"></div></div>
+    </a>
+    <a class="card" href="/nd033/">
+      <div class="media"><img class="cover" loading="lazy" decoding="async" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/Ncover/nd033_cover.webp" alt="冬瓜行旅 MELON LIFE TRAVEL"/></div>
+      <div class="hover-mask"></div><div class="spotlight"></div>
+      <div class="hover-title"><div class="ht">冬瓜行旅 MELON LIFE TRAVEL</div><div class="hl"></div></div>
+    </a>
+    <a class="card" href="/nd030/">
+      <div class="media"><img class="cover" loading="lazy" decoding="async" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/Ncover/nd030_cover.webp" alt="攝影 PHOTOGRAPHY"/></div>
+      <div class="hover-mask"></div><div class="spotlight"></div>
+      <div class="hover-title"><div class="ht">攝影 PHOTOGRAPHY</div><div class="hl"></div></div>
+    </a>
+    <a class="card" href="/nd027/">
+      <div class="media"><img class="cover" loading="lazy" decoding="async" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/Ncover/nd027_cover.webp" alt="國立中山大學 NATIONAL SUN YAT-SEN UNIVERSITY"/></div>
+      <div class="hover-mask"></div><div class="spotlight"></div>
+      <div class="hover-title"><div class="ht">國立中山大學<br>NATIONAL SUN YAT-SEN UNIVERSITY</div><div class="hl"></div></div>
+    </a>
+    <a class="card" href="/nd024/">
+      <div class="media"><img class="cover" loading="lazy" decoding="async" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/Ncover/nd024_cover.webp" alt="川山蜀 CHUAN SHAN SHU"/></div>
+      <div class="hover-mask"></div><div class="spotlight"></div>
+      <div class="hover-title"><div class="ht">川山蜀 CHUAN SHAN SHU</div><div class="hl"></div></div>
+    </a>
+    <a class="card" href="/nd021/">
+      <div class="media"><img class="cover" loading="lazy" decoding="async" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/Ncover/nd021_cover.webp" alt="重點 EL PUNTO"/></div>
+      <div class="hover-mask"></div><div class="spotlight"></div>
+      <div class="hover-title"><div class="ht">重點 EL PUNTO</div><div class="hl"></div></div>
+    </a>
+    <a class="card" href="/nd018/">
+      <div class="media"><img class="cover" loading="lazy" decoding="async" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/Ncover/nd018_cover.webp" alt="左阜右邑 RIGHT AND LEFT"/></div>
+      <div class="hover-mask"></div><div class="spotlight"></div>
+      <div class="hover-title"><div class="ht">左阜右邑 RIGHT AND LEFT</div><div class="hl"></div></div>
+    </a>
+    <a class="card" href="/nd015/">
+      <div class="media"><img class="cover" loading="lazy" decoding="async" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/Ncover/nd015_cover.webp" alt="瑪蓋丹 MAGAITAN"/></div>
+      <div class="hover-mask"></div><div class="spotlight"></div>
+      <div class="hover-title"><div class="ht">瑪蓋丹 MAGAITAN</div><div class="hl"></div></div>
+    </a>
+    <a class="card" href="/nd012/">
+      <div class="media"><img class="cover" loading="lazy" decoding="async" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/Ncover/nd012_cover.webp" alt="國立體育大學 NATIONAL TAIWAN SPORT UNIVERSITY"/></div>
+      <div class="hover-mask"></div><div class="spotlight"></div>
+      <div class="hover-title"><div class="ht">國立體育大學<br>NATIONAL TAIWAN SPORT UNIVERSITY</div><div class="hl"></div></div>
+    </a>
+    <a class="card" href="/nd009/">
+      <div class="media"><img class="cover" loading="lazy" decoding="async" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/Ncover/nd009_cover.webp" alt="KAWAJUN"/></div>
+      <div class="hover-mask"></div><div class="spotlight"></div>
+      <div class="hover-title"><div class="ht">KAWAJUN</div><div class="hl"></div></div>
+    </a>
+    <a class="card" href="/nd006/">
+      <div class="media"><img class="cover" loading="lazy" decoding="async" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/Ncover/nd006_cover.webp" alt="寶哥麻花捲 BAOGE TWIST ROLLS"/></div>
+      <div class="hover-mask"></div><div class="spotlight"></div>
+      <div class="hover-title"><div class="ht">寶哥麻花捲 BAOGE TWIST ROLLS</div><div class="hl"></div></div>
+    </a>
+    <a class="card" href="/nd003/">
+      <div class="media"><img class="cover" loading="lazy" decoding="async" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/Ncover/nd003_cover.webp" alt="科麗研 LA COLLINE"/></div>
+      <div class="hover-mask"></div><div class="spotlight"></div>
+      <div class="hover-title"><div class="ht">科麗研 LA COLLINE</div><div class="hl"></div></div>
+    </a>
+  </div>
+  <div class="col" data-f="0.02" data-sk="0.75">
+    <a class="card tall" href="/nd034/">
+      <div class="media"><img class="cover" loading="eager" fetchpriority="high" decoding="async" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/Ncover/nd034_cover.webp" alt="北港朝天宮 BEIGANG CHAOTIAN GONG"/></div>
+      <div class="hover-mask"></div><div class="spotlight"></div>
+      <div class="hover-title"><div class="ht">北港朝天宮<br>BEIGANG CHAOTIAN GONG</div><div class="hl"></div></div>
+    </a>
+    <a class="card" href="/nd031/">
+      <div class="media"><img class="cover" loading="lazy" decoding="async" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/Ncover/nd031_cover.webp" alt="名師補習班 MEANSCPA"/></div>
+      <div class="hover-mask"></div><div class="spotlight"></div>
+      <div class="hover-title"><div class="ht">名師補習班 MEANSCPA</div><div class="hl"></div></div>
+    </a>
+    <a class="card tall" href="/nd028/">
+      <div class="media"><img class="cover" loading="lazy" decoding="async" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/Ncover/nd028_cover.webp" alt="多喝水 MOREWATER"/></div>
+      <div class="hover-mask"></div><div class="spotlight"></div>
+      <div class="hover-title"><div class="ht">多喝水 MOREWATER</div><div class="hl"></div></div>
+    </a>
+    <a class="card" href="/nd025/">
+      <div class="media"><img class="cover" loading="lazy" decoding="async" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/Ncover/nd025_cover.webp" alt="一起哈拉 CILAMITAY"/></div>
+      <div class="hover-mask"></div><div class="spotlight"></div>
+      <div class="hover-title"><div class="ht">一起哈拉 CILAMITAY</div><div class="hl"></div></div>
+    </a>
+    <a class="card tall" href="/nd022/">
+      <div class="media"><img class="cover" loading="lazy" decoding="async" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/Ncover/nd022_cover.webp" alt="富邦人壽 FUBON LIFE"/></div>
+      <div class="hover-mask"></div><div class="spotlight"></div>
+      <div class="hover-title"><div class="ht">富邦人壽 FUBON LIFE</div><div class="hl"></div></div>
+    </a>
+    <a class="card" href="/nd019/">
+      <div class="media"><img class="cover" loading="lazy" decoding="async" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/Ncover/nd019_cover.webp" alt="藍裙 BLUE SKIRT"/></div>
+      <div class="hover-mask"></div><div class="spotlight"></div>
+      <div class="hover-title"><div class="ht">藍裙 BLUE SKIRT</div><div class="hl"></div></div>
+    </a>
+    <a class="card tall" href="/nd016/">
+      <div class="media"><img class="cover" loading="lazy" decoding="async" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/Ncover/nd016_cover.webp" alt="台積電 TSMC"/></div>
+      <div class="hover-mask"></div><div class="spotlight"></div>
+      <div class="hover-title"><div class="ht">台積電 TSMC</div><div class="hl"></div></div>
+    </a>
+    <a class="card" href="/nd013/">
+      <div class="media"><img class="cover" loading="lazy" decoding="async" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/Ncover/nd013_cover.webp" alt="中華電信 CHT"/></div>
+      <div class="hover-mask"></div><div class="spotlight"></div>
+      <div class="hover-title"><div class="ht">中華電信 CHT</div><div class="hl"></div></div>
+    </a>
+    <a class="card tall" href="/nd010/">
+      <div class="media"><img class="cover" loading="lazy" decoding="async" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/Ncover/nd010_cover.webp" alt="巴拉圭駐台大使館 EMBASSY OF PARAGUAY IN ROC (TAIWAN)"/></div>
+      <div class="hover-mask"></div><div class="spotlight"></div>
+      <div class="hover-title"><div class="ht">巴拉圭駐台大使館<br>EMBASSY OF PARAGUAY IN ROC (TAIWAN)</div><div class="hl"></div></div>
+    </a>
+    <a class="card" href="/nd007/">
+      <div class="media"><img class="cover" loading="lazy" decoding="async" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/Ncover/nd007_cover.webp" alt="新北市立美術館 NEW TAIPEI CITY ART MUSEUM"/></div>
+      <div class="hover-mask"></div><div class="spotlight"></div>
+      <div class="hover-title"><div class="ht">新北市立美術館<br>NEW TAIPEI CITY ART MUSEUM</div><div class="hl"></div></div>
+    </a>
+    <a class="card tall" href="/nd004/">
+      <div class="media"><img class="cover" loading="lazy" decoding="async" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/Ncover/nd004_cover.webp" alt="彼得羅夫 PETER THOMAS ROTH"/></div>
+      <div class="hover-mask"></div><div class="spotlight"></div>
+      <div class="hover-title"><div class="ht">彼得羅夫 PETER THOMAS ROTH</div><div class="hl"></div></div>
+    </a>
+    <a class="card" href="/nd001/">
+      <div class="media"><img class="cover" loading="lazy" decoding="async" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/Ncover/nd001_cover.webp" alt="上報 UP MEDIA"/></div>
+      <div class="hover-mask"></div><div class="spotlight"></div>
+      <div class="hover-title"><div class="ht">上報 UP MEDIA</div><div class="hl"></div></div>
+    </a>
+  </div>
 </main>
+
+<div class="footer-wrap">
+  <div class="footer-card" id="footerCard">
+    <div class="footer-line">Let's define something together.</div>
+    <a class="footer-btn" href="/contact/">Contact <i>→</i></a>
+  </div>
+  <div class="footer-meta">
+    <span>Nake Design · 納序策略設計</span>
+    <span>Defining the Order of Design.</span>
+  </div>
+</div>
+</div>
+<div id="spacer" aria-hidden="true"></div>
+
+<div id="cursor" aria-hidden="true"><img class="zoom" id="cursorZoom" alt=""/></div>
+
 <script>
 document.querySelectorAll('img.cover').forEach(img=>{if(img.complete)img.classList.add('loaded');else img.addEventListener('load',()=>img.classList.add('loaded'));});
+
+const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const finePointer=matchMedia('(pointer: fine)').matches;
+const cards=[...document.querySelectorAll('.card')];
+const wrap=document.getElementById('smoothWrap');
+const spacer=document.getElementById('spacer');
+const progress=document.getElementById('progress');
+
+/* ── 揭幕 ── */
+const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in-view');io.unobserve(e.target);}});},{rootMargin:'0px 0px -6% 0px',threshold:0.08});
+cards.forEach(c=>io.observe(c));
+const fio=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in-view');fio.unobserve(e.target);}});},{threshold:0.2});
+fio.observe(document.getElementById('footerCard'));
+
+/* ── hover 光暈 orbs + spotlight ── */
 const ORB_COLORS=['rgba(255,120,160,0.55)','rgba(90,170,255,0.52)','rgba(100,255,180,0.48)','rgba(255,200,80,0.50)','rgba(190,120,255,0.52)','rgba(255,170,90,0.48)','rgba(100,220,255,0.50)','rgba(255,100,130,0.50)'];
 function rand(a,b){return a+Math.random()*(b-a);}
 function createOrbs(mask){
@@ -115,22 +444,113 @@ function createOrbs(mask){
   }
 }
 function setOrbState(mask,state){mask.querySelectorAll('.orb').forEach(o=>o.style.animationPlayState=state);}
-document.querySelectorAll('.card').forEach(card=>{const mask=card.querySelector('.hover-mask');if(!mask)return;card.addEventListener('mouseenter',()=>{createOrbs(mask);setOrbState(mask,'running');});card.addEventListener('mouseleave',()=>setOrbState(mask,'paused'));});
-const prefetched=new Set();
-document.querySelectorAll('.card').forEach(card=>{card.addEventListener('mouseenter',()=>{const href=card.getAttribute('href');if(!href||prefetched.has(href))return;prefetched.add(href);const l=document.createElement('link');l.rel='prefetch';l.href=href;document.head.appendChild(l);});});
-document.querySelectorAll('.card').forEach(card=>{
+cards.forEach(card=>{
+  const mask=card.querySelector('.hover-mask');
+  card.addEventListener('mouseenter',()=>{createOrbs(mask);setOrbState(mask,'running');});
+  card.addEventListener('mouseleave',()=>setOrbState(mask,'paused'));
   card.addEventListener('pointermove',e=>{
     const r=card.getBoundingClientRect();
-    card.style.setProperty('--mx',`${e.clientX-r.left}px`);
-    card.style.setProperty('--my',`${e.clientY-r.top}px`);
+    card.style.setProperty('--mx',(e.clientX-r.left)+'px');
+    card.style.setProperty('--my',(e.clientY-r.top)+'px');
   });
 });
-function isMobile(){return window.matchMedia('(hover: none)').matches;}
-if(isMobile()){
-  const cards=document.querySelectorAll('.card'),timers=new WeakMap();
+if(matchMedia('(hover: none)').matches){
+  const timers=new WeakMap();
   const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{const mask=e.target.querySelector('.hover-mask');if(e.isIntersecting){if(mask){createOrbs(mask);setOrbState(mask,'running');}const t=setTimeout(()=>e.target.classList.add('active'),2000);timers.set(e.target,t);}else{const t=timers.get(e.target);if(t){clearTimeout(t);timers.delete(e.target);}e.target.classList.remove('active');if(mask)setOrbState(mask,'paused');}});},{rootMargin:'-40% 0px -40% 0px',threshold:0});
   cards.forEach(c=>obs.observe(c));
 }
+
+/* ═══ ND2 核心:慣性絲滑捲動 + 欄位視差 + 速度彈性形變 + 格內視差 + 進度線 ═══ */
+const colEls=[...document.querySelectorAll('.col')].filter(c=>getComputedStyle(c).display!=='contents');
+const colState=colEls.map(c=>({el:c,f:parseFloat(c.dataset.f),sk:parseFloat(c.dataset.sk),cur:0}));
+
+if(!reduced&&finePointer){
+  /* 絲滑模式:wrap 固定,body 由 spacer 撐高,transform 跟捲 */
+  document.body.classList.add('smooth');
+  wrap.style.position='fixed';wrap.style.top='0';wrap.style.left='0';wrap.style.right='0';
+  function setSpacer(){spacer.style.height=wrap.scrollHeight+'px';}
+  setSpacer();
+  new ResizeObserver(setSpacer).observe(wrap);
+
+  /* 透鏡狀態 */
+  const prefetched=new Set();
+  const cur=document.getElementById('cursor');
+  const zoom=document.getElementById('cursorZoom');
+  let lx=-999,ly=-999,ltx=-999,lty=-999,hoverCard=null;
+  addEventListener('pointermove',e=>{
+    ltx=e.clientX;lty=e.clientY;
+    const card=e.target.closest('.card');
+    if(card!==hoverCard){
+      hoverCard=card;
+      if(card){
+        const img=card.querySelector('.cover');
+        zoom.src=img.currentSrc||img.src;
+        zoom.style.display='block';
+        cur.classList.add('view');
+        /* prefetch 專案頁 */
+        const href=card.getAttribute('href');
+        if(href&&!prefetched.has(href)){prefetched.add(href);const l=document.createElement('link');l.rel='prefetch';l.href=href;document.head.appendChild(l);}
+      }else{
+        zoom.style.display='none';
+        cur.classList.remove('view');
+      }
+    }
+    cur.classList.toggle('on',!!e.target.closest('.stream'));
+  },{passive:true});
+
+  let sm=scrollY,prevSm=sm;
+  (function loop(){
+    sm+=(scrollY-sm)*0.085;                     /* 慣性 */
+    const v=sm-prevSm;prevSm=sm;                /* 速度 */
+    wrap.style.transform=`translate3d(0,${-sm}px,0)`;
+    const skew=Math.max(-4.5,Math.min(4.5,v*0.28));  /* 彈性形變 */
+    colState.forEach(s=>{
+      s.cur+=(sm*s.f-s.cur)*0.09;               /* 欄位視差滯後 */
+      s.el.style.transform=`translate3d(0,${s.cur}px,0) skewY(${(skew*s.sk).toFixed(3)}deg)`;
+    });
+    /* 格內視差(只算視口內的) */
+    const vh=innerHeight;
+    cards.forEach(c=>{
+      const r=c.getBoundingClientRect();
+      if(r.bottom<0||r.top>vh)return;
+      const p=((r.top+r.height/2)-vh/2)/vh;
+      c.querySelector('.media').style.transform=`translateY(${(p*-7).toFixed(2)}%)`;
+    });
+    /* 進度線 */
+    const max=spacer.offsetHeight-vh;
+    progress.style.width=(max>0?(sm/max)*100:0)+'vw';
+    /* 透鏡追隨(液體滯後) + 鏡內放大同步 */
+    lx+=(ltx-lx)*0.2;ly+=(lty-ly)*0.2;
+    const half=cur.offsetWidth/2;
+    cur.style.transform=`translate(${lx-half}px,${ly-half}px)`;
+    if(hoverCard){
+      const K=1.4;
+      const mr=hoverCard.querySelector('.media').getBoundingClientRect();
+      zoom.style.width=(mr.width*K)+'px';
+      zoom.style.height=(mr.height*K)+'px';
+      zoom.style.left=(half-K*(lx-mr.left))+'px';
+      zoom.style.top=(half-K*(ly-mr.top))+'px';
+    }
+    requestAnimationFrame(loop);
+  })();
+}else if(!reduced){
+  /* 觸控:原生捲動 + 輕量欄位視差(同 ND1) */
+  let running=false;
+  function tick(){
+    running=false;
+    colState.forEach(s=>{
+      const target=scrollY*s.f;
+      s.cur+=(target-s.cur)*0.09;
+      if(Math.abs(target-s.cur)>0.3)running=true;
+      s.el.style.transform=`translate3d(0,${s.cur}px,0)`;
+    });
+    if(running)requestAnimationFrame(tick);
+  }
+  addEventListener('scroll',()=>{if(!running){running=true;requestAnimationFrame(tick);}},{passive:true});
+  tick();
+}
+
+/* ── 液態透鏡游標:主迴圈同步(見上方 loop 內 syncLens) ── */
 </script>
 </body>
 </html>
