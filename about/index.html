@@ -539,8 +539,12 @@ if(!reduced){
     R=Math.min(130, window.innerWidth*0.17);
     hero.style.setProperty('--lr2', (R*2)+'px');
     inner.innerHTML='';
+    /* 量測前先清掉視差 transform,否則捲動中重建會把偏移量烙進 clone 座標 */
+    const prevTransform=core.style.transform;
+    core.style.transform='none';
     const heroRect=hero.getBoundingClientRect();
     const coreRect=core.getBoundingClientRect();
+    core.style.transform=prevTransform;
     const clone=core.cloneNode(true);
     clone.classList.add('lens-clone');
     clone.removeAttribute('id');
