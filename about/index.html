@@ -102,11 +102,6 @@
     }
     .hero-name .line:nth-child(1) .line-inner { animation-delay: 0.15s; }
     .hero-name .line:nth-child(2) .line-inner { animation-delay: 0.3s; }
-    .hero-name .outline {
-      color: transparent;
-      -webkit-text-stroke: 2px #111;
-      text-stroke: 2px #111;
-    }
     @keyframes lineUp { to { transform: translateY(0); } }
     @keyframes fadeUp { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
     .hero-sub {
@@ -114,12 +109,6 @@
       font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase;
       color: rgba(0,0,0,0.5);
       opacity: 0; animation: fadeUp 0.9s cubic-bezier(.16,1,.3,1) 1.05s forwards;
-    }
-    .hero-quote {
-      margin-top: 0.7rem;
-      font-size: 11px; letter-spacing: 0.1em;
-      color: rgba(0,0,0,0.35);
-      opacity: 0; animation: fadeUp 0.9s cubic-bezier(.16,1,.3,1) 1.2s forwards;
     }
 
     /* ── 液態玻璃透鏡 ── */
@@ -216,13 +205,15 @@
     }
     .section-label::after { content: ''; flex: 1; height: 0.5px; background: rgba(0,0,0,0.08); }
 
-    /* ── 照片 + 簡介 ── */
-    .photo-card { display: grid; grid-template-columns: 300px 1fr; gap: 2.8rem; align-items: center; }
+    /* ── 肖像卡:置中 ── */
+    .photo-card { display: flex; flex-direction: column; align-items: center; text-align: center; }
     .photo-frame {
+      width: min(280px, 100%);
       border-radius: 18px; overflow: hidden;
       aspect-ratio: 3/4;
       box-shadow: 0 16px 44px rgba(0,0,0,0.14);
       border: 1px solid rgba(255,255,255,0.7);
+      margin-bottom: 1.8rem;
     }
     .photo-frame img {
       width: 100%; height: 116%; object-fit: cover; display: block;
@@ -231,8 +222,7 @@
     }
     .photo-frame img.loaded { opacity: 1; }
     .bio-name { font-size: 15px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; margin-bottom: 6px; }
-    .bio-loc  { font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 1.4rem; }
-    .bio-text { font-size: 12.5px; line-height: 2; letter-spacing: 0.04em; color: rgba(0,0,0,0.6); }
+    .bio-loc  { font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-muted); }
 
     /* ── Education ── */
     .edu-school { font-size: 13px; font-weight: 500; letter-spacing: 0.04em; margin-bottom: 4px; }
@@ -326,17 +316,15 @@
     .reveal.in-view { opacity: 1; transform: translateY(0) scale(1); }
 
     @media (max-width: 700px) {
-      .photo-card { grid-template-columns: 1fr; }
-      .photo-frame { max-width: 240px; }
+      .photo-frame { width: min(240px, 100%); }
       .glass { padding: 1.8rem 1.5rem; }
       .award-grid { grid-template-columns: 1fr 1fr; }
       .cap-group { grid-template-columns: 1fr; gap: 0.7rem; }
       .hero { cursor: auto; }
-      .hero-name .outline { -webkit-text-stroke-width: 1.3px; }
     }
 
     @media (prefers-reduced-motion: reduce) {
-      .reveal, .photo-frame img, .hero-kicker, .hero-sub, .hero-quote { opacity: 1 !important; transform: none !important; }
+      .reveal, .photo-frame img, .hero-kicker, .hero-sub { opacity: 1 !important; transform: none !important; }
       .hero-name .line-inner { transform: none !important; }
       .lens { display: none !important; }
       .hero { cursor: auto; }
@@ -376,10 +364,9 @@
     <div class="hero-kicker">Defining the Order of Design</div>
     <h1 class="hero-name">
       <span class="line"><span class="line-inner">Wei-Xun</span></span>
-      <span class="line"><span class="line-inner outline">Weng</span></span>
+      <span class="line"><span class="line-inner">Weng</span></span>
     </h1>
     <div class="hero-sub">Creative Lead &amp; Visual Strategist — Taipei, Taiwan</div>
-    <div class="hero-quote">Order first. Then let it move.</div>
   </div>
 
   <!-- 液態透鏡 -->
@@ -402,15 +389,8 @@
            src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ABOUT/img_5569.jpg"
            alt="Wei-Xun Weng"/>
     </div>
-    <div>
-      <div class="bio-name">Wei-Xun Weng</div>
-      <div class="bio-loc">Taipei, Taiwan</div>
-      <p class="bio-text">
-        Brand identities, motion, interactive design and sound —
-        crafted for TSMC, GARMIN, Chunghwa Telecom, Fubon Life and more.
-        I build visual systems that hold their order, then let them move.
-      </p>
-    </div>
+    <div class="bio-name">Wei-Xun Weng</div>
+    <div class="bio-loc">Taipei, Taiwan</div>
   </section>
 
   <!-- Education -->
