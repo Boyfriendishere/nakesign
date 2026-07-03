@@ -297,6 +297,7 @@ a:focus-visible {
   font-family: 'Inter', sans-serif;
   transition: color 0.2s;
   flex-shrink: 0;
+  max-width: none;   /* 蓋掉 .project-nav a 的 45%,手機版才能撐滿置中 */
 }
 
 .project-nav-home:hover { color: var(--text); }
