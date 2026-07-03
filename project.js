@@ -1,4 +1,4 @@
-/* 專案內頁共用互動:捲動進度線 + 區塊滾動進場(與首頁/About 同一套動態語言) */
+/* 專案內頁共用互動:圖片淡入 + lightbox 滑動 + 區塊滾動進場(與首頁/About 同一套動態語言) */
 (function(){
   const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -18,22 +18,6 @@
       if(Math.abs(dx)>50&&Math.abs(dx)>Math.abs(dy)&&typeof goTo==='function')goTo(dx>0?cur-1:cur+1);
     },{passive:true});
   }
-
-  /* 捲動進度髮絲線(元素由此注入,頁面 HTML 不需要各自帶) */
-  const bar=document.createElement('div');
-  bar.id='progress';
-  bar.setAttribute('aria-hidden','true');
-  document.body.appendChild(bar);
-  let ticking=false;
-  addEventListener('scroll',()=>{
-    if(ticking)return;
-    ticking=true;
-    requestAnimationFrame(()=>{
-      const max=document.documentElement.scrollHeight-innerHeight;
-      bar.style.width=(max>0?scrollY/max*100:0)+'vw';
-      ticking=false;
-    });
-  },{passive:true});
 
   if(reduced)return;
 
