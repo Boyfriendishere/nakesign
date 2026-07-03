@@ -465,5 +465,5 @@ a:focus-visible {
   .rv,
   .block-img img { opacity: 1 !important; }
   .rv { transform: none !important; }
-  #progress { display: none; }
+  /* #progress 保留:進度指示是資訊回饋,非裝飾性動態 */
 }
