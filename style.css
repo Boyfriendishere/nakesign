@@ -35,7 +35,7 @@ body {
 }
 
 /* ── NAV:懸浮玻璃膠囊 ── */
-nav {
+.site-nav {
   position: fixed;
   top: 18px;
   left: 50%;
@@ -308,7 +308,7 @@ a:focus-visible {
 }
 
 @media (max-width: 540px) {
-  nav { gap: 1.2rem; padding: 0.7rem 1.3rem; }
+  .site-nav { gap: 1.2rem; padding: 0.7rem 1.3rem; }
   .project-wrap { padding: 6rem 1.25rem 4rem; }
   .project-credits td:first-child { width: 120px; }
   .project-nav { padding: 2rem 1.25rem 3rem; flex-wrap: wrap; }
