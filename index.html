@@ -156,9 +156,8 @@ a:focus-visible{outline:2px solid var(--text);outline-offset:3px}
 
 /* ── 玻璃頁尾 ── */
 .footer-wrap{max-width:920px;margin:0 auto;padding:6rem 2rem 5rem}
-.footer-card{position:relative;text-align:center;border-radius:26px;padding:4.5rem 2.8rem;background:rgba(255,255,255,0.38);backdrop-filter:blur(28px) saturate(170%);-webkit-backdrop-filter:blur(28px) saturate(170%);border:1px solid rgba(255,255,255,0.65);box-shadow:0 24px 60px rgba(0,0,0,0.09),inset 0 1px 0 rgba(255,255,255,0.85);overflow:hidden;opacity:0;transform:translateY(36px);transition:opacity 0.8s cubic-bezier(.16,1,.3,1),transform 0.8s cubic-bezier(.16,1,.3,1)}
-.footer-card.in-view{opacity:1;transform:translateY(0)}
-.footer-card::before{content:'';position:absolute;top:0;left:8%;right:8%;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.95),transparent)}
+.footer-cta{text-align:center;padding:1.5rem 0;opacity:0;transform:translateY(28px);transition:opacity 0.8s cubic-bezier(.16,1,.3,1),transform 0.8s cubic-bezier(.16,1,.3,1)}
+.footer-cta.in-view{opacity:1;transform:translateY(0)}
 .footer-btn{display:inline-flex;align-items:center;gap:10px;font-size:11px;font-weight:500;letter-spacing:0.22em;text-transform:uppercase;color:var(--text);text-decoration:none;padding:1rem 2.2rem;border-radius:999px;background:rgba(255,255,255,0.55);border:1px solid rgba(255,255,255,0.85);box-shadow:0 10px 28px rgba(0,0,0,0.08),inset 0 1px 0 rgba(255,255,255,0.95);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);transition:transform 0.35s cubic-bezier(.16,1,.3,1),box-shadow 0.35s ease}
 .footer-btn:hover{transform:translateY(-3px);box-shadow:0 18px 44px rgba(0,0,0,0.13),inset 0 1px 0 rgba(255,255,255,0.95)}
 .footer-btn i{font-style:normal;transition:transform 0.35s cubic-bezier(.16,1,.3,1)}
@@ -183,7 +182,7 @@ a:focus-visible{outline:2px solid var(--text);outline-offset:3px}
 }
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:0.001ms!important;animation-iteration-count:1!important;transition-duration:0.001ms!important;scroll-behavior:auto!important}
-  .card,.footer-card{opacity:1!important;transform:none!important}
+  .card,.footer-cta{opacity:1!important;transform:none!important}
   .cover{opacity:1!important;transform:none!important}
   .col,.media{transform:none!important}
   #cursor,#progress{display:none}.stream{cursor:auto}
@@ -395,7 +394,7 @@ a:focus-visible{outline:2px solid var(--text);outline-offset:3px}
 </main>
 
 <div class="footer-wrap">
-  <div class="footer-card" id="footerCard">
+  <div class="footer-cta" id="footerCta">
     <a class="footer-btn" href="/about/#contact">Contact <i>→</i></a>
   </div>
   <div class="footer-meta">
@@ -422,7 +421,7 @@ const progress=document.getElementById('progress');
 const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in-view');io.unobserve(e.target);}});},{rootMargin:'0px 0px -6% 0px',threshold:0.08});
 cards.forEach(c=>io.observe(c));
 const fio=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in-view');fio.unobserve(e.target);}});},{threshold:0.2});
-fio.observe(document.getElementById('footerCard'));
+fio.observe(document.getElementById('footerCta'));
 
 /* ── 兩欄版重排:依專案編號新→舊左右交錯,
    否則第三欄(display:contents)整批沉到頁底、左右欄高度失衡出現空洞 ── */
