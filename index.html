@@ -550,13 +550,19 @@ if(!reduced&&finePointer){
     requestAnimationFrame(loop);
   })();
 }else if(!reduced){
-  /* 觸控:原生捲動 + 格內視差(只位移卡片內的圖,卡片 overflow:hidden 裁切,
-     版面不位移 → 不會像整欄 translate 那樣疊到下方卡片/頁尾)
-     兩欄版加大幅度、左右欄速度不同,保留欄與欄的節奏差 */
-  let ticking=false;
-  function tick(){
-    ticking=false;
-    const vh=innerHeight,narrow=twoCol.matches;
+  /* 觸控:原生捲動 + 格內視差 + 速度彈性形變(同桌機)
+     skewY 是暫態變形、靜止歸零;格內位移被卡片裁切 → 版面永遠不位移 */
+  let lastY=scrollY,v=0,skew=0,raf=null;
+  function frame(){
+    const y=scrollY,narrow=twoCol.matches;
+    v+=((y-lastY)-v)*0.2;lastY=y;                    /* 平滑速度 */
+    const target=Math.max(-4.5,Math.min(4.5,v*0.28));
+    skew+=(target-skew)*0.16;                        /* 彈性趨近 */
+    colEls.forEach(col=>{
+      const sk=parseFloat(col.dataset.sk)||1;
+      col.style.transform=Math.abs(skew)>0.02?`skewY(${(skew*sk).toFixed(3)}deg)`:'';
+    });
+    const vh=innerHeight;
     cards.forEach(c=>{
       const r=c.getBoundingClientRect();
       if(r.bottom<0||r.top>vh)return;
@@ -564,9 +570,11 @@ if(!reduced&&finePointer){
       const f=narrow?(c.parentElement===colEls[0]?-9:-5.5):-7;
       c.querySelector('.media').style.transform=`translateY(${(p*f).toFixed(2)}%)`;
     });
+    if(Math.abs(skew)>0.02||Math.abs(v)>0.3)raf=requestAnimationFrame(frame);
+    else{raf=null;v=0;}
   }
-  addEventListener('scroll',()=>{if(!ticking){ticking=true;requestAnimationFrame(tick);}},{passive:true});
-  tick();
+  addEventListener('scroll',()=>{if(!raf)raf=requestAnimationFrame(frame);},{passive:true});
+  frame();
 }
 </script>
 </body>
