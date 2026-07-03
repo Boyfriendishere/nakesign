@@ -72,7 +72,7 @@ body.smooth{overflow:visible;height:auto}       /* 修正:body 保持可捲,由 
 nav{position:fixed;top:18px;left:50%;transform:translateX(-50%);z-index:100;display:flex;align-items:center;gap:2.2rem;padding:0.8rem 1.8rem;border-radius:999px;background:rgba(255,255,255,0.55);backdrop-filter:blur(26px) saturate(150%);-webkit-backdrop-filter:blur(26px) saturate(150%);border:1px solid rgba(255,255,255,0.65);box-shadow:0 12px 36px rgba(0,0,0,0.10),inset 0 1px 0 rgba(255,255,255,0.85);white-space:nowrap}
 .logo{font-size:13px;font-weight:700;letter-spacing:0.12em;color:var(--text);text-decoration:none;text-transform:uppercase}
 .nav-links{display:flex;gap:1.6rem}
-.nav-links a{font-size:12px;color:var(--text-muted);text-decoration:none;letter-spacing:0.1em;text-transform:uppercase;transition:color 0.25s}
+.nav-links a{font-size:12px;color:var(--text-muted);text-decoration:none;letter-spacing:0.1em;text-transform:uppercase;transition:color 0.2s}
 .nav-links a:hover{color:var(--text)}
 a:focus-visible{outline:2px solid var(--text);outline-offset:3px}
 
@@ -177,6 +177,9 @@ a:focus-visible{outline:2px solid var(--text);outline-offset:3px}
   .col:nth-child(3){display:contents}
   .ht{font-size:15px}
   .footer-meta{flex-direction:column;gap:0.4rem}
+}
+@media (max-width:540px){
+  nav{gap:1.2rem;padding:0.7rem 1.3rem}   /* 與 style.css 的手機膠囊尺寸一致 */
 }
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:0.001ms!important;animation-iteration-count:1!important;transition-duration:0.001ms!important;scroll-behavior:auto!important}
@@ -421,6 +424,19 @@ const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.tar
 cards.forEach(c=>io.observe(c));
 const fio=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in-view');fio.unobserve(e.target);}});},{threshold:0.2});
 fio.observe(document.getElementById('footerCard'));
+
+/* ── 兩欄版重排:依專案編號新→舊左右交錯,
+   否則第三欄(display:contents)整批沉到頁底、左右欄高度失衡出現空洞 ── */
+const twoCol=matchMedia('(max-width:720px)');
+const colEls=[...document.querySelectorAll('.col')];
+const origCards=colEls.map(c=>[...c.children]);
+const newestFirst=[...cards].sort((a,b)=>b.getAttribute('href').localeCompare(a.getAttribute('href')));
+function relayout(){
+  if(twoCol.matches)newestFirst.forEach((c,i)=>colEls[i%2].appendChild(c));
+  else origCards.forEach((arr,i)=>arr.forEach(c=>colEls[i].appendChild(c)));
+}
+relayout();
+twoCol.addEventListener('change',relayout);
 
 /* ── hover 光暈 orbs + spotlight ── */
 const ORB_COLORS=['rgba(255,120,160,0.55)','rgba(90,170,255,0.52)','rgba(100,255,180,0.48)','rgba(255,200,80,0.50)','rgba(190,120,255,0.52)','rgba(255,170,90,0.48)','rgba(100,220,255,0.50)','rgba(255,100,130,0.50)'];
