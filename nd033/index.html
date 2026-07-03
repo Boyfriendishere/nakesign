@@ -20,8 +20,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Noto+Sans+TC:wght@400;500;700&display=swap"/>
-  <link rel="stylesheet" href="/style.css"/>  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "CreativeWork", "name": "冬瓜行旅 MELON LIFE TRAVEL", "description": "Brand Refresh · 2020", "image": "https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ND033/nd033_cover.png", "url": "https://nakesign.pages.dev/nd033/", "creator": {"@type": "Person", "name": "Wei-Xun Weng"}}</script>
-  <script src="/project.js" defer></script>
+  <link rel="stylesheet" href="/style.css?v=20260703b"/>  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "CreativeWork", "name": "冬瓜行旅 MELON LIFE TRAVEL", "description": "Brand Refresh · 2020", "image": "https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ND033/nd033_cover.png", "url": "https://nakesign.pages.dev/nd033/", "creator": {"@type": "Person", "name": "Wei-Xun Weng"}}</script>
+  <script src="/project.js?v=20260703b" defer></script>
 </head>
 <body>
 
@@ -37,7 +37,7 @@
 </div>
 <div id="lightbox"><button class="lb-close" id="lb-close">&#x2715;</button><img id="lb-img" src="" alt=""/><div class="lb-controls"><button class="lb-btn" id="lb-prev">&#8592;</button><span class="lb-count" id="lb-count"></span><button class="lb-btn" id="lb-next">&#8594;</button></div></div>
 <script>
-document.querySelectorAll('img[loading="lazy"]').forEach(img=>{if(img.complete)img.classList.add('loaded');else img.addEventListener('load',()=>img.classList.add('loaded'));});
+
 const SETS={"a":['https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ND033/nd033_03.jpg','https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ND033/nd033_04.jpg','https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ND033/nd033_05.jpg','https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ND033/nd033_06.jpg','https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ND033/nd033_07.jpg','https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ND033/nd033_08.jpg','https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ND033/nd033_09.jpg','https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ND033/nd033_10.jpg','https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ND033/nd033_11.jpg','https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ND033/nd033_12.jpg','https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ND033/nd033_13.jpg','https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ND033/nd033_14.jpg']};
 const lb=document.getElementById('lightbox'),lbImg=document.getElementById('lb-img'),lbCount=document.getElementById('lb-count');
 let cur=0,active=[];
@@ -51,6 +51,5 @@ document.getElementById('lb-next').addEventListener('click',()=>goTo(cur+1));
 lb.addEventListener('click',e=>{if(e.target===lb)closeLb();});
 document.addEventListener('keydown',e=>{if(!lb.classList.contains('active'))return;if(e.key==='Escape')closeLb();if(e.key==='ArrowLeft')goTo(cur-1);if(e.key==='ArrowRight')goTo(cur+1);});
 </script>
-<script>/* Lightbox 觸控滑動切換 */(function(){const lb=document.getElementById('lightbox');if(!lb)return;let tX=0,tY=0;lb.addEventListener('touchstart',e=>{tX=e.changedTouches[0].clientX;tY=e.changedTouches[0].clientY;},{passive:true});lb.addEventListener('touchend',e=>{const dx=e.changedTouches[0].clientX-tX,dy=e.changedTouches[0].clientY-tY;if(Math.abs(dx)>50&&Math.abs(dx)>Math.abs(dy)&&typeof goTo==='function')goTo(dx>0?cur-1:cur+1);},{passive:true});})();</script>
 </body>
 </html>

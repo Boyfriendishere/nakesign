@@ -2,12 +2,22 @@
 (function(){
   const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  /* 開場 eager 首圖的載入淡入:各頁內建腳本只處理 lazy 圖,
-     eager 圖不補 .loaded 會永遠停在 opacity:0 */
-  document.querySelectorAll('img[loading="eager"]').forEach(img=>{
+  /* 圖片載入淡入(lazy/eager 通用;不補 .loaded 圖片會停在 opacity:0) */
+  document.querySelectorAll('img[loading]').forEach(img=>{
     if(img.complete)img.classList.add('loaded');
     else img.addEventListener('load',()=>img.classList.add('loaded'));
   });
+
+  /* Lightbox 觸控滑動切換(頁面有 #lightbox 且提供全域 goTo/cur 才生效) */
+  const lb=document.getElementById('lightbox');
+  if(lb){
+    let tX=0,tY=0;
+    lb.addEventListener('touchstart',e=>{tX=e.changedTouches[0].clientX;tY=e.changedTouches[0].clientY;},{passive:true});
+    lb.addEventListener('touchend',e=>{
+      const dx=e.changedTouches[0].clientX-tX,dy=e.changedTouches[0].clientY-tY;
+      if(Math.abs(dx)>50&&Math.abs(dx)>Math.abs(dy)&&typeof goTo==='function')goTo(dx>0?cur-1:cur+1);
+    },{passive:true});
+  }
 
   /* 捲動進度髮絲線(元素由此注入,頁面 HTML 不需要各自帶) */
   const bar=document.createElement('div');

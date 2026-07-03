@@ -210,14 +210,6 @@ a:focus-visible {
 
 .block-img img.loaded { opacity: 1; }
 
-/* image row (2-up) */
-.block-img-row {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2px;
-  margin-bottom: 2px;
-}
-
 /* credits / colophon */
 .project-credits {
   margin-top: 4rem;
@@ -318,7 +310,6 @@ a:focus-visible {
 @media (max-width: 540px) {
   nav { gap: 1.2rem; padding: 0.7rem 1.3rem; }
   .project-wrap { padding: 6rem 1.25rem 4rem; }
-  .block-img-row { grid-template-columns: 1fr; }
   .project-credits td:first-child { width: 120px; }
   .project-nav { padding: 2rem 1.25rem 3rem; flex-wrap: wrap; }
   .project-nav-home { order: -1; width: 100%; text-align: center; padding-bottom: 1rem; border-bottom: 0.5px solid var(--border); margin-bottom: 0.5rem; }
