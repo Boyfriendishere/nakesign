@@ -175,6 +175,7 @@ a:focus-visible{outline:2px solid var(--text);outline-offset:3px}
   .stream{grid-template-columns:repeat(2,1fr);gap:10px;padding:84px 10px 0}
   .col:nth-child(1){padding-top:70px}
   .col:nth-child(3){display:contents}
+  .media{inset:-12% 0}   /* 加深格內視差的位移空間 */
   .ht{font-size:15px}
   .footer-meta{flex-direction:column;gap:0.4rem}
 }
@@ -550,16 +551,18 @@ if(!reduced&&finePointer){
   })();
 }else if(!reduced){
   /* 觸控:原生捲動 + 格內視差(只位移卡片內的圖,卡片 overflow:hidden 裁切,
-     版面不位移 → 不會像整欄 translate 那樣疊到下方卡片/頁尾) */
+     版面不位移 → 不會像整欄 translate 那樣疊到下方卡片/頁尾)
+     兩欄版加大幅度、左右欄速度不同,保留欄與欄的節奏差 */
   let ticking=false;
   function tick(){
     ticking=false;
-    const vh=innerHeight;
+    const vh=innerHeight,narrow=twoCol.matches;
     cards.forEach(c=>{
       const r=c.getBoundingClientRect();
       if(r.bottom<0||r.top>vh)return;
       const p=((r.top+r.height/2)-vh/2)/vh;
-      c.querySelector('.media').style.transform=`translateY(${(p*-7).toFixed(2)}%)`;
+      const f=narrow?(c.parentElement===colEls[0]?-9:-5.5):-7;
+      c.querySelector('.media').style.transform=`translateY(${(p*f).toFixed(2)}%)`;
     });
   }
   addEventListener('scroll',()=>{if(!ticking){ticking=true;requestAnimationFrame(tick);}},{passive:true});
