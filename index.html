@@ -30,7 +30,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link rel="preconnect" href="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev" crossorigin/>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&family=Noto+Sans+TC:wght@400;500&display=swap"/>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Noto+Sans+TC:wght@400;500&display=swap"/>
 
   <!-- 結構化資料 -->
   <script type="application/ld+json">
@@ -69,7 +69,7 @@ body.smooth{overflow:visible;height:auto}       /* 修正:body 保持可捲,由 
 .grain{position:fixed;inset:0;z-index:1;pointer-events:none;opacity:0.35;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeComponentTransfer%3E%3CfeFuncA type='linear' slope='0.05'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
 
 /* ── 玻璃膠囊導覽列 ── */
-nav{position:fixed;top:18px;left:50%;transform:translateX(-50%);z-index:100;display:flex;align-items:center;gap:2.2rem;padding:0.8rem 1.8rem;border-radius:999px;background:rgba(255,255,255,0.38);backdrop-filter:blur(26px) saturate(180%);-webkit-backdrop-filter:blur(26px) saturate(180%);border:1px solid rgba(255,255,255,0.65);box-shadow:0 12px 36px rgba(0,0,0,0.10),inset 0 1px 0 rgba(255,255,255,0.85);white-space:nowrap}
+nav{position:fixed;top:18px;left:50%;transform:translateX(-50%);z-index:100;display:flex;align-items:center;gap:2.2rem;padding:0.8rem 1.8rem;border-radius:999px;background:rgba(255,255,255,0.55);backdrop-filter:blur(26px) saturate(150%);-webkit-backdrop-filter:blur(26px) saturate(150%);border:1px solid rgba(255,255,255,0.65);box-shadow:0 12px 36px rgba(0,0,0,0.10),inset 0 1px 0 rgba(255,255,255,0.85);white-space:nowrap}
 .logo{font-size:13px;font-weight:700;letter-spacing:0.12em;color:var(--text);text-decoration:none;text-transform:uppercase}
 .nav-links{display:flex;gap:1.6rem}
 .nav-links a{font-size:12px;color:var(--text-muted);text-decoration:none;letter-spacing:0.1em;text-transform:uppercase;transition:color 0.25s}
@@ -196,7 +196,6 @@ a:focus-visible{outline:2px solid var(--text);outline-offset:3px}
   <a class="logo" href="/">NAKE DESIGN</a>
   <div class="nav-links">
     <a href="/about/">About</a>
-    <a href="/contact/">Contact</a>
   </div>
 </nav>
 
@@ -395,7 +394,7 @@ a:focus-visible{outline:2px solid var(--text);outline-offset:3px}
 <div class="footer-wrap">
   <div class="footer-card" id="footerCard">
     <div class="footer-line">Let's define something together.</div>
-    <a class="footer-btn" href="/contact/">Contact <i>→</i></a>
+    <a class="footer-btn" href="/about/#contact">Contact <i>→</i></a>
   </div>
   <div class="footer-meta">
     <span>Nake Design · 納序策略設計</span>
@@ -461,10 +460,8 @@ if(matchMedia('(hover: none)').matches){
 }
 
 /* ═══ ND2 核心:慣性絲滑捲動 + 欄位視差 + 速度彈性形變 + 格內視差 + 進度線 ═══ */
-const colEls=[...document.querySelectorAll('.col')].filter(c=>getComputedStyle(c).display!=='contents');
-const colState=colEls.map(c=>({el:c,f:parseFloat(c.dataset.f),sk:parseFloat(c.dataset.sk),cur:0}));
-
 if(!reduced&&finePointer){
+  const colState=[...document.querySelectorAll('.col')].map(c=>({el:c,f:parseFloat(c.dataset.f),sk:parseFloat(c.dataset.sk),cur:0}));
   /* 絲滑模式:wrap 固定,body 由 spacer 撐高,transform 跟捲 */
   document.body.classList.add('smooth');
   wrap.style.position='fixed';wrap.style.top='0';wrap.style.left='0';wrap.style.right='0';
@@ -498,6 +495,7 @@ if(!reduced&&finePointer){
     cur.classList.toggle('on',!!e.target.closest('.stream'));
   },{passive:true});
 
+  const narrow=matchMedia('(max-width:720px)');  /* 兩欄版:第三欄為 display:contents,欄位 translate 會疊到下方卡片,須停用 */
   let sm=scrollY,prevSm=sm;
   (function loop(){
     sm+=(scrollY-sm)*0.085;                     /* 慣性 */
@@ -505,6 +503,7 @@ if(!reduced&&finePointer){
     wrap.style.transform=`translate3d(0,${-sm}px,0)`;
     const skew=Math.max(-4.5,Math.min(4.5,v*0.28));  /* 彈性形變 */
     colState.forEach(s=>{
+      if(narrow.matches){if(s.cur){s.cur=0;s.el.style.transform='';}return;}
       s.cur+=(sm*s.f-s.cur)*0.09;               /* 欄位視差滯後 */
       s.el.style.transform=`translate3d(0,${s.cur}px,0) skewY(${(skew*s.sk).toFixed(3)}deg)`;
     });
@@ -534,23 +533,22 @@ if(!reduced&&finePointer){
     requestAnimationFrame(loop);
   })();
 }else if(!reduced){
-  /* 觸控:原生捲動 + 輕量欄位視差(同 ND1) */
-  let running=false;
+  /* 觸控:原生捲動 + 格內視差(只位移卡片內的圖,卡片 overflow:hidden 裁切,
+     版面不位移 → 不會像整欄 translate 那樣疊到下方卡片/頁尾) */
+  let ticking=false;
   function tick(){
-    running=false;
-    colState.forEach(s=>{
-      const target=scrollY*s.f;
-      s.cur+=(target-s.cur)*0.09;
-      if(Math.abs(target-s.cur)>0.3)running=true;
-      s.el.style.transform=`translate3d(0,${s.cur}px,0)`;
+    ticking=false;
+    const vh=innerHeight;
+    cards.forEach(c=>{
+      const r=c.getBoundingClientRect();
+      if(r.bottom<0||r.top>vh)return;
+      const p=((r.top+r.height/2)-vh/2)/vh;
+      c.querySelector('.media').style.transform=`translateY(${(p*-7).toFixed(2)}%)`;
     });
-    if(running)requestAnimationFrame(tick);
   }
-  addEventListener('scroll',()=>{if(!running){running=true;requestAnimationFrame(tick);}},{passive:true});
+  addEventListener('scroll',()=>{if(!ticking){ticking=true;requestAnimationFrame(tick);}},{passive:true});
   tick();
 }
-
-/* ── 液態透鏡游標:主迴圈同步(見上方 loop 內 syncLens) ── */
 </script>
 </body>
 </html>

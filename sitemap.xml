@@ -14,12 +14,6 @@
   </url>
 
   <url>
-    <loc>https://nakesign.pages.dev/contact/</loc>
-    <changefreq>yearly</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <url>
     <loc>https://nakesign.pages.dev/nd036/</loc>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>

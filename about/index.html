@@ -4,7 +4,7 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>About — Nake Design</title>
-  <meta name="description"        content="Creative Lead &amp; Visual Strategist in Taipei. Brand identity, motion, interactive design and sound."/>
+  <meta name="description"        content="Strategy, made visible. Brand identity, motion, interactive design and sound — Taipei, Taiwan."/>
   <meta name="theme-color"        content="#f5f5f3"/>
   <link rel="canonical"           href="https://nakesign.pages.dev/about/"/>
 
@@ -14,13 +14,13 @@
   <meta property="og:site_name"   content="Nake Design"/>
   <meta property="og:locale"      content="en_US"/>
   <meta property="og:title"       content="About — Nake Design"/>
-  <meta property="og:description" content="Creative Lead &amp; Visual Strategist in Taipei. Brand identity, motion, interactive design and sound."/>
+  <meta property="og:description" content="Strategy, made visible. Brand identity, motion, interactive design and sound — Taipei, Taiwan."/>
   <meta property="og:image"       content="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ABOUT/img_5569.jpg"/>
 
   <!-- Twitter -->
   <meta name="twitter:card"        content="summary_large_image"/>
   <meta name="twitter:title"       content="About — Nake Design"/>
-  <meta name="twitter:description" content="Creative Lead &amp; Visual Strategist in Taipei. Brand identity, motion, interactive design and sound."/>
+  <meta name="twitter:description" content="Strategy, made visible. Brand identity, motion, interactive design and sound — Taipei, Taiwan."/>
   <meta name="twitter:image"       content="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ABOUT/img_5569.jpg"/>
 
   <link rel="icon" type="image/png" href="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ABOUT/img_3369.png"/>
@@ -29,7 +29,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link rel="preconnect" href="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev" crossorigin/>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;900&family=Noto+Sans+TC:wght@400;500&display=swap"/>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&family=Noto+Sans+TC:wght@400;500&display=swap"/>
   <link rel="stylesheet" href="/style.css"/>
   <style>
     /* 基礎與導覽列樣式由 /style.css 提供,此處僅本頁專屬樣式 */
@@ -208,7 +208,7 @@
     /* ── 肖像卡:置中 ── */
     .photo-card { display: flex; flex-direction: column; align-items: center; text-align: center; }
     .photo-frame {
-      width: min(280px, 100%);
+      width: min(360px, 100%);
       border-radius: 18px; overflow: hidden;
       aspect-ratio: 3/4;
       box-shadow: 0 16px 44px rgba(0,0,0,0.14);
@@ -284,16 +284,42 @@
     .exp-role { font-size: 11px; color: rgba(0,0,0,0.45); letter-spacing: 0.06em; font-style: italic; margin-bottom: 6px; }
     .exp-desc { font-size: 11px; color: rgba(0,0,0,0.45); letter-spacing: 0.03em; line-height: 1.8; }
 
-    /* ── CTA 收尾 ── */
-    .cta-card { text-align: center; padding: 4rem 2.8rem; }
-    .cta-line {
-      font-size: clamp(22px, 3.6vw, 34px);
-      font-weight: 700; letter-spacing: 0.02em;
-      margin-bottom: 2rem;
+    /* ── Contact 表單 ── */
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0 2rem; }
+    .form-field {
+      position: relative;
+      border-bottom: 0.5px solid rgba(0,0,0,0.12);
+      padding: 1.25rem 0 0.6rem;
+      transition: border-color 0.25s;
     }
-    .cta-btn {
+    .form-field:focus-within { border-bottom-color: rgba(0,0,0,0.5); }
+    .form-field label {
+      position: absolute; top: 1.3rem; left: 0;
+      font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase;
+      color: var(--text-muted);
+      transition: top 0.2s, font-size 0.2s;
+      pointer-events: none;
+    }
+    .form-field.filled label,
+    .form-field:focus-within label { top: 0.2rem; font-size: 9px; }
+    .form-field input,
+    .form-field textarea {
+      width: 100%; background: transparent; border: none; border-radius: 0;
+      padding: 0.3rem 0 0;
+      font-family: var(--font); font-size: 14px; color: var(--text);
+      letter-spacing: 0.04em; line-height: 1.6;
+      outline: none; -webkit-appearance: none;
+    }
+    .form-field textarea { resize: none; height: 96px; margin-top: 0.25rem; }
+
+    /* honeypot — 對使用者隱藏,僅誘捕機器人 */
+    .hp-field { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+
+    .form-actions { margin-top: 2.2rem; display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+    .required-note { font-size: 10px; color: var(--text-muted); letter-spacing: 0.08em; }
+    .submit-btn {
       display: inline-flex; align-items: center; gap: 10px;
-      font-size: 11px; font-weight: 500;
+      font-size: 11px; font-weight: 500; font-family: var(--font);
       letter-spacing: 0.22em; text-transform: uppercase;
       color: var(--text); text-decoration: none;
       padding: 1rem 2.2rem; border-radius: 999px;
@@ -302,11 +328,24 @@
       box-shadow: 0 10px 28px rgba(0,0,0,0.08), inset 0 1px 0 rgba(255,255,255,0.95);
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
+      cursor: pointer;
       transition: transform 0.35s cubic-bezier(.16,1,.3,1), box-shadow 0.35s ease;
     }
-    .cta-btn:hover { transform: translateY(-3px); box-shadow: 0 18px 44px rgba(0,0,0,0.13), inset 0 1px 0 rgba(255,255,255,0.95); }
-    .cta-btn i { font-style: normal; transition: transform 0.35s cubic-bezier(.16,1,.3,1); }
-    .cta-btn:hover i { transform: translateX(4px); }
+    .submit-btn:hover { transform: translateY(-3px); box-shadow: 0 18px 44px rgba(0,0,0,0.13), inset 0 1px 0 rgba(255,255,255,0.95); }
+    .submit-btn i { font-style: normal; transition: transform 0.35s cubic-bezier(.16,1,.3,1); }
+    .submit-btn:hover i { transform: translateX(4px); }
+    .submit-btn:disabled { opacity: 0.35; cursor: default; transform: none; }
+
+    .form-error {
+      display: none; margin-top: 1.5rem;
+      font-size: 11px; letter-spacing: 0.06em; line-height: 1.7; color: #9a3b2e;
+    }
+    .form-error.visible { display: block; }
+
+    .contact-success { display: none; padding: 0.5rem 0 1rem; }
+    .contact-success.visible { display: block; }
+    .success-zh { font-size: 13px; line-height: 2.1; color: rgba(0,0,0,0.65); margin-bottom: 1.6rem; }
+    .success-en { font-size: 11px; line-height: 2; color: rgba(0,0,0,0.35); letter-spacing: 0.04em; }
 
     /* ═══════════════ 滾動顯示 ═══════════════ */
     .reveal {
@@ -316,11 +355,13 @@
     .reveal.in-view { opacity: 1; transform: translateY(0) scale(1); }
 
     @media (max-width: 700px) {
-      .photo-frame { width: min(240px, 100%); }
+      .photo-frame { width: min(300px, 100%); }
       .glass { padding: 1.8rem 1.5rem; }
       .award-grid { grid-template-columns: 1fr 1fr; }
       .cap-group { grid-template-columns: 1fr; gap: 0.7rem; }
       .hero { cursor: auto; }
+      .form-row { grid-template-columns: 1fr; }
+      .form-actions { flex-direction: column; align-items: flex-start; gap: 1.25rem; }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -354,7 +395,6 @@
   <a class="logo" href="/">NAKE DESIGN</a>
   <div class="nav-links">
     <a href="/about/">About</a>
-    <a href="/contact/">Contact</a>
   </div>
 </nav>
 
@@ -366,7 +406,7 @@
       <span class="line"><span class="line-inner">Wei-Xun</span></span>
       <span class="line"><span class="line-inner">Weng</span></span>
     </h1>
-    <div class="hero-sub">Creative Lead &amp; Visual Strategist — Taipei, Taiwan</div>
+    <div class="hero-sub">Strategy, made visible.</div>
   </div>
 
   <!-- 液態透鏡 -->
@@ -432,8 +472,9 @@
       <div class="award-card"><div class="award-year">'18</div><div class="award-name">Golden Melody Awards (GMA) — Project Visual</div></div>
       <div class="award-card"><div class="award-year">'21</div><div class="award-name">A' Design Award — Iron / Runner-up</div></div>
       <div class="award-card"><div class="award-year">'22</div><div class="award-name">Creative Communication Award (C2A) — Finalist</div></div>
-      <div class="award-card is-winner"><div class="award-year">'23</div><div class="award-name">Muse Design Awards — Silver</div></div>
+      <div class="award-card"><div class="award-year">'23</div><div class="award-name">Muse Design Awards — Silver</div></div>
       <div class="award-card is-winner"><div class="award-year">'25</div><div class="award-name">Red Dot Design Award — Winner</div></div>
+      <div class="award-card is-winner"><div class="award-year">'26</div><div class="award-name">iF Design Award — Winner</div></div>
     </div>
   </section>
 
@@ -471,10 +512,49 @@
     </div>
   </section>
 
-  <!-- CTA 收尾 -->
-  <section class="glass reveal cta-card">
-    <div class="cta-line">Let's define something together.</div>
-    <a class="cta-btn" href="/contact/">Contact <i>→</i></a>
+  <!-- Contact:表單 -->
+  <section class="glass reveal" id="contact">
+    <h2 class="section-label">Contact</h2>
+
+    <form id="contact-form"
+          action="https://formspree.io/f/mkopljzd" method="POST">
+
+      <div class="form-row">
+        <div class="form-field">
+          <label for="name">Name *</label>
+          <input type="text" id="name" name="name" required autocomplete="name"/>
+        </div>
+        <div class="form-field">
+          <label for="email">Mail *</label>
+          <input type="email" id="email" name="email" required autocomplete="email"/>
+        </div>
+      </div>
+
+      <div class="form-field">
+        <label for="message">Message</label>
+        <textarea id="message" name="message"></textarea>
+      </div>
+
+      <div class="hp-field" aria-hidden="true">
+        <label for="_gotcha">Leave this field empty</label>
+        <input type="text" id="_gotcha" name="_gotcha" tabindex="-1" autocomplete="off"/>
+      </div>
+
+      <div class="form-actions">
+        <span class="required-note">* Required</span>
+        <button type="submit" class="submit-btn" id="submit-btn">Send <i>→</i></button>
+      </div>
+
+      <div class="form-error" id="form-error" role="alert">
+        傳送失敗，請稍後再試一次。<br>Something went wrong — please try again.
+      </div>
+
+    </form>
+
+    <div class="contact-success" id="success-msg" role="status" aria-live="polite">
+      <div class="success-zh">感謝您的來信。這份聯繫對我們而言非常重要，<br>團隊將會盡快審閱您的需求並與您聯繫，<br>期待與您共同架構品牌的世界觀。</div>
+      <div class="success-en">Thank you for your inquiry. Your connection is of great importance to us.<br>Our team will review your requirements as soon as possible and get in touch with you shortly.<br>We look forward to architecting a unique brand vision together.</div>
+    </div>
   </section>
 
 </main>
@@ -501,6 +581,37 @@ document.querySelectorAll('.glass').forEach(card=>{
     card.style.setProperty('--mx',(e.clientX-r.left)+'px');
     card.style.setProperty('--my',(e.clientY-r.top)+'px');
   });
+});
+
+/* 聯絡表單:浮動標籤 + Formspree 送出 */
+document.querySelectorAll('.form-field input,.form-field textarea').forEach(el=>{
+  el.addEventListener('input',()=>el.closest('.form-field').classList.toggle('filled',el.value.length>0));
+});
+document.getElementById('contact-form').addEventListener('submit',async function(e){
+  e.preventDefault();
+  if(document.getElementById('_gotcha').value)return;   /* honeypot:機器人靜默結束 */
+  const btn=document.getElementById('submit-btn');
+  const errBox=document.getElementById('form-error');
+  const btnHTML=btn.innerHTML;
+  errBox.classList.remove('visible');
+  btn.disabled=true;btn.textContent='...';
+  try{
+    const res=await fetch(this.action,{
+      method:'POST',
+      headers:{'Content-Type':'application/json','Accept':'application/json'},
+      body:JSON.stringify({
+        name:document.getElementById('name').value,
+        email:document.getElementById('email').value,
+        message:document.getElementById('message').value,
+      }),
+    });
+    if(!res.ok)throw new Error();
+    this.style.display='none';
+    document.getElementById('success-msg').classList.add('visible');
+  }catch{
+    btn.disabled=false;btn.innerHTML=btnHTML;
+    errBox.classList.add('visible');
+  }
 });
 
 const reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
