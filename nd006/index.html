@@ -28,13 +28,6 @@
     .compare-after img{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;display:block;}
     .compare-handle{position:absolute;top:0;left:50%;width:2px;height:100%;background:rgba(255,255,255,0.9);transform:translateX(-50%);pointer-events:none;}
     .compare-knob{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,0.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:0.5px solid rgba(255,255,255,0.6);display:flex;align-items:center;justify-content:center;pointer-events:none;font-size:13px;color:#111;letter-spacing:-1px;}
-    /* divider */
-    .divider{width:100%;padding:3rem 0;display:flex;align-items:center;justify-content:center;}
-    /* gallery */
-    .block-gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-bottom:2px;cursor:pointer;}
-    /* lightbox */
-    #lightbox{display:none;position:fixed;inset:0;z-index:1000;background:rgba(0,0,0,0.94);align-items:center;justify-content:center;flex-direction:column;}
-    @media(max-width:540px){.block-gallery{grid-template-columns:repeat(2,1fr);}}
   </style>
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-KD5VZ79GEN"></script>
@@ -60,14 +53,15 @@
   </header>
   <div class="project-body">
 
+    <div class="block-img">
+      <img loading="eager" fetchpriority="high" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ND006/nd006_01.jpg" alt="Baoge 01"/>
+    </div>
+
     <div class="block-text">
       <p>Baoge, a renowned specialty brand from Liuqiu (小琉球), Pingtung, aimed to expand its footprint to mainland Taiwan. Facing fierce competition from local rivals already established in FamilyMart, we strategically pivoted toward <strong>7-Eleven</strong>, Taiwan's leading convenience store chain.</p>
       <p>Recognizing the potential risks in production capacity and inventory management for a nationwide launch, we implemented a <strong>precision-targeted pilot program</strong>. Instead of an immediate full-scale rollout, we focused on high-traffic tourist hubs such as Ximen (西門町), Dongmen (東門), and Sun Moon Lake (日月潭). By targeting locations with high international and domestic tourist activity, we successfully validated the market demand while maintaining operational stability.</p>
     </div>
-
-    <div class="block-img">
-      <img loading="lazy" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ND006/nd006_01.jpg" alt="Baoge 01"/>
-    </div>
+    
 
     <div class="block-text">
       <p>This represents the inaugural edition of the brand's evolution. The project was initiated to harmonize a complete visual overhaul with the adoption of innovative new packaging technology.</p>
