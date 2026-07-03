@@ -2,6 +2,13 @@
 (function(){
   const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+  /* 開場 eager 首圖的載入淡入:各頁內建腳本只處理 lazy 圖,
+     eager 圖不補 .loaded 會永遠停在 opacity:0 */
+  document.querySelectorAll('img[loading="eager"]').forEach(img=>{
+    if(img.complete)img.classList.add('loaded');
+    else img.addEventListener('load',()=>img.classList.add('loaded'));
+  });
+
   /* 捲動進度髮絲線(元素由此注入,頁面 HTML 不需要各自帶) */
   const bar=document.createElement('div');
   bar.id='progress';
