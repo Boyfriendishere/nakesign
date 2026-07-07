@@ -592,15 +592,22 @@ if(touchUI&&!reduced){
   const cur=document.getElementById('cursor');
   const zoom=document.getElementById('cursorZoom');
   cur.classList.add('touch');
-  const SIZE=118,K=1.35;
+  const SIZE=90,K=1.35;
   let x=innerWidth/2,y=innerHeight*0.4;
   let on=false,retired=false,focus=null,anim=null,dwellUntil=0;
   let visited=[],idleTimer=null,scrolled=false,showSeq=0;
   const probe={t0:0,last:0,frames:0,done:false};
 
   const visible=()=>cards.filter(c=>{const r=c.getBoundingClientRect();return r.top<innerHeight*0.85&&r.bottom>innerHeight*0.15;});
-  /* 落點:卡片上半部隨機偏移(標題讓位到底部,兩者不遮擋) */
-  function spotOn(card){const r=card.getBoundingClientRect();return{x:r.left+r.width*(0.32+Math.random()*0.36),y:r.top+r.height*(0.20+Math.random()*0.18)};}
+  /* 落點:實測該卡標題高度,透鏡只在「標題上緣以上」的安全帶隨機遊走(長標題自動待更高) */
+  function spotOn(card){
+    const r=card.getBoundingClientRect(),half=SIZE/2;
+    const ht=card.querySelector('.ht');
+    const zone=(ht?ht.getBoundingClientRect().height:24)+27;  /* 標題+分隔線+間距+底部 padding */
+    const yMin=half*0.8;
+    const yMax=Math.max(yMin,r.height-zone-half-8);
+    return{x:r.left+r.width*(0.30+Math.random()*0.40),y:r.top+yMin+Math.random()*(yMax-yMin)};
+  }
   function pickNext(){
     let pool=visible().filter(c=>c!==focus&&!visited.includes(c));
     if(!pool.length)pool=visible().filter(c=>c!==focus);
