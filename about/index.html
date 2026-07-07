@@ -177,6 +177,7 @@
 
     .glass {
       position: relative;
+      min-width: 0;   /* flex item 的 min-content 會被 pipe 的 min-width 撐爆,必須歸零 */
       border-radius: var(--glass-radius);
       background: var(--glass-bg);
       backdrop-filter: blur(28px) saturate(170%);
@@ -224,33 +225,49 @@
     .bio-name { font-size: 15px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; margin-bottom: 6px; }
     .bio-loc  { font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-muted); }
 
-    /* ── Education ── */
-    .edu-school { font-size: 13px; font-weight: 500; letter-spacing: 0.04em; margin-bottom: 4px; }
-    .edu-detail { font-size: 11px; color: rgba(0,0,0,0.5); letter-spacing: 0.04em; line-height: 1.8; }
-
-    /* ── Capabilities ── */
-    .cap-group { display: grid; grid-template-columns: 130px 1fr; gap: 1.4rem; align-items: baseline; padding: 1.1rem 0; }
-    .cap-group + .cap-group { border-top: 0.5px solid rgba(0,0,0,0.06); }
-    .cap-name {
-      font-size: 10px; font-weight: 500; letter-spacing: 0.22em;
-      text-transform: uppercase; color: rgba(0,0,0,0.45);
-    }
-    .cap-tags { display: flex; flex-wrap: wrap; gap: 0.6rem; }
-    .cap-tags span {
-      font-size: 11px; color: rgba(0,0,0,0.66); letter-spacing: 0.04em;
-      padding: 0.55rem 0.95rem; border-radius: 999px;
+    /* ── Capabilities 整合版:主張+流程(B) → 敘事卡(A) → 卡內作品證據(C) ── */
+    .svc { display: flex; flex-direction: column; gap: 0.9rem; }
+    .svc-card {
+      border-radius: 18px; padding: 1.5rem 1.7rem;
       background: rgba(255,255,255,0.5);
       border: 1px solid rgba(255,255,255,0.8);
-      box-shadow: 0 4px 14px rgba(0,0,0,0.05), inset 0 1px 0 rgba(255,255,255,0.9);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-      transition: transform 0.3s cubic-bezier(.16,1,.3,1), box-shadow 0.3s ease;
-      cursor: default;
+      box-shadow: 0 8px 22px rgba(0,0,0,0.05), inset 0 1px 0 rgba(255,255,255,0.92);
+      transition: transform 0.35s cubic-bezier(.16,1,.3,1), box-shadow 0.35s ease;
     }
-    .cap-tags span:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 10px 24px rgba(0,0,0,0.09), inset 0 1px 0 rgba(255,255,255,0.9);
+    .svc-card:hover { transform: translateY(-4px); box-shadow: 0 18px 40px rgba(0,0,0,0.09), inset 0 1px 0 rgba(255,255,255,0.92); }
+    .svc-name { font-size: 10px; font-weight: 500; letter-spacing: 0.24em; text-transform: uppercase; color: rgba(0,0,0,0.45); margin-bottom: 0.65rem; }
+    .svc-zh { font-size: 16px; font-weight: 600; line-height: 1.6; letter-spacing: 0.01em; margin-bottom: 0.25rem; }
+    .svc-en { font-size: 11px; color: rgba(0,0,0,0.4); letter-spacing: 0.04em; margin-bottom: 1rem; }
+    .svc-tags { display: flex; flex-wrap: wrap; gap: 0.45rem; }
+    .svc-tags span { font-size: 10px; letter-spacing: 0.05em; color: rgba(0,0,0,0.5); padding: 0.3rem 0.7rem; border-radius: 999px; border: 0.5px solid rgba(0,0,0,0.12); }
+
+    /* 開場主張 + 全流程 pipeline */
+    .pipe-lede { font-size: 15px; font-weight: 600; line-height: 1.75; margin-bottom: 0.35rem; }
+    .pipe-sub { font-size: 11px; color: rgba(0,0,0,0.4); letter-spacing: 0.04em; margin-bottom: 1.8rem; }
+    .pipe-scroll { overflow-x: auto; padding-bottom: 0.4rem; margin-bottom: 2.2rem; }
+    .pipe { display: flex; min-width: 620px; }
+    .pipe-step { flex: 1; position: relative; padding: 1rem 1rem 1rem 1.2rem; }
+    .pipe-step + .pipe-step { border-left: 0.5px solid rgba(0,0,0,0.09); }
+    .pipe-num { font-size: 10px; letter-spacing: 0.18em; color: rgba(0,0,0,0.28); margin-bottom: 0.55rem; }
+    .pipe-name { font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 0.4rem; }
+    .pipe-zh { font-size: 11px; color: rgba(0,0,0,0.5); line-height: 1.7; }
+    .pipe-arrow { position: absolute; right: -6px; top: 1rem; font-size: 11px; color: rgba(0,0,0,0.25); }
+
+    /* 卡內作品證據列:縮圖 + 件數 */
+    .svc-foot {
+      display: flex; justify-content: space-between; align-items: center; gap: 0.8rem;
+      margin-top: 1.15rem; padding-top: 1.05rem;
+      border-top: 0.5px solid rgba(0,0,0,0.06);
     }
+    .thumbs { display: flex; }
+    .thumbs a { display: block; margin-left: -10px; transition: transform 0.3s cubic-bezier(.16,1,.3,1); }
+    .thumbs a:first-child { margin-left: 0; }
+    .thumbs a:hover { transform: translateY(-3px); z-index: 1; position: relative; }
+    .thumbs img { width: 46px; height: 34px; object-fit: cover; border-radius: 7px; display: block; border: 1.5px solid rgba(255,255,255,0.95); box-shadow: 0 3px 8px rgba(0,0,0,0.12); }
+    .proof-count { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(0,0,0,0.45); white-space: nowrap; font-variant-numeric: tabular-nums; text-decoration: none; transition: color 0.3s ease; }
+    .proof-count i { font-style: normal; display: inline-block; transition: transform 0.3s cubic-bezier(.16,1,.3,1); }
+    .proof-count:hover { color: rgba(0,0,0,0.8); }
+    .proof-count:hover i { transform: translateX(3px); }
 
     /* ── Awards ── */
     .award-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 0.9rem; }
@@ -265,8 +282,34 @@
     .award-card:hover { transform: translateY(-4px); box-shadow: 0 16px 36px rgba(0,0,0,0.10), inset 0 1px 0 rgba(255,255,255,0.9); }
     .award-year { font-size: 10px; color: var(--text-muted); letter-spacing: 0.14em; text-transform: uppercase; }
     .award-name { font-size: 12px; color: rgba(0,0,0,0.75); letter-spacing: 0.04em; line-height: 1.6; }
-    .award-card.is-winner { background: linear-gradient(135deg, rgba(255,246,214,0.72), rgba(255,255,255,0.45)); }
-    .award-card.is-winner .award-year { color: #b8901c; }
+    /* 最新得獎:橫跨整排 + 1.5px 稜鏡色散細環(與 hero 透鏡同光學語言),卡片本體維持玻璃白 */
+    @property --ga { syntax: '<angle>'; inherits: false; initial-value: 0deg; }
+    .award-card.is-featured {
+      grid-column: 1 / -1;
+      position: relative;
+      flex-direction: row; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 0.5rem 1rem;
+      padding: 1.4rem 1.5rem;
+      background: rgba(255,255,255,0.55);
+    }
+    .award-card.is-featured::before {
+      content: ''; position: absolute; inset: 0; border-radius: inherit;
+      padding: 1.5px;
+      background: conic-gradient(from var(--ga), rgba(255,120,160,0.7), rgba(90,170,255,0.7), rgba(100,255,180,0.6), rgba(255,200,80,0.65), rgba(190,120,255,0.7), rgba(255,120,160,0.7));
+      -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+      -webkit-mask-composite: xor;
+      mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+      mask-composite: exclude;
+      pointer-events: none;
+      animation: prismSpin 9s linear infinite;
+    }
+    @keyframes prismSpin { to { --ga: 360deg; } }
+    .award-card.is-featured .award-name { font-size: 14px; font-weight: 600; color: rgba(0,0,0,0.85); }
+    .award-latest {
+      font-size: 9px; letter-spacing: 0.24em; text-transform: uppercase;
+      color: rgba(0,0,0,0.45); white-space: nowrap;
+    }
+    .award-latest i { font-style: normal; }
 
     /* ── Experience ── */
     .exp-item { position: relative; padding: 0 0 1.9rem 1.8rem; border-left: 1px solid rgba(0,0,0,0.1); }
@@ -358,13 +401,19 @@
       .photo-frame { width: min(300px, 100%); }
       .glass { padding: 1.8rem 1.5rem; }
       .award-grid { grid-template-columns: 1fr 1fr; }
-      .cap-group { grid-template-columns: 1fr; gap: 0.7rem; }
+      .svc-foot { flex-wrap: wrap; }
+      /* 手機:流程帶改直排,不做橫滑 */
+      .pipe { min-width: 0; flex-direction: column; }
+      .pipe-step { padding: 0.95rem 0.2rem; }
+      .pipe-step + .pipe-step { border-left: none; border-top: 0.5px solid rgba(0,0,0,0.09); }
+      .pipe-arrow { display: none; }
       .hero { cursor: auto; }
       .form-row { grid-template-columns: 1fr; }
       .form-actions { flex-direction: column; align-items: flex-start; gap: 1.25rem; }
     }
 
     @media (prefers-reduced-motion: reduce) {
+      .award-card.is-featured::before { animation: none; }
       .reveal, .photo-frame img, .hero-kicker, .hero-sub { opacity: 1 !important; transform: none !important; }
       .hero-name .line-inner { transform: none !important; }
       .lens { display: none !important; }
@@ -415,7 +464,7 @@
   <!-- 跑馬燈 -->
   <div class="marquee" aria-hidden="true">
     <div class="marquee-track" id="marqueeTrack">
-      <span>Brand Identity <i>✦</i></span><span>Art Direction <i>✦</i></span><span>Motion Design <i>✦</i></span><span>Interactive Web <i>✦</i></span><span>Sound Design <i>✦</i></span><span>Visual Strategy <i>✦</i></span>
+      <span>Strategy <i>✦</i></span><span>Brand &amp; Identity <i>✦</i></span><span>Interactive Web <i>✦</i></span><span>Motion &amp; Sound <i>✦</i></span><span>Photography <i>✦</i></span><span>Growth <i>✦</i></span>
     </div>
   </div>
 </header>
@@ -433,33 +482,109 @@
     <div class="bio-loc">Taipei, Taiwan</div>
   </section>
 
-  <!-- Education -->
-  <section class="glass reveal">
-    <div class="section-label">Education</div>
-    <div class="edu-school">Hungkuo Delin University of Technology</div>
-    <div class="edu-detail">B.S. Computer Science &amp; Information Engineering, '12</div>
-    <div class="edu-detail">Outstanding Alumnus, '18</div>
-  </section>
-
-  <!-- Capabilities -->
-  <section class="glass reveal">
+  <!-- Capabilities 整合版:開場主張+流程(B) → 四張服務敘事卡(A) → 卡內作品證據(C) -->
+  <section class="glass reveal" id="capabilities">
     <div class="section-label">Capabilities</div>
-    <div class="cap-group">
-      <div class="cap-name">Design</div>
-      <div class="cap-tags">
-        <span>Brand Identity</span><span>Art Direction</span><span>Visual Systems</span><span>Interactive Web</span><span>Typography</span>
+
+    <p class="pipe-lede">You've probably seen my work —<br>you just never knew it was mine.</p>
+    <p class="pipe-sub">The work speaks first. From strategy to growth, one man.</p>
+    <div class="pipe-scroll">
+        <div class="pipe">
+          <div class="pipe-step">
+            <div class="pipe-num">01</div>
+            <div class="pipe-name">Strategy</div>
+            <div class="pipe-zh">Who the brand speaks to, and what it says</div>
+            <span class="pipe-arrow" aria-hidden="true">→</span>
+          </div>
+          <div class="pipe-step">
+            <div class="pipe-num">02</div>
+            <div class="pipe-name">Identity</div>
+            <div class="pipe-zh">Identity systems, typography, visual order</div>
+            <span class="pipe-arrow" aria-hidden="true">→</span>
+          </div>
+          <div class="pipe-step">
+            <div class="pipe-num">03</div>
+            <div class="pipe-name">Web &amp; Motion</div>
+            <div class="pipe-zh">Interactive sites, motion, 3D &amp; CGI</div>
+            <span class="pipe-arrow" aria-hidden="true">→</span>
+          </div>
+          <div class="pipe-step">
+            <div class="pipe-num">04</div>
+            <div class="pipe-name">Sound</div>
+            <div class="pipe-zh">Score, sound design, vocal production</div>
+            <span class="pipe-arrow" aria-hidden="true">→</span>
+          </div>
+          <div class="pipe-step">
+            <div class="pipe-num">05</div>
+            <div class="pipe-name">Growth</div>
+            <div class="pipe-zh">Analytics, paid media, SEO — always optimizing</div>
+          </div>
+        </div>
       </div>
-    </div>
-    <div class="cap-group">
-      <div class="cap-name">Motion &amp; Sound</div>
-      <div class="cap-tags">
-        <span>Motion Design</span><span>3D &amp; CGI</span><span>Post-Production</span><span>Sound Design</span><span>Vocal Production</span>
+
+    <div class="svc">
+      <div class="svc-card">
+        <div class="svc-name">Brand &amp; Identity</div>
+        <div class="svc-zh">A visual order your brand can run on — long after handover.</div>
+        <div class="svc-en">From positioning to identity systems that scale.</div>
+        <div class="svc-tags"><span>Brand Identity</span><span>Art Direction</span><span>Visual Systems</span><span>Typography</span></div>
+        <div class="svc-foot">
+          <div class="thumbs">
+            <a href="/nd035/" aria-label="菜霸子 VEGEKING"><img loading="lazy" decoding="async" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/Ncover/nd035_cover.webp" alt="菜霸子 VEGEKING"/></a>
+            <a href="/nd011/" aria-label="台雞店 TSCC"><img loading="lazy" decoding="async" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/Ncover/nd011_cover.webp" alt="台雞店 TSCC"/></a>
+            <a href="/nd029/" aria-label="日曜日 SUNDAY"><img loading="lazy" decoding="async" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/Ncover/nd029_cover.webp" alt="日曜日 SUNDAY"/></a>
+            <a href="/nd012/" aria-label="國立體育大學"><img loading="lazy" decoding="async" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/Ncover/nd012_cover.webp" alt="國立體育大學"/></a>
+          </div>
+          <a class="proof-count" href="/">15 Projects <i>→</i></a>
+        </div>
       </div>
-    </div>
-    <div class="cap-group">
-      <div class="cap-name">Growth</div>
-      <div class="cap-tags">
-        <span>Marketing Strategy</span><span>Analytics</span><span>Paid Media</span><span>SEO</span>
+
+      <div class="svc-card">
+        <div class="svc-name">Interactive Web</div>
+        <div class="svc-zh">Where the identity becomes something people can use.</div>
+        <div class="svc-en">Websites and digital experiences, designed and built.</div>
+        <div class="svc-tags"><span>Interactive Web</span><span>UI &amp; UX</span><span>Digital Experience</span></div>
+        <div class="svc-foot">
+          <div class="thumbs">
+            <a href="/nd009/" aria-label="KAWAJUN"><img loading="lazy" decoding="async" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/Ncover/nd009_cover.webp" alt="KAWAJUN"/></a>
+            <a href="/nd027/" aria-label="國立中山大學"><img loading="lazy" decoding="async" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/Ncover/nd027_cover.webp" alt="國立中山大學"/></a>
+            <a href="/nd010/" aria-label="巴拉圭駐台大使館"><img loading="lazy" decoding="async" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/Ncover/nd010_cover.webp" alt="巴拉圭駐台大使館"/></a>
+            <a href="/nd001/" aria-label="上報 UP MEDIA"><img loading="lazy" decoding="async" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/Ncover/nd001_cover.webp" alt="上報 UP MEDIA"/></a>
+          </div>
+          <a class="proof-count" href="/">5 Projects <i>→</i></a>
+        </div>
+      </div>
+
+      <div class="svc-card">
+        <div class="svc-name">Motion &amp; Sound</div>
+        <div class="svc-zh">When it moves and sounds, a brand starts telling its story.</div>
+        <div class="svc-en">Film, 3D, photography and audio — produced end-to-end, in-house.</div>
+        <div class="svc-tags"><span>Motion Design</span><span>3D &amp; CGI</span><span>Post-Production</span><span>Sound Design</span><span>Vocal Production</span><span>Photography</span></div>
+        <div class="svc-foot">
+          <div class="thumbs">
+            <a href="/nd016/" aria-label="台積電 TSMC"><img loading="lazy" decoding="async" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/Ncover/nd016_cover.webp" alt="台積電 TSMC"/></a>
+            <a href="/nd008/" aria-label="施巴 SEBAMED"><img loading="lazy" decoding="async" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/Ncover/nd008_cover.webp" alt="施巴 SEBAMED"/></a>
+            <a href="/nd002/" aria-label="維娜斯 VENUS"><img loading="lazy" decoding="async" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/Ncover/nd002_cover.webp" alt="維娜斯 VENUS"/></a>
+            <a href="/nd030/" aria-label="攝影 PHOTOGRAPHY"><img loading="lazy" decoding="async" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/Ncover/nd030_cover.webp" alt="攝影 PHOTOGRAPHY"/></a>
+          </div>
+          <a class="proof-count" href="/">4 Works <i>→</i></a>
+        </div>
+      </div>
+
+      <div class="svc-card">
+        <div class="svc-name">Growth</div>
+        <div class="svc-zh">Launch isn't the finish line — data keeps design performing.</div>
+        <div class="svc-en">Strategy, analytics and media that compound after go-live.</div>
+        <div class="svc-tags"><span>Marketing Strategy</span><span>Analytics</span><span>Paid Media</span><span>SEO</span></div>
+        <div class="svc-foot">
+          <div class="thumbs">
+            <a href="/nd026/" aria-label="華信航空"><img loading="lazy" decoding="async" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/Ncover/nd026_cover.webp" alt="華信航空"/></a>
+            <a href="/nd023/" aria-label="Garmin"><img loading="lazy" decoding="async" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/Ncover/nd023_cover.webp" alt="Garmin"/></a>
+            <a href="/nd034/" aria-label="北港朝天宮"><img loading="lazy" decoding="async" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/Ncover/nd034_cover.webp" alt="北港朝天宮"/></a>
+            <a href="/nd020/" aria-label="味亦美 WIM"><img loading="lazy" decoding="async" src="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/Ncover/nd020_cover.webp" alt="味亦美 WIM"/></a>
+          </div>
+          <a class="proof-count" href="/">11 Campaigns <i>→</i></a>
+        </div>
       </div>
     </div>
   </section>
@@ -473,8 +598,14 @@
       <div class="award-card"><div class="award-year">'21</div><div class="award-name">A' Design Award — Iron / Runner-up</div></div>
       <div class="award-card"><div class="award-year">'22</div><div class="award-name">Creative Communication Award (C2A) — Finalist</div></div>
       <div class="award-card"><div class="award-year">'23</div><div class="award-name">Muse Design Awards — Silver</div></div>
-      <div class="award-card is-winner"><div class="award-year">'25</div><div class="award-name">Red Dot Design Award — Winner</div></div>
-      <div class="award-card is-winner"><div class="award-year">'26</div><div class="award-name">iF Design Award — Winner</div></div>
+      <div class="award-card"><div class="award-year">'25</div><div class="award-name">Red Dot Design Award — Winner</div></div>
+      <div class="award-card is-featured">
+        <div>
+          <div class="award-year">'26</div>
+          <div class="award-name">iF Design Award — Winner</div>
+        </div>
+        <div class="award-latest">Latest <i>✦</i></div>
+      </div>
     </div>
   </section>
 
