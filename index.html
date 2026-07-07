@@ -157,6 +157,8 @@ a:focus-visible{outline:2px solid var(--text);outline-offset:3px}
 #cursor.condense{transition:width 0.8s cubic-bezier(.16,1,.3,1),height 0.8s cubic-bezier(.16,1,.3,1),opacity 0.6s ease}
 #cursor::after{transition:opacity 0.45s ease 0.25s}
 #cursor.no-ring::after{opacity:0}
+/* 透鏡停駐時標題讓位到卡片底部(透鏡佔上半部,說明牌在下,互不遮擋) */
+.card.lens-look .hover-title{justify-content:flex-end;padding-bottom:16px}
 @media (hover:none){#cursor:not(.touch){display:none}.stream{cursor:auto}}
 
 /* ── 玻璃頁尾 ── */
@@ -590,15 +592,15 @@ if(touchUI&&!reduced){
   const cur=document.getElementById('cursor');
   const zoom=document.getElementById('cursorZoom');
   cur.classList.add('touch');
-  const SIZE=140,K=1.35;
+  const SIZE=118,K=1.35;
   let x=innerWidth/2,y=innerHeight*0.4;
   let on=false,retired=false,focus=null,anim=null,dwellUntil=0;
   let visited=[],idleTimer=null,scrolled=false,showSeq=0;
   const probe={t0:0,last:0,frames:0,done:false};
 
   const visible=()=>cards.filter(c=>{const r=c.getBoundingClientRect();return r.top<innerHeight*0.85&&r.bottom>innerHeight*0.15;});
-  /* 落點:卡片中心附近隨機偏移,像目光不會死盯正中央 */
-  function spotOn(card){const r=card.getBoundingClientRect();return{x:r.left+r.width*(0.35+Math.random()*0.3),y:r.top+r.height*(0.35+Math.random()*0.3)};}
+  /* 落點:卡片上半部隨機偏移(標題讓位到底部,兩者不遮擋) */
+  function spotOn(card){const r=card.getBoundingClientRect();return{x:r.left+r.width*(0.32+Math.random()*0.36),y:r.top+r.height*(0.20+Math.random()*0.18)};}
   function pickNext(){
     let pool=visible().filter(c=>c!==focus&&!visited.includes(c));
     if(!pool.length)pool=visible().filter(c=>c!==focus);
@@ -609,11 +611,11 @@ if(touchUI&&!reduced){
   }
   function setFocus(card){
     if(focus===card)return;
-    if(focus){const m=focus.querySelector('.hover-mask');focus.classList.remove('active');if(m)setOrbState(m,'paused');}
+    if(focus){const m=focus.querySelector('.hover-mask');focus.classList.remove('active','lens-look');if(m)setOrbState(m,'paused');}
     focus=card;
     if(card){
       const m=card.querySelector('.hover-mask');createOrbs(m);setOrbState(m,'running');
-      card.classList.add('active');
+      card.classList.add('active','lens-look');
       const img=card.querySelector('.cover');zoom.src=img.currentSrc||img.src;zoom.style.display='block';
     }else zoom.style.display='none';
   }
