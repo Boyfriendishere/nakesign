@@ -17,7 +17,7 @@
   <meta name="twitter:card" content="summary_large_image"/>
   <link rel="icon" type="image/png" href="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ABOUT/img_3369.png"/>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/><link rel="preconnect" href="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev" crossorigin/>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Noto+Sans+TC:wght@400;500;700&display=swap"/>
   <link rel="stylesheet" href="/style.css?v=20260706a"/>  <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-KD5VZ79GEN"></script>
@@ -125,7 +125,6 @@
   </a>
 </nav>
 
-
 <div id="lightbox">
   <button class="lb-close" id="lb-close">✕</button>
   <img id="lb-img" src="" alt=""/>
@@ -136,50 +135,5 @@
   </div>
 </div>
 
-<script>
-
-
-const sets = {
-  a: Array.from({length:8},(_,i)=>`https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ND005/nd005_0${i+1}.jpg`),
-  b: Array.from({length:6},(_,i)=>`https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ND005/nd005_${String(i+9).padStart(2,'0')}.jpg`),
-  c: Array.from({length:12},(_,i)=>`https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ND005/nd005_${String(i+15).padStart(2,'0')}.jpg`),
-};
-
-const lb=document.getElementById('lightbox');
-const lbImg=document.getElementById('lb-img');
-const lbCount=document.getElementById('lb-count');
-let cur=0, activeSet=[];
-
-function openLb(set,i){
-  activeSet=sets[set]; cur=i;
-  lbImg.src=activeSet[i];
-  lbCount.textContent=(i+1)+' / '+activeSet.length;
-  lb.classList.add('active');
-  document.body.style.overflow='hidden';
-}
-function closeLb(){lb.classList.remove('active');document.body.style.overflow='';}
-function goTo(i){
-  cur=(i+activeSet.length)%activeSet.length;
-  lbImg.classList.add('fading');
-  setTimeout(()=>{lbImg.src=activeSet[cur];lbCount.textContent=(cur+1)+' / '+activeSet.length;lbImg.classList.remove('fading');},200);
-}
-
-document.querySelectorAll('.block-gallery').forEach(gal=>{
-  const set=gal.dataset.set;
-  gal.querySelectorAll('.gallery-thumb').forEach(el=>{
-    el.addEventListener('click',()=>openLb(set,+el.dataset.index));
-  });
-});
-document.getElementById('lb-close').addEventListener('click',closeLb);
-document.getElementById('lb-prev').addEventListener('click',()=>goTo(cur-1));
-document.getElementById('lb-next').addEventListener('click',()=>goTo(cur+1));
-lb.addEventListener('click',e=>{if(e.target===lb)closeLb();});
-document.addEventListener('keydown',e=>{
-  if(!lb.classList.contains('active'))return;
-  if(e.key==='Escape')closeLb();
-  if(e.key==='ArrowLeft')goTo(cur-1);
-  if(e.key==='ArrowRight')goTo(cur+1);
-});
-</script>
 </body>
 </html>

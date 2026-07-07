@@ -17,7 +17,7 @@
   <meta name="twitter:card" content="summary_large_image"/>
   <link rel="icon" type="image/png" href="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ABOUT/img_3369.png"/>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/><link rel="preconnect" href="https://pub-5568dc00a0c44007863754032032ea7d.r2.dev" crossorigin/>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Noto+Sans+TC:wght@400;500;700&display=swap"/>
   <link rel="stylesheet" href="/style.css?v=20260706a"/>
   <style>
@@ -245,36 +245,6 @@ initCompare('cmp1','cmp1-after');
 initCompare('cmp2','cmp2-after');
 initCompare('cmp3','cmp3-after');
 initCompare('cmp4','cmp4-after');
-
-/* lightbox for final gallery */
-const galleryImgs=[
-  'https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ND006/nd006_13.jpg',
-  'https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ND006/nd006_14.jpg',
-  'https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ND006/nd006_15.jpg',
-  'https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ND006/nd006_16.jpg',
-  'https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ND006/nd006_17.jpg',
-  'https://pub-5568dc00a0c44007863754032032ea7d.r2.dev/ND006/nd006_18.jpg',
-];
-const lb=document.getElementById('lightbox');
-const lbImg=document.getElementById('lb-img');
-const lbCount=document.getElementById('lb-count');
-let cur=0;
-function openLb(i){cur=i;lbImg.src=galleryImgs[i];lbCount.textContent=(i+1)+' / '+galleryImgs.length;lb.classList.add('active');document.body.style.overflow='hidden';}
-function closeLb(){lb.classList.remove('active');document.body.style.overflow='';}
-function goTo(i){cur=(i+galleryImgs.length)%galleryImgs.length;lbImg.classList.add('fading');setTimeout(()=>{lbImg.src=galleryImgs[cur];lbCount.textContent=(cur+1)+' / '+galleryImgs.length;lbImg.classList.remove('fading');},200);}
-document.querySelectorAll('#gallery-final .gallery-thumb').forEach(el=>{
-  el.addEventListener('click',()=>openLb(+el.dataset.index));
-});
-document.getElementById('lb-close').addEventListener('click',closeLb);
-document.getElementById('lb-prev').addEventListener('click',()=>goTo(cur-1));
-document.getElementById('lb-next').addEventListener('click',()=>goTo(cur+1));
-lb.addEventListener('click',e=>{if(e.target===lb)closeLb();});
-document.addEventListener('keydown',e=>{
-  if(!lb.classList.contains('active'))return;
-  if(e.key==='Escape')closeLb();
-  if(e.key==='ArrowLeft')goTo(cur-1);
-  if(e.key==='ArrowRight')goTo(cur+1);
-});
 </script>
 </body>
 </html>

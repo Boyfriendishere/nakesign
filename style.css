@@ -82,7 +82,9 @@ body {
 .nav-links a:hover { color: var(--text); }
 
 /* 鍵盤聚焦時的可見外框(無障礙) */
-a:focus-visible {
+a:focus-visible,
+.gallery-thumb:focus-visible,
+.compare-wrap:focus-visible {
   outline: 2px solid var(--text);
   outline-offset: 3px;
 }
