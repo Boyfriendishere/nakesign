@@ -599,14 +599,17 @@ if(touchUI&&!reduced){
   const probe={t0:0,last:0,frames:0,done:false};
 
   const visible=()=>cards.filter(c=>{const r=c.getBoundingClientRect();return r.top<innerHeight*0.85&&r.bottom>innerHeight*0.15;});
-  /* 落點:實測該卡標題高度,透鏡只在「標題上緣以上」的安全帶隨機遊走(長標題自動待更高) */
+  /* 落點:實測該卡標題高度,透鏡只在「標題上緣以上」的安全帶隨機遊走;
+     正方卡+多行長標題塞不下 90px 時,透鏡自動縮徑到剛好塞得進(下限 54px) */
   function spotOn(card){
-    const r=card.getBoundingClientRect(),half=SIZE/2;
+    const r=card.getBoundingClientRect();
     const ht=card.querySelector('.ht');
     const zone=(ht?ht.getBoundingClientRect().height:24)+27;  /* 標題+分隔線+間距+底部 padding */
-    const yMin=half*0.8;
-    const yMax=Math.max(yMin,r.height-zone-half-8);
-    return{x:r.left+r.width*(0.30+Math.random()*0.40),y:r.top+yMin+Math.random()*(yMax-yMin)};
+    const d=Math.max(54,Math.min(SIZE,r.height-zone-4));
+    const half=d/2;
+    const yMin=half*0.85;
+    const yMax=Math.max(yMin,r.height-zone-half-2);
+    return{x:r.left+r.width*(0.30+Math.random()*0.40),y:r.top+yMin+Math.random()*(yMax-yMin),d};
   }
   function pickNext(){
     let pool=visible().filter(c=>c!==focus&&!visited.includes(c));
@@ -626,11 +629,12 @@ if(touchUI&&!reduced){
       const img=card.querySelector('.cover');zoom.src=img.currentSrc||img.src;zoom.style.display='block';
     }else zoom.style.display='none';
   }
-  /* 路程:帶弧度的二次貝茲曲線,起慢中快落慢 */
+  /* 路程:帶弧度的二次貝茲曲線,起慢中快落慢;途中平滑變徑到目的卡的安全尺寸 */
   function travelTo(card){
     const p=spotOn(card),mx=(x+p.x)/2,my=(y+p.y)/2;
     const dx=p.x-x,dy=p.y-y,len=Math.hypot(dx,dy)||1;
     const bend=Math.min(90,len*0.35)*(Math.random()<0.5?-1:1);
+    cur.style.width=cur.style.height=Math.round(p.d)+'px';
     anim={x0:x,y0:y,x1:p.x,y1:p.y,cx:mx-dy/len*bend,cy:my+dx/len*bend,t0:performance.now(),dur:900+Math.random()*350,card};
   }
   const easeC=t=>t<0.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2;
@@ -645,11 +649,11 @@ if(touchUI&&!reduced){
     const p=spotOn(first);x=p.x;y=p.y;
     /* 凝結:大而虛 → 收攏成形,成形後才點亮卡片 */
     cur.classList.add('condense','no-ring');
-    cur.style.width=cur.style.height=Math.round(SIZE*1.6)+'px';
-    cur.style.transform=`translate(${x-SIZE*0.8}px,${y-SIZE*0.8}px)`;
+    cur.style.width=cur.style.height=Math.round(p.d*1.6)+'px';
+    cur.style.transform=`translate(${x-p.d*0.8}px,${y-p.d*0.8}px)`;
     requestAnimationFrame(()=>{
       cur.classList.add('on');
-      cur.style.width=cur.style.height=SIZE+'px';
+      cur.style.width=cur.style.height=Math.round(p.d)+'px';
     });
     setTimeout(()=>{
       if(!on||seq!==showSeq)return;
