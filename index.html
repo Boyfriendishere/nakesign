@@ -521,6 +521,28 @@ if(!reduced&&finePointer){
   },{passive:true});
 
   const narrow=matchMedia('(max-width:720px)');  /* 兩欄版:第三欄為 display:contents,欄位 translate 會疊到下方卡片,須停用 */
+
+  /* 欄位視差把欄往下推(捲到底時位移 = f×最大捲動量),但 footer 的版面位置沒算到這段位移,
+     捲到底會被推低的中欄卡片蓋住 → 依最終位移量替 .stream 補底部淨空。
+     淨空 E 本身會增加可捲動量,故解 E ≥ (欄底 − footer頂 + f×(H−vh)) / (1−f) */
+  const streamEl=document.getElementById('stream');
+  const footEl=document.querySelector('.footer-wrap');
+  let footClear=0;
+  function setClearance(){
+    if(narrow.matches){footClear=0;streamEl.style.paddingBottom='';setSpacer();return;}
+    const H0=wrap.scrollHeight-footClear,footTop=footEl.offsetTop-footClear,vh=innerHeight;
+    let E=0;
+    colState.forEach(s=>{
+      const need=(s.el.offsetTop+s.el.offsetHeight-footTop+s.f*(H0-vh))/(1-s.f);
+      if(need>E)E=need;
+    });
+    footClear=Math.max(0,Math.ceil(E));
+    streamEl.style.paddingBottom=footClear+'px';
+    setSpacer();
+  }
+  setClearance();
+  addEventListener('resize',setClearance);
+
   let sm=scrollY,prevSm=sm;
   (function loop(){
     sm+=(scrollY-sm)*0.085;                     /* 慣性 */
