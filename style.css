@@ -1,5 +1,14 @@
-/* 字型改由各頁 <head> 的 preconnect + <link> 載入(避免 @import 串聯阻塞:
-   下載 CSS → 才發現 @import → 再抓字型 CSS,平白多一輪 RTT)。 */
+/* 自架字型子集(2026-07-08):Google Fonts 的 Noto Sans TC 用 unicode-range 分片,
+   全站中文內容其實只用到 654 個不重複漢字,分片載入反而抓了一堆用不到的字。
+   改用 fontTools 依全站實際用字子集化、自架 woff2,7 個檔案合計 ~530KB,
+   且同網域載入不用再等 fonts.googleapis.com 這輪 preconnect+CSS 往返。 */
+@font-face { font-family: 'Inter'; font-weight: 400; font-style: normal; font-display: swap; src: url('/fonts/Inter-400.woff2') format('woff2'); }
+@font-face { font-family: 'Inter'; font-weight: 500; font-style: normal; font-display: swap; src: url('/fonts/Inter-500.woff2') format('woff2'); }
+@font-face { font-family: 'Inter'; font-weight: 700; font-style: normal; font-display: swap; src: url('/fonts/Inter-700.woff2') format('woff2'); }
+@font-face { font-family: 'Inter'; font-weight: 900; font-style: normal; font-display: swap; src: url('/fonts/Inter-900.woff2') format('woff2'); }
+@font-face { font-family: 'Noto Sans TC'; font-weight: 400; font-style: normal; font-display: swap; src: url('/fonts/NotoSansTC-400.woff2') format('woff2'); }
+@font-face { font-family: 'Noto Sans TC'; font-weight: 500; font-style: normal; font-display: swap; src: url('/fonts/NotoSansTC-500.woff2') format('woff2'); }
+@font-face { font-family: 'Noto Sans TC'; font-weight: 700; font-style: normal; font-display: swap; src: url('/fonts/NotoSansTC-700.woff2') format('woff2'); }
 
 *, *::before, *::after {
   margin: 0;
