@@ -36,7 +36,7 @@
     document.querySelectorAll('.block-gallery').forEach(group=>{
       const thumbs=[...group.querySelectorAll('.gallery-thumb')];
       if(!thumbs.length)return;
-      const imgs=thumbs.map(t=>{const im=t.querySelector('img');return im.currentSrc||im.src;});
+      const imgs=thumbs.map(t=>{const im=t.querySelector('img');return im.dataset.full||im.currentSrc||im.src;});
       const alts=thumbs.map(t=>t.querySelector('img').alt);
       thumbs.forEach((t,i)=>{
         t.setAttribute('role','button');
